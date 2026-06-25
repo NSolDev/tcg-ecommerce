@@ -1,0 +1,222 @@
+/* src/components/ui/pokemon-card.css */
+
+/* Efecto de escaneo */
+.scan-effect {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.scan-line {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.05), transparent);
+  animation: scan-line 3s ease-in-out infinite;
+}
+
+@keyframes scan-line {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+/* Efecto de brillo en hover */
+.glow-effect {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 0.7s;
+  pointer-events: none;
+}
+
+.group:hover .glow-effect {
+  opacity: 1;
+}
+
+/* Badge de rareza */
+.rarity-badge {
+  position: absolute;
+  top: 0.75rem;
+  left: 0.75rem;
+  z-index: 10;
+  border-radius: 9999px;
+  padding: 0.125rem;
+  animation: glow-pulse 2s ease-in-out infinite;
+}
+
+.rarity-badge-inner {
+  background: rgba(0,0,0,0.8);
+  color: white;
+  border: 0;
+  padding: 0.375rem 0.75rem;
+  display: flex;
+  align-items: center;
+  gap: 0.375rem;
+  backdrop-filter: blur(4px);
+  font-size: 0.75rem;
+  border-radius: 9999px;
+}
+
+/* Esquinas decorativas */
+.corner-decoration {
+  position: absolute;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-color: rgba(255,255,255,0.2);
+  transition: border-color 0.5s;
+}
+
+.group:hover .corner-decoration {
+  border-color: rgba(238, 21, 21, 0.5);
+}
+
+.corner-decoration.tl {
+  top: 0;
+  left: 0;
+  border-top-width: 2px;
+  border-left-width: 2px;
+  border-style: solid;
+}
+
+.corner-decoration.br {
+  bottom: 0;
+  right: 0;
+  border-bottom-width: 2px;
+  border-right-width: 2px;
+  border-style: solid;
+}
+
+/* Producto - nombre y descripción */
+.product-name {
+  font-weight: 700;
+  font-size: 1rem;
+  line-height: 1.5;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  color: white;
+  transition: color 0.3s;
+}
+
+.group:hover .product-name {
+  color: hsl(var(--primary));
+}
+
+.product-description {
+  font-size: 0.75rem;
+  color: hsl(var(--muted-foreground));
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  margin-top: 0.25rem;
+  opacity: 0.75;
+}
+
+/* Badges de producto */
+.product-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.375rem;
+  margin-top: 0.5rem;
+}
+
+.badge-condition {
+  border-color: rgba(255,255,255,0.1);
+  background: rgba(255,255,255,0.05);
+  color: rgba(255,255,255,0.7);
+  font-size: 0.625rem;
+  padding: 0.125rem 0.5rem;
+  border-radius: 9999px;
+}
+
+/* Rating */
+.product-rating {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-top: 0.5rem;
+  font-size: 0.75rem;
+  color: hsl(var(--muted-foreground));
+}
+
+.star-icon {
+  width: 0.75rem;
+  height: 0.75rem;
+  fill: #FACC15;
+  color: #FACC15;
+}
+
+.rating-value {
+  color: rgba(255,255,255,0.8);
+}
+
+/* Precio */
+.product-price {
+  font-size: 1.25rem;
+  font-weight: 700;
+  background: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary) / 0.8));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.low-stock-warning {
+  font-size: 0.625rem;
+  color: #FB923C;
+  animation: pulse 2s infinite;
+  margin-top: 0.125rem;
+}
+
+/* Botón de añadir al carrito */
+.add-to-cart-btn {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s;
+  font-size: 0.75rem;
+  padding: 0.5rem 1rem;
+  height: 2.25rem;
+  border-radius: 0.5rem;
+  color: white;
+  background: hsl(var(--primary));
+}
+
+.add-to-cart-btn:not(:disabled):hover {
+  background: hsl(var(--primary) / 0.8);
+}
+
+.btn-added {
+  background: #22C55E !important;
+}
+
+.btn-added:hover {
+  background: #16A34A !important;
+}
+
+.btn-content {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  gap: 0.375rem;
+}
+
+/* Spinner */
+.spinner {
+  width: 0.875rem;
+  height: 0.875rem;
+  border: 2px solid rgba(255,255,255,0.3);
+  border-top-color: white;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.6; }
+}

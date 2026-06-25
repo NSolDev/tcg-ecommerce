@@ -1,0 +1,224 @@
+/* src/app/globals.css */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ============================================
+   VARIABLES CSS - NUEVA PALETA
+   ============================================ */
+@layer base {
+  :root {
+    /* Colores base */
+    --background: 210 20% 6%;      /* #0B0F14 */
+    --background-secondary: 216 18% 12%; /* #151B23 */
+    --foreground: 0 0% 100%;       /* #FFFFFF */
+    
+    /* Colores primarios */
+    --primary: 270 90% 65%;        /* #A855F7 */
+    --primary-foreground: 0 0% 100%;
+    --primary-light: 270 80% 75%;
+    --primary-dark: 270 70% 50%;
+    
+    /* Colores secundarios */
+    --secondary: 190 90% 55%;      /* #22D3EE */
+    --secondary-foreground: 0 0% 100%;
+    
+    /* Colores de acento */
+    --accent: 330 80% 60%;         /* #EC4899 */
+    --accent-foreground: 0 0% 100%;
+    
+    /* Colores de estado */
+    --muted: 210 15% 15%;
+    --muted-foreground: 210 10% 60%;
+    --destructive: 0 70% 50%;
+    --destructive-foreground: 0 0% 100%;
+    
+    /* Bordes y entradas */
+    --border: 216 18% 20%;
+    --input: 216 18% 16%;
+    --ring: 270 90% 65%;
+    
+    /* Radio y sombras */
+    --radius: 0.75rem;
+    
+    /* Efecto holográfico */
+    --holo-gradient: linear-gradient(135deg, #A855F7, #22D3EE, #EC4899);
+    --holo-glow: 0 0 30px rgba(168, 85, 247, 0.3), 0 0 60px rgba(34, 211, 238, 0.2);
+  }
+}
+
+/* ============================================
+   ESTILOS BASE
+   ============================================ */
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    background: #0B0F14;
+    min-height: 100vh;
+  }
+}
+
+/* ============================================
+   CLASES UTILITARIAS
+   ============================================ */
+@layer utilities {
+  /* Gradiente holográfico */
+  .holo-gradient {
+    background: linear-gradient(135deg, #A855F7, #22D3EE, #EC4899);
+    background-size: 300% 300%;
+    animation: holo-shift 4s ease-in-out infinite;
+  }
+  
+  .holo-gradient-text {
+    background: linear-gradient(135deg, #A855F7, #22D3EE, #EC4899);
+    background-size: 300% 300%;
+    animation: holo-shift 4s ease-in-out infinite;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  
+  .holo-border {
+    position: relative;
+  }
+  
+  .holo-border::before {
+    content: '';
+    position: absolute;
+    inset: -2px;
+    border-radius: inherit;
+    padding: 2px;
+    background: linear-gradient(135deg, #A855F7, #22D3EE, #EC4899);
+    background-size: 300% 300%;
+    animation: holo-shift 3s ease-in-out infinite;
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+  }
+  
+  .holo-glow {
+    box-shadow: 0 0 30px rgba(168, 85, 247, 0.3), 0 0 60px rgba(34, 211, 238, 0.2);
+  }
+  
+  .holo-glow-hover {
+    transition: box-shadow 0.3s ease;
+  }
+  
+  .holo-glow-hover:hover {
+    box-shadow: 0 0 40px rgba(168, 85, 247, 0.5), 0 0 80px rgba(34, 211, 238, 0.3);
+  }
+  
+  .glass-card {
+    background: rgba(21, 27, 35, 0.8);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .glass-card-hover {
+    background: rgba(21, 27, 35, 0.8);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    transition: all 0.3s ease;
+  }
+  
+  .glass-card-hover:hover {
+    border-color: rgba(168, 85, 247, 0.4);
+    box-shadow: 0 0 30px rgba(168, 85, 247, 0.15);
+  }
+  
+  /* Fondo con patrón de brillo holográfico */
+  .holo-pattern {
+    background-image: 
+      radial-gradient(circle at 20% 50%, rgba(168, 85, 247, 0.05) 0%, transparent 50%),
+      radial-gradient(circle at 80% 50%, rgba(34, 211, 238, 0.05) 0%, transparent 50%),
+      radial-gradient(circle at 50% 80%, rgba(236, 72, 153, 0.05) 0%, transparent 50%);
+  }
+  
+  /* Efecto shimmer holográfico */
+  .holo-shimmer {
+    background: linear-gradient(90deg, 
+      transparent, 
+      rgba(168, 85, 247, 0.1), 
+      rgba(34, 211, 238, 0.1), 
+      rgba(236, 72, 153, 0.1), 
+      transparent
+    );
+    background-size: 200% 100%;
+    animation: holo-shimmer 3s infinite;
+  }
+}
+
+/* ============================================
+   ANIMACIONES
+   ============================================ */
+@layer utilities {
+  @keyframes holo-shift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+  
+  @keyframes holo-shimmer {
+    0% { background-position: -200% center; }
+    100% { background-position: 200% center; }
+  }
+  
+  @keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+  }
+  .animate-float {
+    animation: float 3s ease-in-out infinite;
+  }
+  
+  @keyframes glow-pulse {
+    0%, 100% { 
+      box-shadow: 0 0 20px rgba(168, 85, 247, 0.3), 0 0 60px rgba(34, 211, 238, 0.1);
+    }
+    50% { 
+      box-shadow: 0 0 40px rgba(168, 85, 247, 0.5), 0 0 80px rgba(34, 211, 238, 0.2);
+    }
+  }
+  .animate-glow-pulse {
+    animation: glow-pulse 2s ease-in-out infinite;
+  }
+  
+  @keyframes holo-rotate {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+  .animate-holo-rotate {
+    animation: holo-rotate 8s linear infinite;
+  }
+}
+
+/* ============================================
+   IMPORTACIONES DE ESTILOS
+   ============================================ */
+/* Componentes UI */
+@import url('../components/shared/header.css');
+@import url('../components/shared/user-button.css');
+@import url('../components/ui/pokemon-card.css');
+@import url('../components/ui/product-filters.css');
+@import url('../components/cart/cart-drawer.css');
+
+/* Componentes de navegación */
+@import url('../components/product/collection-nav.css');
+
+/* Layouts de la tienda */
+@import url('./(shop)/shop-layout.css');
+@import url('./(shop)/products/products-page.css');
+@import url('./(shop)/products/product-detail.css');
+@import url('./(shop)/cart/cart-page.css');
+@import url('./(shop)/account/account-page.css');
+@import url('./(shop)/account/settings/settings.css');
+@import url('./(shop)/checkout/checkout-page.css');
+
+/* Admin */
+@import url('../components/admin/admin-nav.css');
+@import url('../app/admin/admin-dashboard.css');
+@import url('../app/admin/admin-products.css');
+@import url('../app/admin/admin-settings.css');

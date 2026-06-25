@@ -1,0 +1,198 @@
+/* src/components/ui/product-filters.css */
+
+.filters-container {
+  position: sticky;
+  top: 6rem;
+}
+
+.filters-card {
+  border: 2px solid rgba(255,255,255,0.1);
+  transition: border-color 0.3s;
+  background: rgba(26, 26, 46, 0.8);
+  backdrop-filter: blur(8px);
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+}
+
+.filters-card:hover {
+  border-color: rgba(238, 21, 21, 0.3);
+}
+
+.filters-header {
+  padding: 1.25rem 1.25rem 0.75rem 1.25rem;
+}
+
+.filters-title {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1.125rem;
+  color: white;
+}
+
+.filters-title-icon {
+  width: 1.25rem;
+  height: 1.25rem;
+  color: hsl(var(--primary));
+}
+
+.filters-active-badge {
+  margin-left: 0.5rem;
+  padding: 0.125rem 0.5rem;
+  font-size: 0.75rem;
+  background: hsl(var(--primary));
+  color: white;
+  border-radius: 9999px;
+  animation: pulse 2s infinite;
+}
+
+.filters-clear-btn {
+  color: hsl(var(--muted-foreground));
+  transition: color 0.3s;
+}
+
+.filters-clear-btn:hover {
+  color: hsl(var(--destructive));
+  background: rgba(239, 68, 68, 0.1);
+}
+
+.filters-content {
+  padding: 0 1.25rem 1.25rem 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+/* Grupos de filtros */
+.filter-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.625rem;
+}
+
+.filter-label {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: rgba(255,255,255,0.8);
+}
+
+.filter-input {
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.1);
+  color: white;
+  padding: 0.5rem 0.75rem;
+  border-radius: 0.5rem;
+  transition: border-color 0.3s;
+}
+
+.filter-input:focus {
+  border-color: rgba(238, 21, 21, 0.5);
+  outline: none;
+}
+
+.filter-input::placeholder {
+  color: hsl(var(--muted-foreground));
+}
+
+.filter-select {
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.1);
+  color: white;
+  padding: 0.5rem 0.75rem;
+  border-radius: 0.5rem;
+  transition: border-color 0.3s;
+}
+
+.filter-select:focus {
+  border-color: rgba(238, 21, 21, 0.5);
+  outline: none;
+}
+
+.filter-select-content {
+  background: #1a1a2e;
+  border: 1px solid rgba(255,255,255,0.1);
+  color: white;
+}
+
+.filter-select-item {
+  transition: background 0.3s;
+  cursor: pointer;
+  padding: 0.5rem 0.75rem;
+}
+
+.filter-select-item:hover {
+  background: rgba(255,255,255,0.1);
+}
+
+/* Rango de precio */
+.price-range {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.price-input {
+  flex: 1;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.1);
+  color: white;
+  padding: 0.5rem 0.75rem;
+  border-radius: 0.5rem;
+  transition: border-color 0.3s;
+}
+
+.price-input:focus {
+  border-color: rgba(238, 21, 21, 0.5);
+  outline: none;
+}
+
+.price-input::placeholder {
+  color: hsl(var(--muted-foreground));
+}
+
+/* Botón de aplicar */
+.apply-filters-btn {
+  width: 100%;
+  background: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary) / 0.8));
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  transition: all 0.3s;
+  box-shadow: 0 4px 6px -1px rgba(238, 21, 21, 0.2);
+}
+
+.apply-filters-btn:hover {
+  background: linear-gradient(135deg, hsl(var(--primary) / 0.9), hsl(var(--primary) / 0.7));
+  box-shadow: 0 4px 6px -1px rgba(238, 21, 21, 0.4);
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.6; }
+}
+
+/* ============================================
+   FILTROS - COLECCIÓN 
+   ============================================ */
+.filter-collection-select {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  color: #FFFFFF;
+  padding: 0.5rem 0.75rem;
+  border-radius: 0.5rem;
+  transition: all 0.3s ease;
+}
+
+.filter-collection-select:focus {
+  border-color: rgba(168, 85, 247, 0.3);
+  outline: none;
+  box-shadow: 0 0 20px rgba(168, 85, 247, 0.05);
+}
+
+.filter-collection-select option {
+  background: #151B23;
+  color: #FFFFFF;
+  padding: 0.5rem;
+}
+
+.filter-collection-select option:hover {
+  background: rgba(168, 85, 247, 0.1);
+}
