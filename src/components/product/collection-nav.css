@@ -1,0 +1,252 @@
+/* src/components/product/collection-nav.css */
+
+/* ============================================
+   COLLECTION NAV - CONTENEDOR
+   ============================================ */
+.collection-nav {
+  width: 100%;
+  background: rgba(21, 27, 35, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 0.75rem;
+  padding: 0.5rem;
+  backdrop-filter: blur(4px);
+  margin-bottom: 1.5rem;
+  position: relative;
+  z-index: 20;
+}
+
+.collection-nav-container {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+/* ============================================
+   COLLECTION NAV - LINKS PRINCIPALES
+   ============================================ */
+.collection-nav-links {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.collection-nav-link {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.5);
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+
+.collection-nav-link:hover {
+  color: #FFFFFF;
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.collection-nav-link.active {
+  color: #A855F7;
+  background: rgba(168, 85, 247, 0.1);
+  border: 1px solid rgba(168, 85, 247, 0.15);
+}
+
+.collection-nav-link .nav-icon {
+  width: 1rem;
+  height: 1rem;
+}
+
+/* ============================================
+   COLLECTION NAV - DROPDOWN
+   ============================================ */
+.collection-nav-dropdown {
+  position: relative;
+}
+
+.collection-nav-dropdown-trigger {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.5);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-family: inherit;
+  white-space: nowrap;
+}
+
+.collection-nav-dropdown-trigger:hover {
+  color: #FFFFFF;
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.collection-nav-dropdown-trigger.active {
+  color: #A855F7;
+  background: rgba(168, 85, 247, 0.1);
+  border: 1px solid rgba(168, 85, 247, 0.15);
+  border-radius: 0.5rem;
+}
+
+.collection-nav-dropdown-trigger .nav-icon {
+  width: 1rem;
+  height: 1rem;
+}
+
+.collection-nav-dropdown-trigger .dropdown-arrow {
+  width: 1rem;
+  height: 1rem;
+  transition: transform 0.3s ease;
+}
+
+.collection-nav-dropdown-trigger .dropdown-arrow.open {
+  transform: rotate(180deg);
+}
+
+.collection-nav-active-badge {
+  padding: 0.125rem 0.5rem;
+  border-radius: 9999px;
+  font-size: 0.625rem;
+  font-weight: 600;
+  background: rgba(168, 85, 247, 0.15);
+  color: #A855F7;
+  border: 1px solid rgba(168, 85, 247, 0.1);
+  max-width: 8rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* ============================================
+   COLLECTION NAV - DROPDOWN MENU
+   ============================================ */
+.collection-nav-dropdown-menu {
+  position: absolute;
+  top: calc(100% + 0.5rem);
+  left: 0;
+  min-width: 14rem;
+  max-height: 20rem;
+  overflow-y: auto;
+  background: rgba(21, 27, 35, 0.98);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 0.75rem;
+  padding: 0.5rem;
+  backdrop-filter: blur(12px);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+  animation: dropdownFadeIn 0.2s ease;
+}
+
+.collection-nav-dropdown-menu-grid {
+  min-width: 18rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.25rem;
+}
+
+/* Versión derecha para evitar solapamiento con bordes */
+.collection-nav-dropdown-menu-right {
+  left: auto;
+  right: 0;
+}
+
+@keyframes dropdownFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-0.5rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.collection-nav-dropdown-menu::-webkit-scrollbar {
+  width: 4px;
+}
+
+.collection-nav-dropdown-menu::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.collection-nav-dropdown-menu::-webkit-scrollbar-thumb {
+  background: rgba(168, 85, 247, 0.2);
+  border-radius: 9999px;
+}
+
+.collection-nav-dropdown-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 0.75rem;
+  border-radius: 0.5rem;
+  font-size: 0.875rem;
+  color: rgba(255, 255, 255, 0.6);
+  transition: all 0.2s ease;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.collection-nav-dropdown-item:hover {
+  background: rgba(255, 255, 255, 0.03);
+  color: #FFFFFF;
+}
+
+.collection-nav-dropdown-item.active {
+  background: rgba(168, 85, 247, 0.1);
+  color: #A855F7;
+}
+
+.collection-nav-dropdown-item .item-icon {
+  width: 1rem;
+  height: 1rem;
+  flex-shrink: 0;
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+@media (max-width: 768px) {
+  .collection-nav-container {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  
+  .collection-nav-links {
+    flex-wrap: wrap;
+  }
+  
+  .collection-nav-dropdown {
+    width: 100%;
+  }
+  
+  .collection-nav-dropdown-trigger {
+    width: 100%;
+    justify-content: space-between;
+  }
+  
+  .collection-nav-dropdown-menu {
+    position: static;
+    width: 100%;
+    box-shadow: none;
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    margin-top: 0.25rem;
+    z-index: 10;
+  }
+  
+  .collection-nav-dropdown-menu-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .collection-nav-active-badge {
+    max-width: 6rem;
+  }
+}
