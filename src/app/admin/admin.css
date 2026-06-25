@@ -1,0 +1,80 @@
+/* src/app/admin/admin.css */
+
+/* Layout del admin */
+.admin-layout {
+  min-height: 100vh;
+  background: #0f0f1a;
+}
+
+/* Header del admin */
+.admin-header {
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+  background: rgba(26,26,46,0.8);
+  backdrop-filter: blur(8px);
+  position: sticky;
+  top: 0;
+  z-index: 50;
+}
+
+/* Sidebar del admin */
+.admin-sidebar {
+  background: rgba(26,26,46,0.5);
+  border-radius: 0.75rem;
+  border: 1px solid rgba(255,255,255,0.1);
+  padding: 0.75rem;
+  backdrop-filter: blur(4px);
+}
+
+.admin-nav-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.625rem 0.75rem;
+  border-radius: 0.5rem;
+  font-size: 0.875rem;
+  transition: all 0.3s;
+}
+
+.admin-nav-item.active {
+  background: linear-gradient(135deg, rgba(238, 21, 21, 0.2), rgba(238, 21, 21, 0.1));
+  color: hsl(var(--primary));
+  border: 1px solid rgba(238, 21, 21, 0.2);
+  box-shadow: 0 4px 6px -1px rgba(238, 21, 21, 0.1);
+}
+
+.admin-nav-item.inactive {
+  color: hsl(var(--muted-foreground));
+}
+
+.admin-nav-item.inactive:hover {
+  color: white;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.1);
+}
+
+/* Tablas del admin */
+.admin-table {
+  width: 100%;
+}
+
+.admin-table th {
+  text-align: left;
+  color: rgba(255,255,255,0.6);
+  font-weight: 500;
+  font-size: 0.875rem;
+  padding: 0.75rem 1rem;
+}
+
+.admin-table td {
+  padding: 0.75rem 1rem;
+  color: rgba(255,255,255,0.8);
+  border-top: 1px solid rgba(255,255,255,0.05);
+}
+
+.admin-table tr {
+  transition: background 0.3s;
+}
+
+.admin-table tr:hover {
+  background: rgba(255,255,255,0.05);
+}

@@ -1,0 +1,217 @@
+/* src/app/admin/admin-products.css */
+
+/* ============================================
+   ADMIN - PRODUCTS HEADER
+   ============================================ */
+.admin-products-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.admin-products-title {
+  font-size: 1.875rem;
+  font-weight: 700;
+  color: #FFFFFF;
+}
+
+.admin-products-subtitle {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.admin-products-actions {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.admin-products-actions .btn-inactive {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  font-weight: 500;
+  font-size: 0.875rem;
+  color: #FBBF24;
+  background: rgba(251, 191, 36, 0.1);
+  border: 1px solid rgba(251, 191, 36, 0.15);
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+
+.admin-products-actions .btn-inactive:hover {
+  background: rgba(251, 191, 36, 0.15);
+  border-color: rgba(251, 191, 36, 0.25);
+}
+
+.admin-products-actions .btn-new {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  font-weight: 500;
+  font-size: 0.875rem;
+  color: #FFFFFF;
+  background: linear-gradient(135deg, #A855F7, #8B5CF6);
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+
+.admin-products-actions .btn-new:hover {
+  background: linear-gradient(135deg, #8B5CF6, #7C3AED);
+  transform: translateY(-1px);
+  box-shadow: 0 0 30px rgba(168, 85, 247, 0.3);
+}
+
+/* ============================================
+   ADMIN - PRODUCTS TABLE
+   ============================================ */
+.admin-products-table-wrap {
+  overflow-x: auto;
+}
+
+.admin-products-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.admin-products-table th {
+  text-align: left;
+  padding: 0.75rem 1rem;
+  font-size: 0.75rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: rgba(255, 255, 255, 0.4);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.admin-products-table td {
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+  vertical-align: middle;
+}
+
+.admin-products-table tr {
+  transition: background 0.3s ease;
+}
+
+.admin-products-table tr:hover {
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.admin-products-table .product-name {
+  font-weight: 500;
+  color: #FFFFFF;
+}
+
+.admin-products-table .product-set {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.admin-products-table .product-rarity {
+  display: inline-flex;
+  padding: 0.125rem 0.5rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.admin-products-table .product-price {
+  color: #FFFFFF;
+  font-weight: 500;
+}
+
+.admin-products-table .product-stock {
+  font-weight: 500;
+}
+
+.admin-products-table .product-stock.in-stock {
+  color: #34D399;
+}
+
+.admin-products-table .product-stock.low-stock {
+  color: #FBBF24;
+}
+
+.admin-products-table .product-stock.out-of-stock {
+  color: #F87171;
+}
+
+.admin-products-table .product-status {
+  display: inline-flex;
+  padding: 0.125rem 0.5rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+}
+
+.admin-products-table .product-status.active {
+  background: rgba(52, 211, 153, 0.1);
+  color: #34D399;
+  border: 1px solid rgba(52, 211, 153, 0.15);
+}
+
+.admin-products-table .product-status.inactive {
+  background: rgba(239, 68, 68, 0.1);
+  color: #F87171;
+  border: 1px solid rgba(239, 68, 68, 0.15);
+}
+
+.admin-products-table .product-actions {
+  display: flex;
+  gap: 0.5rem;
+  justify-content: flex-end;
+}
+
+.admin-products-table .product-actions .btn-edit {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 0.375rem;
+  color: rgba(255, 255, 255, 0.5);
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+
+.admin-products-table .product-actions .btn-edit:hover {
+  border-color: rgba(168, 85, 247, 0.3);
+  color: #FFFFFF;
+  background: rgba(168, 85, 247, 0.05);
+}
+
+.admin-products-table .product-actions .btn-delete {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 0.375rem;
+  color: #F87171;
+  background: rgba(239, 68, 68, 0.05);
+  border: 1px solid rgba(239, 68, 68, 0.1);
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.admin-products-table .product-actions .btn-delete:hover {
+  background: rgba(239, 68, 68, 0.1);
+  border-color: rgba(239, 68, 68, 0.2);
+}
+
+/* ============================================
+   ADMIN - PRODUCTS EMPTY
+   ============================================ */
+.admin-products-empty {
+  text-align: center;
+  padding: 3rem 0;
+  color: rgba(255, 255, 255, 0.4);
+}

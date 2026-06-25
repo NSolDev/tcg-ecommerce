@@ -1,0 +1,169 @@
+/* src/app/admin/admin-dashboard.css */
+
+/* ============================================
+   ADMIN - DASHBOARD
+   ============================================ */
+.admin-dashboard {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.admin-dashboard-header {}
+.admin-dashboard-title {
+  font-size: 1.875rem;
+  font-weight: 700;
+  color: #FFFFFF;
+}
+.admin-dashboard-subtitle {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+/* ============================================
+   ADMIN - STATS GRID
+   ============================================ */
+.admin-stats-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+
+@media (min-width: 640px) {
+  .admin-stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .admin-stats-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.admin-stat-card {
+  background: rgba(21, 27, 35, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 0.75rem;
+  padding: 1.25rem;
+  transition: all 0.3s ease;
+}
+
+.admin-stat-card:hover {
+  border-color: rgba(168, 85, 247, 0.2);
+  box-shadow: 0 0 30px rgba(168, 85, 247, 0.05);
+}
+
+.admin-stat-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+}
+
+.admin-stat-label {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.admin-stat-icon {
+  width: 1.25rem;
+  height: 1.25rem;
+  color: #A855F7;
+}
+
+.admin-stat-value {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: #FFFFFF;
+}
+
+.admin-stat-description {
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.4);
+  margin-top: 0.25rem;
+}
+
+/* ============================================
+   ADMIN - RECENT ACTIVITY
+   ============================================ */
+.admin-activity-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .admin-activity-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.admin-activity-card {
+  background: rgba(21, 27, 35, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 0.75rem;
+  padding: 1.25rem;
+}
+
+.admin-activity-title {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: #FFFFFF;
+  margin-bottom: 0.75rem;
+}
+
+.admin-activity-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+}
+
+.admin-activity-item:last-child {
+  border-bottom: none;
+}
+
+.admin-activity-item .info .name {
+  font-weight: 500;
+  color: #FFFFFF;
+}
+
+.admin-activity-item .info .detail {
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.admin-activity-item .value {
+  text-align: right;
+}
+
+.admin-activity-item .value .amount {
+  font-weight: 500;
+  color: #FFFFFF;
+}
+
+.admin-activity-item .value .status {
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.admin-activity-empty {
+  color: rgba(255, 255, 255, 0.4);
+  text-align: center;
+  padding: 1rem 0;
+}
+
+/* ============================================
+   ADMIN - STOCK WARNING
+   ============================================ */
+.admin-stock-warning {
+  color: #F87171;
+  font-weight: 500;
+  font-size: 0.875rem;
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  background: rgba(239, 68, 68, 0.1);
+  border: 1px solid rgba(239, 68, 68, 0.15);
+}
