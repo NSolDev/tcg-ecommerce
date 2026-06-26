@@ -1,0 +1,154 @@
+/* src/app/(shop)/about/about.css */
+
+/* ============================================
+   ABOUT - LAYOUT
+   ============================================ */
+.about-container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+}
+
+/* ============================================
+   ABOUT - HERO
+   ============================================ */
+.about-hero {
+  text-align: center;
+  padding: 3rem 1rem;
+  margin-bottom: 3rem;
+  background: linear-gradient(135deg, rgba(255, 203, 5, 0.05), rgba(42, 117, 187, 0.05));
+  border-radius: 1rem;
+  border: 1px solid rgba(255, 203, 5, 0.1);
+}
+
+.about-hero-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #FFFFFF;
+  margin-bottom: 0.5rem;
+}
+
+@media (min-width: 768px) {
+  .about-hero-title {
+    font-size: 3rem;
+  }
+}
+
+.about-hero-subtitle {
+  font-size: 1.125rem;
+  color: #B0B0B0;
+}
+
+/* ============================================
+   ABOUT - CONTENT
+   ============================================ */
+.about-content {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+
+.about-section-title {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: #FFFFFF;
+  margin-bottom: 1rem;
+}
+
+.about-section-text {
+  color: #B0B0B0;
+  line-height: 1.8;
+  margin-bottom: 1rem;
+}
+
+/* ============================================
+   ABOUT - VALUES
+   ============================================ */
+.about-values-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .about-values-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.about-value-card {
+  background: #1E1E1E;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 0.75rem;
+  padding: 1.5rem;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.about-value-card:hover {
+  border-color: rgba(255, 203, 5, 0.3);
+  transform: translateY(-4px);
+  box-shadow: 0 0 30px rgba(255, 203, 5, 0.05);
+}
+
+.about-value-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 9999px;
+  background: rgba(255, 203, 5, 0.1);
+  color: #FFCB05;
+  margin-bottom: 0.75rem;
+}
+
+.about-value-title {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: #FFFFFF;
+  margin-bottom: 0.25rem;
+}
+
+.about-value-description {
+  font-size: 0.875rem;
+  color: #B0B0B0;
+}
+
+/* ============================================
+   ABOUT - CTA
+   ============================================ */
+.about-cta {
+  text-align: center;
+  padding: 2rem;
+  background: #1E1E1E;
+  border-radius: 0.75rem;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.about-cta-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #FFFFFF;
+  margin-bottom: 1rem;
+}
+
+.about-cta-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 2rem;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  color: #121212;
+  background: #FFCB05;
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+
+.about-cta-button:hover {
+  background: #E6B800;
+  transform: translateY(-2px);
+  box-shadow: 0 0 30px rgba(255, 203, 5, 0.3);
+}

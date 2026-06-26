@@ -1,0 +1,261 @@
+/* src/app/admin/audit/admin-audit.css */
+
+/* ============================================
+   ADMIN AUDIT - PAGE
+   ============================================ */
+.admin-audit-page {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.admin-audit-header {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.admin-audit-title {
+  font-size: 1.875rem;
+  font-weight: 700;
+  color: #FFFFFF;
+}
+
+.admin-audit-subtitle {
+  color: #B0B0B0;
+}
+
+/* ============================================
+   ADMIN AUDIT - CARD
+   ============================================ */
+.admin-audit-card {
+  background: rgba(30, 30, 30, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 0.75rem;
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  overflow: hidden;
+}
+
+.admin-audit-card-header {
+  padding: 1.25rem 1.5rem 0.5rem 1.5rem;
+}
+
+.admin-audit-card-title {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: #FFFFFF;
+}
+
+.admin-audit-card-content {
+  padding: 0 1.5rem 1.5rem 1.5rem;
+}
+
+.admin-audit-empty {
+  color: #B0B0B0;
+  text-align: center;
+  padding: 2rem 0;
+}
+
+/* ============================================
+   ADMIN AUDIT - TABLE
+   ============================================ */
+.admin-audit-table-wrap {
+  overflow-x: auto;
+  width: 100%;
+}
+
+.admin-audit-table-header {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.admin-audit-table-th {
+  text-align: left;
+  padding: 0.75rem 1rem;
+  font-size: 0.75rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #B0B0B0;
+  white-space: nowrap;
+}
+
+.admin-audit-table-row {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+  transition: background 0.3s ease;
+}
+
+.admin-audit-table-row:hover {
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.admin-audit-table-cell {
+  padding: 0.75rem 1rem;
+  vertical-align: middle;
+}
+
+/* ============================================
+   ADMIN AUDIT - DATE
+   ============================================ */
+.admin-audit-date {
+  color: #FFFFFF;
+  font-size: 0.875rem;
+}
+
+.admin-audit-time {
+  display: block;
+  font-size: 0.75rem;
+  color: #B0B0B0;
+}
+
+/* ============================================
+   ADMIN AUDIT - USER
+   ============================================ */
+.admin-audit-user {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.admin-audit-user-name {
+  color: #FFFFFF;
+}
+
+/* ============================================
+   ADMIN AUDIT - BADGES
+   ============================================ */
+.admin-audit-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.25rem 0.5rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+
+.admin-audit-badge-create {
+  background: rgba(34, 197, 94, 0.15);
+  color: #34D399;
+  border: 1px solid rgba(34, 197, 94, 0.15);
+}
+
+.admin-audit-badge-update {
+  background: rgba(59, 130, 246, 0.15);
+  color: #60A5FA;
+  border: 1px solid rgba(59, 130, 246, 0.15);
+}
+
+.admin-audit-badge-delete {
+  background: rgba(239, 68, 68, 0.15);
+  color: #F87171;
+  border: 1px solid rgba(239, 68, 68, 0.15);
+}
+
+.admin-audit-badge-restore {
+  background: rgba(34, 197, 94, 0.15);
+  color: #34D399;
+  border: 1px solid rgba(34, 197, 94, 0.15);
+}
+
+.admin-audit-badge-deactivate {
+  background: rgba(255, 203, 5, 0.15);
+  color: #FFCB05;
+  border: 1px solid rgba(255, 203, 5, 0.15);
+}
+
+.admin-audit-badge-view {
+  background: rgba(107, 114, 128, 0.15);
+  color: #9CA3AF;
+  border: 1px solid rgba(107, 114, 128, 0.15);
+}
+
+.admin-audit-badge-login {
+  background: rgba(168, 85, 247, 0.15);
+  color: #A855F7;
+  border: 1px solid rgba(168, 85, 247, 0.15);
+}
+
+.admin-audit-badge-default {
+  background: rgba(255, 255, 255, 0.05);
+  color: #B0B0B0;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.admin-audit-badge-icon {
+  width: 0.75rem;
+  height: 0.75rem;
+}
+
+/* ============================================
+   ADMIN AUDIT - ENTITY
+   ============================================ */
+.admin-audit-entity {
+  color: #FFFFFF;
+}
+
+.admin-audit-entity-id {
+  display: block;
+  font-size: 0.75rem;
+  color: #B0B0B0;
+}
+
+/* ============================================
+   ADMIN AUDIT - DETAILS
+   ============================================ */
+.admin-audit-details {
+  font-size: 0.875rem;
+  color: #B0B0B0;
+  max-width: 300px;
+}
+
+.admin-audit-details-summary {
+  font-size: 0.75rem;
+  color: #FFCB05;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.admin-audit-details-summary:hover {
+  color: #E6B800;
+}
+
+.admin-audit-details-changes {
+  font-size: 0.75rem;
+  background: rgba(255, 255, 255, 0.03);
+  padding: 0.5rem;
+  border-radius: 0.25rem;
+  margin-top: 0.25rem;
+  overflow-x: auto;
+  white-space: pre-wrap;
+  word-break: break-all;
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+/* ============================================
+   ADMIN AUDIT - RESPONSIVE
+   ============================================ */
+@media (max-width: 768px) {
+  .admin-audit-card-header {
+    padding: 1rem 1rem 0.25rem 1rem;
+  }
+  
+  .admin-audit-card-content {
+    padding: 0 1rem 1rem 1rem;
+  }
+  
+  .admin-audit-details {
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 640px) {
+  .admin-audit-table-wrap {
+    overflow-x: auto;
+  }
+  
+  .admin-audit-table-wrap table {
+    min-width: 600px;
+  }
+}

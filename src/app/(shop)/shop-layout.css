@@ -1,0 +1,150 @@
+/* src/app/(shop)/shop-layout.css */
+
+/* ============================================
+   SHOP LAYOUT - PRINCIPAL
+   ============================================ */
+.shop-layout {
+  min-height: 100vh;
+  background: #121212;
+  position: relative;
+}
+
+.shop-layout-content {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.shop-main {
+  flex: 1;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+  width: 100%;
+  padding-top: 5rem;
+}
+
+/* ============================================
+   SHOP LAYOUT - FOOTER
+   ============================================ */
+.shop-footer {
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  background: rgba(18, 18, 18, 0.95);
+  backdrop-filter: blur(4px);
+}
+
+.shop-footer-container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+}
+
+.shop-footer-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+}
+
+@media (min-width: 768px) {
+  .shop-footer-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.shop-footer-brand {
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: #FFCB05;
+  margin-bottom: 0.5rem;
+}
+
+.shop-footer-description {
+  font-size: 0.875rem;
+  color: #B0B0B0;
+}
+
+.shop-footer-title {
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: #FFFFFF;
+}
+
+.shop-footer-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.shop-footer-list li {
+  font-size: 0.875rem;
+  color: #B0B0B0;
+}
+
+.shop-footer-link {
+  transition: color 0.3s;
+  text-decoration: none;
+  color: #B0B0B0;
+}
+
+.shop-footer-link:hover {
+  color: #2A75BB;
+}
+
+.shop-footer-social {
+  display: flex;
+  gap: 1rem;
+}
+
+.shop-footer-social a {
+  color: #B0B0B0;
+  transition: color 0.3s;
+  text-decoration: none;
+}
+
+.shop-footer-social a:hover {
+  color: #2A75BB;
+}
+
+.shop-footer-bottom {
+  margin-top: 2rem;
+  padding-top: 2rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  text-align: center;
+  font-size: 0.875rem;
+  color: #B0B0B0;
+}
+
+/* ============================================
+   SHOP LAYOUT - PARTÍCULAS
+   ============================================ */
+.shop-particles {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* ============================================
+   SHOP LAYOUT - RESPONSIVE
+   ============================================ */
+@media (max-width: 640px) {
+  .shop-main {
+    padding: 1rem;
+    padding-top: 4.5rem;
+  }
+  
+  .shop-footer-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .shop-footer-grid {
+    grid-template-columns: 1fr;
+  }
+}

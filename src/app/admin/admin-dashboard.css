@@ -16,7 +16,7 @@
   color: #FFFFFF;
 }
 .admin-dashboard-subtitle {
-  color: rgba(255, 255, 255, 0.5);
+  color: #B0B0B0;
 }
 
 /* ============================================
@@ -41,7 +41,7 @@
 }
 
 .admin-stat-card {
-  background: rgba(21, 27, 35, 0.5);
+  background: rgba(30, 30, 30, 0.5);
   border: 1px solid rgba(255, 255, 255, 0.06);
   border-radius: 0.75rem;
   padding: 1.25rem;
@@ -49,8 +49,8 @@
 }
 
 .admin-stat-card:hover {
-  border-color: rgba(168, 85, 247, 0.2);
-  box-shadow: 0 0 30px rgba(168, 85, 247, 0.05);
+  border-color: rgba(255, 203, 5, 0.2);
+  box-shadow: 0 0 30px rgba(255, 203, 5, 0.05);
 }
 
 .admin-stat-header {
@@ -63,13 +63,13 @@
 .admin-stat-label {
   font-size: 0.875rem;
   font-weight: 500;
-  color: rgba(255, 255, 255, 0.6);
+  color: #B0B0B0;
 }
 
 .admin-stat-icon {
   width: 1.25rem;
   height: 1.25rem;
-  color: #A855F7;
+  color: #FFCB05;
 }
 
 .admin-stat-value {
@@ -80,7 +80,7 @@
 
 .admin-stat-description {
   font-size: 0.75rem;
-  color: rgba(255, 255, 255, 0.4);
+  color: #B0B0B0;
   margin-top: 0.25rem;
 }
 
@@ -100,7 +100,7 @@
 }
 
 .admin-activity-card {
-  background: rgba(21, 27, 35, 0.5);
+  background: rgba(30, 30, 30, 0.5);
   border: 1px solid rgba(255, 255, 255, 0.06);
   border-radius: 0.75rem;
   padding: 1.25rem;
@@ -132,7 +132,7 @@
 
 .admin-activity-item .info .detail {
   font-size: 0.75rem;
-  color: rgba(255, 255, 255, 0.4);
+  color: #B0B0B0;
 }
 
 .admin-activity-item .value {
@@ -146,11 +146,11 @@
 
 .admin-activity-item .value .status {
   font-size: 0.75rem;
-  color: rgba(255, 255, 255, 0.4);
+  color: #B0B0B0;
 }
 
 .admin-activity-empty {
-  color: rgba(255, 255, 255, 0.4);
+  color: #B0B0B0;
   text-align: center;
   padding: 1rem 0;
 }

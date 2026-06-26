@@ -1,0 +1,288 @@
+/* src/app/(shop)/orders/order-detail.css */
+
+/* ============================================
+   ORDER DETAIL - PAGE
+   ============================================ */
+.order-detail-page {
+  max-width: 1024px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+}
+
+/* ============================================
+   ORDER DETAIL - HEADER
+   ============================================ */
+.order-detail-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+}
+
+.order-detail-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.375rem 0.75rem;
+  border-radius: 0.5rem;
+  font-size: 0.875rem;
+  color: #B0B0B0;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+
+.order-detail-back:hover {
+  border-color: rgba(255, 203, 5, 0.3);
+  color: #FFFFFF;
+  background: rgba(255, 203, 5, 0.05);
+}
+
+.order-detail-back .icon {
+  width: 1rem;
+  height: 1rem;
+}
+
+.order-detail-info {
+  flex: 1;
+}
+
+.order-detail-id {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #FFFFFF;
+}
+
+.order-detail-date {
+  color: #B0B0B0;
+}
+
+.order-detail-status {
+  margin-left: auto;
+}
+
+.order-detail-status-badge {
+  display: inline-flex;
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+
+.order-detail-status-pending {
+  background: rgba(255, 203, 5, 0.15);
+  color: #FFCB05;
+  border: 1px solid rgba(255, 203, 5, 0.15);
+}
+
+.order-detail-status-completed {
+  background: rgba(34, 197, 94, 0.15);
+  color: #34D399;
+  border: 1px solid rgba(34, 197, 94, 0.15);
+}
+
+.order-detail-status-cancelled {
+  background: rgba(239, 68, 68, 0.15);
+  color: #F87171;
+  border: 1px solid rgba(239, 68, 68, 0.15);
+}
+
+.order-detail-status-refunded {
+  background: rgba(107, 114, 128, 0.15);
+  color: #9CA3AF;
+  border: 1px solid rgba(107, 114, 128, 0.15);
+}
+
+/* ============================================
+   ORDER DETAIL - GRID
+   ============================================ */
+.order-detail-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .order-detail-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.order-detail-card {
+  background: rgba(30, 30, 30, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 0.75rem;
+  overflow: hidden;
+}
+
+.order-detail-card-header {
+  padding: 1.25rem 1.25rem 0.5rem 1.25rem;
+}
+
+.order-detail-card-title {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #B0B0B0;
+}
+
+.order-detail-card-title .icon {
+  width: 1rem;
+  height: 1rem;
+  color: #FFCB05;
+}
+
+.order-detail-card-content {
+  padding: 0.5rem 1.25rem 1.25rem 1.25rem;
+}
+
+.order-detail-card-text {
+  font-weight: 500;
+  color: #FFFFFF;
+}
+
+.order-detail-card-sub {
+  font-size: 0.875rem;
+  color: #B0B0B0;
+}
+
+.order-detail-card-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.25rem 0;
+}
+
+.order-detail-card-row .label {
+  color: #B0B0B0;
+}
+
+.order-detail-card-row .value {
+  color: #FFFFFF;
+  font-weight: 500;
+}
+
+/* ============================================
+   ORDER DETAIL - PRODUCTS
+   ============================================ */
+.order-detail-products {
+  margin-top: 1.5rem;
+}
+
+.order-detail-products-card {
+  background: rgba(30, 30, 30, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 0.75rem;
+  overflow: hidden;
+}
+
+.order-detail-products-header {
+  padding: 1.25rem 1.25rem 0.5rem 1.25rem;
+}
+
+.order-detail-products-title {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: #FFFFFF;
+}
+
+.order-detail-products-title .icon {
+  width: 1.25rem;
+  height: 1.25rem;
+  color: #FFCB05;
+}
+
+.order-detail-products-content {
+  padding: 0.5rem 1.25rem 1.25rem 1.25rem;
+}
+
+.order-detail-product-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.75rem 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.order-detail-product-item:last-child {
+  border-bottom: none;
+}
+
+.order-detail-product-name {
+  font-weight: 500;
+  color: #FFFFFF;
+}
+
+.order-detail-product-meta {
+  font-size: 0.875rem;
+  color: #B0B0B0;
+}
+
+.order-detail-product-price {
+  font-weight: 500;
+  color: #FFFFFF;
+}
+
+.order-detail-separator {
+  border: none;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  margin: 0.5rem 0;
+}
+
+.order-detail-total {
+  display: flex;
+  justify-content: space-between;
+  font-weight: 700;
+  font-size: 1.125rem;
+  padding-top: 0.75rem;
+  margin-top: 0.75rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.order-detail-total .label {
+  color: #FFFFFF;
+}
+
+.order-detail-total .value {
+  color: #FFCB05;
+}
+
+/* ============================================
+   ORDER DETAIL - RESPONSIVE
+   ============================================ */
+@media (max-width: 640px) {
+  .order-detail-page {
+    padding: 1rem;
+  }
+  
+  .order-detail-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .order-detail-status {
+    margin-left: 0;
+  }
+  
+  .order-detail-card-header {
+    padding: 1rem 1rem 0.25rem 1rem;
+  }
+  
+  .order-detail-card-content {
+    padding: 0.25rem 1rem 1rem 1rem;
+  }
+  
+  .order-detail-products-header {
+    padding: 1rem 1rem 0.25rem 1rem;
+  }
+  
+  .order-detail-products-content {
+    padding: 0.25rem 1rem 1rem 1rem;
+  }
+}

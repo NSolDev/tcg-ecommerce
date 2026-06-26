@@ -1,0 +1,5 @@
+<svg width="200" height="200" xmlns="http://www.w3.org/2000/svg">
+  <rect width="200" height="200" fill="#1a1a2e" rx="10"/>
+  <text x="100" y="100" font-family="Arial" font-size="16" fill="#A855F7" text-anchor="middle" dominant-baseline="middle">Carta Pokémon</text>
+  <text x="100" y="130" font-family="Arial" font-size="12" fill="#22D3EE" text-anchor="middle" dominant-baseline="middle">TCG Store</text>
+</svg>

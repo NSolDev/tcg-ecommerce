@@ -40,20 +40,26 @@ export function DeleteProductButton({ productId }: DeleteProductButtonProps) {
         setError('Error al eliminar el producto')
       }
       setLoading(false)
+    } finally {
+      setLoading(false)
     }
   }
 
   return (
     <AlertDialog open={open} onOpenChange={setOpen}>
       <AlertDialogTrigger asChild>
-        <Button variant="destructive" size="sm" className="hover:bg-red-600">
+        <Button 
+          variant="destructive" 
+          size="sm" 
+          className="bg-red-500/20 hover:bg-red-500/30 text-red-400 border border-red-500/20 hover:text-red-300"
+        >
           <Trash2 className="h-4 w-4" />
         </Button>
       </AlertDialogTrigger>
-      <AlertDialogContent className="bg-[#1a1a2e] border-white/10 text-white">
+      <AlertDialogContent className="bg-[#1E1E1E] border-white/10 text-white">
         <AlertDialogHeader>
           <AlertDialogTitle className="text-white">¿Estás seguro?</AlertDialogTitle>
-          <AlertDialogDescription className="text-muted-foreground">
+          <AlertDialogDescription className="text-B0B0B0">
             {error ? (
               <span className="text-red-400">{error}</span>
             ) : (

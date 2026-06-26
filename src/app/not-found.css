@@ -1,0 +1,118 @@
+/* src/app/not-found.css */
+
+/* ============================================
+   404 - LAYOUT
+   ============================================ */
+.not-found-container {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  background: #121212;
+}
+
+.not-found-content {
+  text-align: center;
+  max-width: 32rem;
+}
+
+.not-found-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 6rem;
+  height: 6rem;
+  border-radius: 9999px;
+  background: rgba(255, 203, 5, 0.1);
+  color: #FFCB05;
+  margin-bottom: 1.5rem;
+  animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+.not-found-title {
+  font-size: 6rem;
+  font-weight: 700;
+  color: #FFCB05;
+  line-height: 1;
+  margin-bottom: 0.5rem;
+}
+
+@media (min-width: 768px) {
+  .not-found-title {
+    font-size: 8rem;
+  }
+}
+
+.not-found-subtitle {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #FFFFFF;
+  margin-bottom: 0.75rem;
+}
+
+.not-found-description {
+  color: #B0B0B0;
+  margin-bottom: 2rem;
+  line-height: 1.6;
+}
+
+/* ============================================
+   404 - BUTTONS
+   ============================================ */
+.not-found-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  align-items: center;
+}
+
+@media (min-width: 480px) {
+  .not-found-actions {
+    flex-direction: row;
+    justify-content: center;
+  }
+}
+
+.not-found-button-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  color: #121212;
+  background: #FFCB05;
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+
+.not-found-button-primary:hover {
+  background: #E6B800;
+  transform: translateY(-2px);
+  box-shadow: 0 0 30px rgba(255, 203, 5, 0.3);
+}
+
+.not-found-button-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  color: #FFFFFF;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.not-found-button-secondary:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 203, 5, 0.3);
+}

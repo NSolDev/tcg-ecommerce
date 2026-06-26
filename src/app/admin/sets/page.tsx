@@ -6,25 +6,36 @@ import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@
 import { Plus, Pencil, Trash2 } from 'lucide-react'
 import Link from 'next/link'
 import { formatDate } from '@/lib/utils'
+import { DeleteSetButton } from '@/components/admin/DeleteSetButton'
+import './admin-sets.css'
 
 export default async function AdminSetsPage() {
   const sets = await prisma.set.findMany({
     include: {
       _count: {
-        select: { products: true },
+        select: {
+          cards: true,
+          packs: true,
+          boxes: true,
+        },
       },
     },
     orderBy: { releaseDate: 'desc' },
   })
 
+  const setsWithTotal = sets.map((set) => ({
+    ...set,
+    totalProducts: set._count.cards + set._count.packs + set._count.boxes,
+  }))
+
   return (
-    <div className="space-y-6">
-      <div className="flex items-center justify-between">
+    <div className="admin-sets-page">
+      <div className="admin-sets-header">
         <div>
-          <h1 className="text-3xl font-bold">Colecciones</h1>
-          <p className="text-muted-foreground">Gestiona las colecciones de cartas</p>
+          <h1 className="admin-sets-title">Colecciones</h1>
+          <p className="admin-sets-subtitle">Gestiona las colecciones de cartas</p>
         </div>
-        <Button asChild>
+        <Button asChild className="admin-sets-btn-new">
           <Link href="/admin/sets/new">
             <Plus className="h-4 w-4 mr-2" />
             Nueva Colección
@@ -32,45 +43,54 @@ export default async function AdminSetsPage() {
         </Button>
       </div>
 
-      <Card>
-        <CardHeader>
-          <CardTitle>Lista de Colecciones</CardTitle>
+      <Card className="admin-sets-card">
+        <CardHeader className="admin-sets-card-header">
+          <CardTitle className="admin-sets-card-title">Lista de Colecciones</CardTitle>
         </CardHeader>
-        <CardContent>
-          {sets.length === 0 ? (
-            <p className="text-muted-foreground">No hay colecciones registradas</p>
+        <CardContent className="admin-sets-card-content">
+          {setsWithTotal.length === 0 ? (
+            <p className="admin-sets-empty">No hay colecciones registradas</p>
           ) : (
-            <Table>
-              <TableHeader>
-                <TableRow>
-                  <TableHead>Nombre</TableHead>
-                  <TableHead>Fecha de Lanzamiento</TableHead>
-                  <TableHead>Productos</TableHead>
-                  <TableHead className="text-right">Acciones</TableHead>
-                </TableRow>
-              </TableHeader>
-              <TableBody>
-                {sets.map((set) => (
-                  <TableRow key={set.id}>
-                    <TableCell className="font-medium">
-                      {set.name}
-                    </TableCell>
-                    <TableCell>{formatDate(set.releaseDate)}</TableCell>
-                    <TableCell>{set._count.products}</TableCell>
-                    <TableCell className="text-right space-x-2">
-                      <Button variant="outline" size="sm" asChild>
-                        <Link href={`/admin/sets/${set.id}/edit`}>
-                          <Pencil className="h-4 w-4" />
-                        </Link>
-                      </Button>
-                      <Button variant="destructive" size="sm">
-                        <Trash2 className="h-4 w-4" />
-                      </Button>
-                    </TableCell>
+            <div className="admin-sets-table-wrap">
+              <Table>
+                <TableHeader>
+                  <TableRow className="admin-sets-table-header">
+                    <TableHead className="admin-sets-table-th">Nombre</TableHead>
+                    <TableHead className="admin-sets-table-th">Fecha de Lanzamiento</TableHead>
+                    <TableHead className="admin-sets-table-th">Productos</TableHead>
+                    <TableHead className="admin-sets-table-th text-right">Acciones</TableHead>
                   </TableRow>
-                ))}
-              </TableBody>
-            </Table>
+                </TableHeader>
+                <TableBody>
+                  {setsWithTotal.map((set) => (
+                    <TableRow key={set.id} className="admin-sets-table-row">
+                      <TableCell className="admin-sets-table-cell-name">
+                        {set.name}
+                      </TableCell>
+                      <TableCell className="admin-sets-table-cell">
+                        {formatDate(set.releaseDate)}
+                      </TableCell>
+                      <TableCell className="admin-sets-table-cell">
+                        <span className="admin-sets-product-count">
+                          {set.totalProducts}
+                        </span>
+                        <span className="admin-sets-product-detail">
+                          ({set._count.cards} cartas, {set._count.packs} sobres, {set._count.boxes} cajas)
+                        </span>
+                      </TableCell>
+                      <TableCell className="admin-sets-table-cell-actions">
+                        <Button variant="outline" size="sm" asChild className="admin-sets-btn-edit">
+                          <Link href={`/admin/sets/${set.id}/edit`}>
+                            <Pencil className="h-4 w-4" />
+                          </Link>
+                        </Button>
+                        <DeleteSetButton setId={set.id} />
+                      </TableCell>
+                    </TableRow>
+                  ))}
+                </TableBody>
+              </Table>
+            </div>
           )}
         </CardContent>
       </Card>

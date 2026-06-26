@@ -1,0 +1,193 @@
+/* src/components/ui/scroll-morph-hero.css */
+
+/* ============================================
+   SCROLL MORPH HERO - LAYOUT
+   ============================================ */
+.scroll-morph-hero {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: #121212;
+}
+
+/* ============================================
+   SCROLL MORPH HERO - FONDO HOLOGRÁFICO
+   ============================================ */
+.scroll-morph-hero .holo-background {
+  position: absolute;
+  inset: 0;
+  opacity: 0.1;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* ============================================
+   SCROLL MORPH HERO - PRODUCTOS EN ÓRBITA
+   ============================================ */
+.scroll-morph-hero .orbit-container {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+  pointer-events: none;
+  /* Asegurar que el contenedor no tape el contenido */
+  opacity: 0.7;
+}
+
+.scroll-morph-hero .orbit-item {
+  position: absolute;
+  border-radius: 0.75rem;
+  overflow: hidden;
+  border: 2px solid rgba(255, 203, 5, 0.2);
+  box-shadow: 0 0 20px rgba(255, 203, 5, 0.1);
+  background: #1E1E1E;
+  pointer-events: none;
+  /* Reducir opacidad para que no tape el texto */
+  opacity: 0.85;
+  transition: all 0.3s ease;
+}
+
+/* Efecto de hover para dar profundidad */
+.scroll-morph-hero .orbit-item:hover {
+  opacity: 1;
+  border-color: rgba(255, 203, 5, 0.6);
+  box-shadow: 0 0 40px rgba(255, 203, 5, 0.3);
+}
+
+/* ============================================
+   TAMAÑOS DE PRODUCTOS EN ÓRBITA
+   ============================================ */
+.scroll-morph-hero .orbit-item.size-sm {
+  width: 6rem;   /* 96px */
+  height: 6rem;
+}
+
+.scroll-morph-hero .orbit-item.size-md {
+  width: 7.5rem; /* 120px */
+  height: 7.5rem;
+}
+
+.scroll-morph-hero .orbit-item.size-lg {
+  width: 9rem;   /* 144px */
+  height: 9rem;
+}
+
+.scroll-morph-hero .orbit-item.size-xl {
+  width: 10.5rem; /* 168px */
+  height: 10.5rem;
+}
+
+.scroll-morph-hero .orbit-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  padding: 0.5rem;
+}
+
+/* ============================================
+   SCROLL MORPH HERO - TEXTO Y CTA
+   ============================================ */
+.scroll-morph-hero .hero-content {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 0 1rem;
+  z-index: 10;
+  pointer-events: none;
+}
+
+.scroll-morph-hero .hero-content * {
+  pointer-events: auto;
+}
+
+.scroll-morph-hero .hero-title {
+  font-size: 4rem;
+  font-weight: 700;
+  color: #FFCB05;
+  text-shadow: 
+    0 0 20px rgba(255, 203, 5, 0.3),
+    0 0 60px rgba(255, 203, 5, 0.1),
+    0 0 100px rgba(255, 203, 5, 0.05);
+  /* Asegurar que el texto esté por encima */
+  position: relative;
+  z-index: 11;
+}
+
+@media (min-width: 768px) {
+  .scroll-morph-hero .hero-title {
+    font-size: 6rem;
+  }
+}
+
+.scroll-morph-hero .hero-subtitle {
+  font-size: 1.25rem;
+  color: #B0B0B0;
+  margin-top: 0.5rem;
+  position: relative;
+  z-index: 11;
+}
+
+/* ============================================
+   SCROLL MORPH HERO - BOTÓN
+   ============================================ */
+.scroll-morph-hero .btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem 2rem;
+  border-radius: 0.75rem;
+  font-weight: 600;
+  color: #121212;
+  background: #FFCB05;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  pointer-events: auto;
+  position: relative;
+  z-index: 11;
+}
+
+.scroll-morph-hero .btn-primary:hover {
+  background: #E6B800;
+  transform: scale(1.05);
+  box-shadow: 0 0 40px rgba(255, 203, 5, 0.4);
+}
+
+/* ============================================
+   RESPONSIVE - AJUSTE EN MÓVIL
+   ============================================ */
+@media (max-width: 768px) {
+  .scroll-morph-hero .orbit-item.size-sm {
+    width: 4rem;   /* 64px */
+    height: 4rem;
+  }
+  
+  .scroll-morph-hero .orbit-item.size-md {
+    width: 5rem;   /* 80px */
+    height: 5rem;
+  }
+  
+  .scroll-morph-hero .orbit-item.size-lg {
+    width: 6rem;   /* 96px */
+    height: 6rem;
+  }
+  
+  .scroll-morph-hero .orbit-item.size-xl {
+    width: 7rem;   /* 112px */
+    height: 7rem;
+  }
+  
+  .scroll-morph-hero .hero-title {
+    font-size: 2.5rem;
+  }
+  
+  .scroll-morph-hero .hero-subtitle {
+    font-size: 1rem;
+  }
+}

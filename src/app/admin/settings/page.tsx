@@ -6,9 +6,9 @@ import { Label } from '@/components/ui/label'
 import { Separator } from '@/components/ui/separator'
 import { Switch } from '@/components/ui/switch'
 import { prisma } from '@/lib/db/prisma'
+import './admin-settings.css'
 
 export default async function AdminSettingsPage() {
-  // Obtener estadísticas para mostrar en configuración
   const [productCount, orderCount, userCount] = await Promise.all([
     prisma.product.count(),
     prisma.order.count(),
@@ -16,237 +16,239 @@ export default async function AdminSettingsPage() {
   ])
 
   return (
-    <div className="space-y-8">
-      <div>
-        <h1 className="text-3xl font-bold text-white">Configuración</h1>
-        <p className="text-muted-foreground">Gestiona la configuración de la tienda</p>
+    <div className="admin-settings-page">
+      <div className="admin-settings-header">
+        <h1 className="admin-settings-title">Configuración</h1>
+        <p className="admin-settings-subtitle">Gestiona la configuración de la tienda</p>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div className="admin-settings-grid">
         {/* Información General */}
-        <Card className="bg-[#1a1a2e]/50 border-white/10 backdrop-blur-sm hover:border-primary/30 transition-all duration-300">
-          <CardHeader className="px-6 pt-6 pb-3">
-            <CardTitle className="text-lg text-white">Información General</CardTitle>
-            <CardDescription className="text-muted-foreground">
+        <Card className="admin-settings-card">
+          <CardHeader className="admin-settings-card-header">
+            <CardTitle className="admin-settings-card-title">Información General</CardTitle>
+            <CardDescription className="admin-settings-card-description">
               Estadísticas y datos de la tienda
             </CardDescription>
           </CardHeader>
-          <CardContent className="px-6 pb-6 pt-0 space-y-3">
-            <div className="flex justify-between items-center py-1.5 border-b border-white/5">
-              <span className="text-muted-foreground">Productos</span>
-              <span className="font-medium text-white">{productCount}</span>
+          <CardContent className="admin-settings-card-content">
+            <div className="admin-settings-stats">
+              <div className="admin-settings-stat">
+                <span className="admin-settings-stat-label">Productos</span>
+                <span className="admin-settings-stat-value">{productCount}</span>
+              </div>
+              <div className="admin-settings-stat">
+                <span className="admin-settings-stat-label">Pedidos</span>
+                <span className="admin-settings-stat-value">{orderCount}</span>
+              </div>
+              <div className="admin-settings-stat">
+                <span className="admin-settings-stat-label">Usuarios</span>
+                <span className="admin-settings-stat-value">{userCount}</span>
+              </div>
             </div>
-            <div className="flex justify-between items-center py-1.5 border-b border-white/5">
-              <span className="text-muted-foreground">Pedidos</span>
-              <span className="font-medium text-white">{orderCount}</span>
-            </div>
-            <div className="flex justify-between items-center py-1.5 border-b border-white/5">
-              <span className="text-muted-foreground">Usuarios</span>
-              <span className="font-medium text-white">{userCount}</span>
-            </div>
-            <Separator className="bg-white/10" />
-            <div className="flex justify-between items-center py-1.5">
-              <span className="text-muted-foreground">Versión</span>
-              <span className="font-medium text-white">v1.0.0</span>
+            <Separator className="admin-settings-separator" />
+            <div className="admin-settings-version">
+              <span className="admin-settings-version-label">Versión</span>
+              <span className="admin-settings-version-value">v1.0.0</span>
             </div>
           </CardContent>
         </Card>
 
         {/* Configuración de la Tienda */}
-        <Card className="bg-[#1a1a2e]/50 border-white/10 backdrop-blur-sm hover:border-primary/30 transition-all duration-300">
-          <CardHeader className="px-6 pt-6 pb-3">
-            <CardTitle className="text-lg text-white">Configuración de la Tienda</CardTitle>
-            <CardDescription className="text-muted-foreground">
+        <Card className="admin-settings-card">
+          <CardHeader className="admin-settings-card-header">
+            <CardTitle className="admin-settings-card-title">Configuración de la Tienda</CardTitle>
+            <CardDescription className="admin-settings-card-description">
               Ajusta la configuración básica de la tienda
             </CardDescription>
           </CardHeader>
-          <CardContent className="px-6 pb-6 pt-0 space-y-4">
-            <div className="space-y-2">
-              <Label htmlFor="storeName" className="text-white/80">Nombre de la Tienda</Label>
+          <CardContent className="admin-settings-card-content">
+            <div className="admin-settings-field">
+              <Label htmlFor="storeName" className="admin-settings-label">Nombre de la Tienda</Label>
               <Input 
                 id="storeName" 
                 placeholder="TCG Store" 
                 defaultValue="TCG Store" 
-                className="bg-white/5 border-white/10 text-white placeholder:text-muted-foreground focus:border-primary/50"
+                className="admin-settings-input"
               />
             </div>
-            <div className="space-y-2">
-              <Label htmlFor="storeEmail" className="text-white/80">Email de Contacto</Label>
+            <div className="admin-settings-field">
+              <Label htmlFor="storeEmail" className="admin-settings-label">Email de Contacto</Label>
               <Input 
                 id="storeEmail" 
                 placeholder="contacto@tcgstore.com" 
                 defaultValue="contacto@tcgstore.com" 
-                className="bg-white/5 border-white/10 text-white placeholder:text-muted-foreground focus:border-primary/50"
+                className="admin-settings-input"
               />
             </div>
-            <div className="space-y-2">
-              <Label htmlFor="currency" className="text-white/80">Moneda</Label>
+            <div className="admin-settings-field">
+              <Label htmlFor="currency" className="admin-settings-label">Moneda</Label>
               <Input 
                 id="currency" 
                 placeholder="EUR" 
                 defaultValue="EUR" 
                 disabled 
-                className="bg-white/5 border-white/10 text-white/50 cursor-not-allowed"
+                className="admin-settings-input"
               />
             </div>
-            <Button className="w-full bg-gradient-to-r from-primary to-primary/80 hover:from-primary/90 hover:to-primary text-white">
+            <button className="admin-settings-btn-primary">
               Guardar Cambios
-            </Button>
+            </button>
           </CardContent>
         </Card>
 
         {/* Configuración de Envío */}
-        <Card className="bg-[#1a1a2e]/50 border-white/10 backdrop-blur-sm hover:border-primary/30 transition-all duration-300">
-          <CardHeader className="px-6 pt-6 pb-3">
-            <CardTitle className="text-lg text-white">Configuración de Envío</CardTitle>
-            <CardDescription className="text-muted-foreground">
+        <Card className="admin-settings-card">
+          <CardHeader className="admin-settings-card-header">
+            <CardTitle className="admin-settings-card-title">Configuración de Envío</CardTitle>
+            <CardDescription className="admin-settings-card-description">
               Gestiona las opciones de envío
             </CardDescription>
           </CardHeader>
-          <CardContent className="px-6 pb-6 pt-0 space-y-4">
-            <div className="flex items-center justify-between py-2">
-              <div>
-                <Label className="text-white/80">Envío Gratuito</Label>
-                <p className="text-sm text-muted-foreground">Habilitar envío gratuito para pedidos</p>
+          <CardContent className="admin-settings-card-content">
+            <div className="admin-settings-toggle">
+              <div className="admin-settings-toggle-info">
+                <span className="admin-settings-toggle-label">Envío Gratuito</span>
+                <span className="admin-settings-toggle-description">Habilitar envío gratuito para pedidos</span>
               </div>
-              <Switch defaultChecked className="data-[state=checked]:bg-primary" />
+              <Switch defaultChecked className="admin-settings-switch" />
             </div>
-            <div className="space-y-2">
-              <Label htmlFor="freeShippingThreshold" className="text-white/80">Mínimo para Envío Gratuito</Label>
+            <div className="admin-settings-field">
+              <Label htmlFor="freeShippingThreshold" className="admin-settings-label">Mínimo para Envío Gratuito</Label>
               <Input 
                 id="freeShippingThreshold" 
                 type="number" 
                 placeholder="50" 
                 defaultValue="50" 
-                className="bg-white/5 border-white/10 text-white placeholder:text-muted-foreground focus:border-primary/50"
+                className="admin-settings-input"
               />
             </div>
-            <div className="space-y-2">
-              <Label htmlFor="shippingCost" className="text-white/80">Costo de Envío Estándar</Label>
+            <div className="admin-settings-field">
+              <Label htmlFor="shippingCost" className="admin-settings-label">Costo de Envío Estándar</Label>
               <Input 
                 id="shippingCost" 
                 type="number" 
                 placeholder="5.99" 
                 defaultValue="5.99" 
-                className="bg-white/5 border-white/10 text-white placeholder:text-muted-foreground focus:border-primary/50"
+                className="admin-settings-input"
               />
             </div>
-            <Button variant="outline" className="w-full border-white/10 hover:border-primary/50 bg-white/5 text-white hover:text-white">
+            <button className="admin-settings-btn-outline">
               Guardar Cambios
-            </Button>
+            </button>
           </CardContent>
         </Card>
 
         {/* Configuración de Pago */}
-        <Card className="bg-[#1a1a2e]/50 border-white/10 backdrop-blur-sm hover:border-primary/30 transition-all duration-300">
-          <CardHeader className="px-6 pt-6 pb-3">
-            <CardTitle className="text-lg text-white">Configuración de Pago</CardTitle>
-            <CardDescription className="text-muted-foreground">
+        <Card className="admin-settings-card">
+          <CardHeader className="admin-settings-card-header">
+            <CardTitle className="admin-settings-card-title">Configuración de Pago</CardTitle>
+            <CardDescription className="admin-settings-card-description">
               Gestiona las opciones de pago
             </CardDescription>
           </CardHeader>
-          <CardContent className="px-6 pb-6 pt-0 space-y-4">
-            <div className="flex items-center justify-between py-2">
-              <div>
-                <Label className="text-white/80">Stripe Activo</Label>
-                <p className="text-sm text-muted-foreground">Habilitar pagos con Stripe</p>
+          <CardContent className="admin-settings-card-content">
+            <div className="admin-settings-toggle">
+              <div className="admin-settings-toggle-info">
+                <span className="admin-settings-toggle-label">Stripe Activo</span>
+                <span className="admin-settings-toggle-description">Habilitar pagos con Stripe</span>
               </div>
-              <Switch defaultChecked className="data-[state=checked]:bg-primary" />
+              <Switch defaultChecked className="admin-settings-switch" />
             </div>
-            <div className="space-y-2">
-              <Label htmlFor="stripeMode" className="text-white/80">Modo Stripe</Label>
+            <div className="admin-settings-field">
+              <Label htmlFor="stripeMode" className="admin-settings-label">Modo Stripe</Label>
               <Input 
                 id="stripeMode" 
                 placeholder="test" 
                 defaultValue="test" 
                 disabled 
-                className="bg-white/5 border-white/10 text-white/50 cursor-not-allowed"
+                className="admin-settings-input"
               />
             </div>
-            <div className="space-y-2">
-              <Label htmlFor="stripePublishableKey" className="text-white/80">Clave Publicable de Stripe</Label>
+            <div className="admin-settings-field">
+              <Label htmlFor="stripePublishableKey" className="admin-settings-label">Clave Publicable de Stripe</Label>
               <Input 
                 id="stripePublishableKey" 
                 type="password" 
                 placeholder="pk_test_..." 
-                className="bg-white/5 border-white/10 text-white placeholder:text-muted-foreground focus:border-primary/50"
+                className="admin-settings-input"
               />
             </div>
-            <Button variant="outline" className="w-full border-white/10 hover:border-primary/50 bg-white/5 text-white hover:text-white">
+            <button className="admin-settings-btn-outline">
               Guardar Cambios
-            </Button>
+            </button>
           </CardContent>
         </Card>
 
         {/* Configuración de SEO */}
-        <Card className="bg-[#1a1a2e]/50 border-white/10 backdrop-blur-sm hover:border-primary/30 transition-all duration-300">
-          <CardHeader className="px-6 pt-6 pb-3">
-            <CardTitle className="text-lg text-white">SEO y Metadatos</CardTitle>
-            <CardDescription className="text-muted-foreground">
+        <Card className="admin-settings-card">
+          <CardHeader className="admin-settings-card-header">
+            <CardTitle className="admin-settings-card-title">SEO y Metadatos</CardTitle>
+            <CardDescription className="admin-settings-card-description">
               Configuración para motores de búsqueda
             </CardDescription>
           </CardHeader>
-          <CardContent className="px-6 pb-6 pt-0 space-y-4">
-            <div className="space-y-2">
-              <Label htmlFor="metaTitle" className="text-white/80">Título por Defecto</Label>
+          <CardContent className="admin-settings-card-content">
+            <div className="admin-settings-field">
+              <Label htmlFor="metaTitle" className="admin-settings-label">Título por Defecto</Label>
               <Input 
                 id="metaTitle" 
                 placeholder="TCG Store - Cartas Coleccionables" 
                 defaultValue="TCG Store - Cartas Coleccionables" 
-                className="bg-white/5 border-white/10 text-white placeholder:text-muted-foreground focus:border-primary/50"
+                className="admin-settings-input"
               />
             </div>
-            <div className="space-y-2">
-              <Label htmlFor="metaDescription" className="text-white/80">Descripción por Defecto</Label>
+            <div className="admin-settings-field">
+              <Label htmlFor="metaDescription" className="admin-settings-label">Descripción por Defecto</Label>
               <Input 
                 id="metaDescription" 
                 placeholder="Compra y vende cartas coleccionables" 
                 defaultValue="Compra y vende cartas coleccionables de Pokémon y más" 
-                className="bg-white/5 border-white/10 text-white placeholder:text-muted-foreground focus:border-primary/50"
+                className="admin-settings-input"
               />
             </div>
-            <div className="space-y-2">
-              <Label htmlFor="metaKeywords" className="text-white/80">Palabras Clave</Label>
+            <div className="admin-settings-field">
+              <Label htmlFor="metaKeywords" className="admin-settings-label">Palabras Clave</Label>
               <Input 
                 id="metaKeywords" 
                 placeholder="cartas, coleccionables, pokémon" 
                 defaultValue="cartas, coleccionables, pokémon, tcg" 
-                className="bg-white/5 border-white/10 text-white placeholder:text-muted-foreground focus:border-primary/50"
+                className="admin-settings-input"
               />
             </div>
-            <Button className="w-full bg-gradient-to-r from-primary to-primary/80 hover:from-primary/90 hover:to-primary text-white">
+            <button className="admin-settings-btn-primary">
               Guardar Cambios
-            </Button>
+            </button>
           </CardContent>
         </Card>
 
         {/* Configuración de Sistema */}
-        <Card className="bg-[#1a1a2e]/50 border-white/10 backdrop-blur-sm hover:border-primary/30 transition-all duration-300">
-          <CardHeader className="px-6 pt-6 pb-3">
-            <CardTitle className="text-lg text-white">Configuración de Sistema</CardTitle>
-            <CardDescription className="text-muted-foreground">
+        <Card className="admin-settings-card">
+          <CardHeader className="admin-settings-card-header">
+            <CardTitle className="admin-settings-card-title">Configuración de Sistema</CardTitle>
+            <CardDescription className="admin-settings-card-description">
               Opciones avanzadas del sistema
             </CardDescription>
           </CardHeader>
-          <CardContent className="px-6 pb-6 pt-0 space-y-4">
-            <div className="flex items-center justify-between py-2">
-              <div>
-                <Label className="text-white/80">Modo Mantenimiento</Label>
-                <p className="text-sm text-muted-foreground">Poner la tienda en modo mantenimiento</p>
+          <CardContent className="admin-settings-card-content">
+            <div className="admin-settings-toggle">
+              <div className="admin-settings-toggle-info">
+                <span className="admin-settings-toggle-label">Modo Mantenimiento</span>
+                <span className="admin-settings-toggle-description">Poner la tienda en modo mantenimiento</span>
               </div>
-              <Switch className="data-[state=checked]:bg-primary" />
+              <Switch className="admin-settings-switch" />
             </div>
-            <div className="flex items-center justify-between py-2">
-              <div>
-                <Label className="text-white/80">Debug Mode</Label>
-                <p className="text-sm text-muted-foreground">Mostrar información de depuración</p>
+            <div className="admin-settings-toggle">
+              <div className="admin-settings-toggle-info">
+                <span className="admin-settings-toggle-label">Debug Mode</span>
+                <span className="admin-settings-toggle-description">Mostrar información de depuración</span>
               </div>
-              <Switch className="data-[state=checked]:bg-primary" />
+              <Switch className="admin-settings-switch" />
             </div>
-            <Separator className="bg-white/10" />
-            <Button variant="destructive" className="w-full bg-red-500/20 hover:bg-red-500/30 text-red-400 border border-red-500/20 hover:text-red-300">
+            <Separator className="admin-settings-separator" />
+            <button className="admin-settings-btn-danger">
               Limpiar Caché
-            </Button>
+            </button>
           </CardContent>
         </Card>
       </div>

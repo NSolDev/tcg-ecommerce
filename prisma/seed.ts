@@ -1,191 +1,307 @@
 // prisma/seed.ts
-import { PrismaClient, ProductRarity, ProductCondition, UserRole } from '@prisma/client'
+import { PrismaClient, ProductRarity, ProductCondition, UserRole, ProductType } from '@prisma/client'
 import bcrypt from 'bcryptjs'
 
 const prisma = new PrismaClient()
 
+// Colecciones disponibles
+const COLLECTIONS = [
+  { name: 'Ascended Heroes', id: 'ascended-heroes' },
+  { name: 'Prismatic Evolutions', id: 'prismatic-evolutions' },
+  { name: 'Surging Sparks', id: 'surging-sparks' },
+  { name: 'Twilight Masquerade', id: 'twilight-masquerade' },
+  { name: '151', id: '151' },
+  { name: 'Chaos Rising', id: 'chaos-rising' },
+  { name: 'Black Bolt & White Flames', id: 'black-bolt-white-flames' },
+  { name: 'Megaevolution', id: 'megaevolution' },
+  { name: 'Paldea Evolved', id: 'paldea-evolved' },
+]
+
 async function main() {
   console.log('🌱 Iniciando seeding de base de datos...')
 
-  // ==============================================
   // 1. Crear Colecciones (Sets)
-  // ==============================================
   console.log('📦 Creando colecciones...')
-
-  const sets = await Promise.all([
-    prisma.set.upsert({
-      where: { name: 'Paldea Evolved' },
-      update: {},
-      create: {
-        name: 'Paldea Evolved',
-        releaseDate: new Date('2023-06-09'),
-        logoUrl: 'https://images.pexels.com/photos/1037994/pexels-photo-1037994.jpeg',
-      },
-    }),
-    prisma.set.upsert({
-      where: { name: '151' },
-      update: {},
-      create: {
-        name: '151',
-        releaseDate: new Date('2023-09-22'),
-        logoUrl: 'https://images.pexels.com/photos/1037995/pexels-photo-1037995.jpeg',
-      },
-    }),
-    prisma.set.upsert({
-      where: { name: 'Obsidian Flames' },
-      update: {},
-      create: {
-        name: 'Obsidian Flames',
-        releaseDate: new Date('2023-08-11'),
-        logoUrl: 'https://images.pexels.com/photos/1037996/pexels-photo-1037996.jpeg',
-      },
-    }),
-  ])
+  
+  const sets = await Promise.all(
+    COLLECTIONS.map(col => 
+      prisma.set.upsert({
+        where: { name: col.name },
+        update: {},
+        create: {
+          name: col.name,
+          releaseDate: new Date('2024-01-01'),
+          logoUrl: `https://product-images.s3.cardmarket.com/1016/${col.id}.jpg`,
+        },
+      })
+    )
+  )
 
   console.log(`✅ ${sets.length} colecciones creadas`)
 
-  // ==============================================
-  // 2. Crear Productos (Cartas Pokémon)
-  // ==============================================
+  // 2. Crear Productos
   console.log('🃏 Creando productos...')
 
-  const products = [
+  const setMap = Object.fromEntries(sets.map(s => [s.name, s]))
+
+  // ============================================
+  // CARTAS (7)
+  // ============================================
+  
+  const cardData = [
     {
       name: 'Charizard ex',
-      slug: 'charizard-ex-paldea',
-      description: 'El poderoso Pokémon Dragón/Fuego. Su ataque "Garra Ardiente" causa 200 de daño.',
+      slug: 'charizard-ex-ascended-heroes',
+      description: 'Carta individual Charizard ex de la colección Ascended Heroes. Pokémon de fuego con ataque devastador.',
       price: 49.99,
       stock: 15,
-      imageUrl: 'https://images.pexels.com/photos/1037997/pexels-photo-1037997.jpeg',
+      imageUrl: 'https://product-images.s3.cardmarket.com/51/ASC/869633/869633.jpg',
       rarity: ProductRarity.SUPER_RARA,
       condition: ProductCondition.MINT,
-      type: 'Pokémon',
-      hp: 220,
-      attack: 180,
-      weakness: 'Agua',
-      evolution: 'Charmeleon',
-      setId: sets[0].id,
+      set: 'Ascended Heroes',
     },
     {
       name: 'Mewtwo VSTAR',
-      slug: 'mewtwo-vstar-151',
-      description: 'El legendario Pokémon psíquico. Su habilidad "Poder Oculto" lo hace imparable.',
+      slug: 'mewtwo-vstar-prismatic-evolutions',
+      description: 'Carta individual Mewtwo VSTAR de la colección Prismatic Evolutions. Legendario psíquico.',
       price: 35.50,
       stock: 8,
-      imageUrl: 'https://images.pexels.com/photos/1037998/pexels-photo-1037998.jpeg',
+      imageUrl: 'https://product-images.s3.cardmarket.com/51/CRZ/691924/691924.jpg',
       rarity: ProductRarity.RARA,
       condition: ProductCondition.NEAR_MINT,
-      type: 'Pokémon',
-      hp: 280,
-      attack: 250,
-      weakness: 'Fantasma',
-      evolution: 'Mewtwo',
-      setId: sets[1].id,
+      set: 'Prismatic Evolutions',
     },
     {
       name: 'Pikachu ex',
-      slug: 'pikachu-ex-obsidian',
-      description: 'El Pokémon eléctrico más famoso. ¡Siempre listo para la batalla!',
+      slug: 'pikachu-ex-surging-sparks',
+      description: 'Carta individual Pikachu ex de la colección Surging Sparks. El Pokémon eléctrico más famoso.',
       price: 29.99,
       stock: 20,
-      imageUrl: 'https://images.pexels.com/photos/1037999/pexels-photo-1037999.jpeg',
+      imageUrl: 'https://product-images.s3.cardmarket.com/51/SSP/794611/794611.jpg',
       rarity: ProductRarity.RARA,
       condition: ProductCondition.MINT,
-      type: 'Pokémon',
-      hp: 180,
-      attack: 120,
-      weakness: 'Tierra',
-      evolution: 'Pichu',
-      setId: sets[2].id,
+      set: 'Surging Sparks',
     },
     {
       name: 'Gengar ex',
-      slug: 'gengar-ex-paldea',
-      description: 'El Pokémon Sombra. Aterroriza a sus oponentes con su sonrisa siniestra.',
+      slug: 'gengar-ex-twilight-masquerade',
+      description: 'Carta individual Gengar ex de la colección Twilight Masquerade. Pokémon Sombra.',
       price: 42.00,
       stock: 12,
-      imageUrl: 'https://images.pexels.com/photos/1038000/pexels-photo-1038000.jpeg',
+      imageUrl: 'https://product-images.s3.cardmarket.com/51/TEF/760823/760823.jpg',
       rarity: ProductRarity.SUPER_RARA,
       condition: ProductCondition.MINT,
-      type: 'Pokémon',
-      hp: 250,
-      attack: 210,
-      weakness: 'Siniestro',
-      evolution: 'Haunter',
-      setId: sets[0].id,
+      set: 'Twilight Masquerade',
     },
     {
       name: 'Gardevoir ex',
       slug: 'gardevoir-ex-151',
-      description: 'La Pokémon Emoción. Protege a su entrenador con su poder psíquico.',
+      description: 'Carta individual Gardevoir ex de la colección 151. Pokémon Psíquico.',
       price: 38.75,
       stock: 10,
-      imageUrl: 'https://images.pexels.com/photos/1038001/pexels-photo-1038001.jpeg',
+      imageUrl: 'https://product-images.s3.cardmarket.com/51/SVI/702541/702541.jpg',
       rarity: ProductRarity.RARA,
       condition: ProductCondition.NEAR_MINT,
-      type: 'Pokémon',
-      hp: 230,
-      attack: 160,
-      weakness: 'Acero',
-      evolution: 'Kirlia',
-      setId: sets[1].id,
-    },
-    {
-      name: 'Carta de Entrenador - Fuego Cruzado',
-      slug: 'fuego-cruzado-entrenador',
-      description: 'Entrenamiento intensivo. Aumenta el ataque de tus Pokémon de Fuego en +30.',
-      price: 15.99,
-      stock: 25,
-      imageUrl: 'https://images.pexels.com/photos/1038002/pexels-photo-1038002.jpeg',
-      rarity: ProductRarity.NORMAL,
-      condition: ProductCondition.MINT,
-      type: 'Entrenador',
-      hp: null,
-      attack: null,
-      weakness: null,
-      evolution: null,
-      setId: sets[0].id,
-    },
-    {
-      name: 'Energía Eléctrica x5',
-      slug: 'energia-electrica',
-      description: 'Pack de 5 energías eléctricas básicas para tus Pokémon tipo Eléctrico.',
-      price: 8.99,
-      stock: 30,
-      imageUrl: 'https://images.pexels.com/photos/1038003/pexels-photo-1038003.jpeg',
-      rarity: ProductRarity.COMUN,
-      condition: ProductCondition.MINT,
-      type: 'Energía',
-      hp: null,
-      attack: null,
-      weakness: null,
-      evolution: null,
-      setId: sets[2].id,
+      set: '151',
     },
   ]
 
-  for (const product of products) {
-    await prisma.product.upsert({
-      where: { slug: product.slug },
-      update: product,
-      create: product,
+  for (const data of cardData) {
+    const set = setMap[data.set]
+    const product = await prisma.product.create({
+      data: {
+        name: data.name,
+        slug: data.slug,
+        description: data.description,
+        price: data.price,
+        stock: data.stock,
+        type: ProductType.CARD,
+        isActive: true,
+        images: {
+          create: {
+            url: data.imageUrl,
+            isPrimary: true,
+            order: 0,
+          },
+        },
+        card: {
+          create: {
+            setId: set.id,
+            rarity: data.rarity,
+            condition: data.condition,
+            language: 'Español',
+          },
+        },
+      },
     })
+    console.log(`✅ Carta creada: ${product.name}`)
   }
 
-  console.log(`✅ ${products.length} productos creados`)
+  // ============================================
+  // SOBRES (3)
+  // ============================================
 
-  // ==============================================
-  // 3. Crear Usuario Admin CON CONTRASEÑA HASEADA
-  // ==============================================
-  console.log('👤 Creando usuario administrador...')
+  const packData = [
+    {
+      name: 'Sobre Ascended Heroes',
+      slug: 'pack-ascended-heroes',
+      description: 'Sobre individual de la colección Ascended Heroes. Contiene 10 cartas aleatorias.',
+      price: 4.99,
+      stock: 50,
+      imageUrl: 'https://product-images.s3.cardmarket.com/52/860562/860562.jpg',
+      set: 'Ascended Heroes',
+    },
+    {
+      name: 'Sobre Prismatic Evolutions',
+      slug: 'pack-prismatic-evolutions',
+      description: 'Sobre individual de la colección Prismatic Evolutions. Incluye 11 cartas con ilustraciones especiales.',
+      price: 5.99,
+      stock: 45,
+      imageUrl: 'https://product-images.s3.cardmarket.com/52/798923/798923.jpg',
+      set: 'Prismatic Evolutions',
+    },
+    {
+      name: 'Sobre Surging Sparks',
+      slug: 'pack-surging-sparks',
+      description: 'Sobre individual de la colección Surging Sparks. Incluye 10 cartas de la nueva expansión.',
+      price: 4.49,
+      stock: 60,
+      imageUrl: 'https://product-images.s3.cardmarket.com/52/784945/784945.jpg',
+      set: 'Surging Sparks',
+    },
+  ]
+
+  for (const data of packData) {
+    const set = setMap[data.set]
+    const product = await prisma.product.create({
+      data: {
+        name: data.name,
+        slug: data.slug,
+        description: data.description,
+        price: data.price,
+        stock: data.stock,
+        type: ProductType.PACK,
+        isActive: true,
+        images: {
+          create: {
+            url: data.imageUrl,
+            isPrimary: true,
+            order: 0,
+          },
+        },
+        pack: {
+          create: {
+            setId: set.id,
+            language: 'Español',
+            cardsPerPack: 10,
+          },
+        },
+      },
+    })
+    console.log(`✅ Sobre creado: ${product.name}`)
+  }
+
+  // ============================================
+  // CAJAS (6)
+  // ============================================
+
+  const boxData = [
+    {
+      name: 'Caja de Entrenador Élite de Caos Creciente',
+      slug: 'box-chaos-rising-elite-trainer',
+      description: 'Caja de Entrenador Élite de Caos Creciente. Incluye 8 sobres, 40 cartas de energía y accesorios exclusivos.',
+      price: 49.99,
+      stock: 10,
+      imageUrl: 'https://product-images.s3.cardmarket.com/1016/877294/877294.jpg',
+      set: 'Chaos Rising',
+    },
+    {
+      name: 'Caja de Entrenador Élite de Evoluciones Prismáticas',
+      slug: 'box-prismatic-evolutions-elite-trainer',
+      description: 'Caja de Entrenador Élite de Evoluciones Prismáticas. Incluye 9 sobres y accesorios exclusivos.',
+      price: 59.99,
+      stock: 8,
+      imageUrl: 'https://product-images.s3.cardmarket.com/1016/798930/798930.jpg',
+      set: 'Prismatic Evolutions',
+    },
+    {
+      name: 'Caja de Entrenador Élite de Héroes Ascendentes',
+      slug: 'box-ascended-heroes-elite-trainer',
+      description: 'Caja de Entrenador Élite de Héroes Ascendentes. Incluye 8 sobres y accesorios temáticos.',
+      price: 54.99,
+      stock: 12,
+      imageUrl: 'https://product-images.s3.cardmarket.com/1016/860574/860574.jpg',
+      set: 'Ascended Heroes',
+    },
+    {
+      name: 'Caja de Entrenador Élite de Fulgor Negro',
+      slug: 'box-black-bolt-white-flames-elite-trainer',
+      description: 'Caja de Entrenador Élite de Fulgor Negro. Incluye 8 sobres y accesorios exclusivos.',
+      price: 52.99,
+      stock: 10,
+      imageUrl: 'https://product-images.s3.cardmarket.com/1016/824088/824088.jpg',
+      set: 'Black Bolt & White Flames',
+    },
+    {
+      name: 'Caja de Entrenador Élite Mega Lucario de Megaevolución',
+      slug: 'box-megaevolution-mega-lucario-elite-trainer',
+      description: 'Caja de Entrenador Élite Mega Lucario de Megaevolución. Incluye 9 sobres y accesorios exclusivos.',
+      price: 64.99,
+      stock: 6,
+      imageUrl: 'https://product-images.s3.cardmarket.com/1016/834830/834830.jpg',
+      set: 'Megaevolution',
+    },
+    {
+      name: 'Caja de Entrenador Élite de Destinos de Paldea',
+      slug: 'box-paldea-evolved-elite-trainer',
+      description: 'Caja de Entrenador Élite de Destinos de Paldea. Incluye 8 sobres y accesorios temáticos.',
+      price: 47.99,
+      stock: 15,
+      imageUrl: 'https://product-images.s3.cardmarket.com/1016/745548/745548.png',
+      set: 'Paldea Evolved',
+    },
+  ]
+
+  for (const data of boxData) {
+    const set = setMap[data.set]
+    const product = await prisma.product.create({
+      data: {
+        name: data.name,
+        slug: data.slug,
+        description: data.description,
+        price: data.price,
+        stock: data.stock,
+        type: ProductType.BOX,
+        isActive: true,
+        images: {
+          create: {
+            url: data.imageUrl,
+            isPrimary: true,
+            order: 0,
+          },
+        },
+        box: {
+          create: {
+            setId: set.id,
+            language: 'Español',
+            packsPerBox: 8,
+          },
+        },
+      },
+    })
+    console.log(`✅ Caja creada: ${product.name}`)
+  }
+
+  // ============================================
+  // USUARIOS
+  // ============================================
+
+  console.log('👤 Creando usuarios...')
 
   const adminPassword = await bcrypt.hash('Admin123!', 10)
-
   await prisma.user.upsert({
     where: { email: 'admin@tcgstore.com' },
-    update: {
-      password: adminPassword,
-    },
+    update: { password: adminPassword },
     create: {
       email: 'admin@tcgstore.com',
       name: 'Administrador',
@@ -193,21 +309,12 @@ async function main() {
       password: adminPassword,
     },
   })
-
-  console.log('✅ Usuario admin creado (email: admin@tcgstore.com, password: Admin123!)')
-
-  // ==============================================
-  // 4. Crear Usuario de Prueba CON CONTRASEÑA HASEADA
-  // ==============================================
-  console.log('👤 Creando usuario de prueba...')
+  console.log('✅ Usuario admin creado')
 
   const testPassword = await bcrypt.hash('Test123!', 10)
-
   await prisma.user.upsert({
     where: { email: 'test@tcgstore.com' },
-    update: {
-      password: testPassword,
-    },
+    update: { password: testPassword },
     create: {
       email: 'test@tcgstore.com',
       name: 'Usuario Test',
@@ -215,8 +322,7 @@ async function main() {
       password: testPassword,
     },
   })
-
-  console.log('✅ Usuario test creado (email: test@tcgstore.com, password: Test123!)')
+  console.log('✅ Usuario test creado')
 
   console.log('🎉 Seeding completado exitosamente!')
 }

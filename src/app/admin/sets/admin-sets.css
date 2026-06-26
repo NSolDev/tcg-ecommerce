@@ -1,0 +1,210 @@
+/* src/app/admin/sets/admin-sets.css */
+
+/* ============================================
+   ADMIN SETS - PAGE
+   ============================================ */
+.admin-sets-page {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* ============================================
+   ADMIN SETS - HEADER
+   ============================================ */
+.admin-sets-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.admin-sets-title {
+  font-size: 1.875rem;
+  font-weight: 700;
+  color: #FFFFFF;
+}
+
+.admin-sets-subtitle {
+  color: #B0B0B0;
+}
+
+.admin-sets-btn-new {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  font-weight: 500;
+  font-size: 0.875rem;
+  color: #121212;
+  background: #FFCB05;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+}
+
+.admin-sets-btn-new:hover {
+  background: #E6B800;
+  transform: translateY(-1px);
+  box-shadow: 0 0 30px rgba(255, 203, 5, 0.3);
+}
+
+/* ============================================
+   ADMIN SETS - CARD
+   ============================================ */
+.admin-sets-card {
+  background: rgba(30, 30, 30, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 0.75rem;
+  padding: 1.5rem;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+.admin-sets-card-header {
+  padding: 0 0 0.75rem 0;
+}
+
+.admin-sets-card-title {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: #FFFFFF;
+}
+
+.admin-sets-card-content {
+  padding: 0;
+}
+
+.admin-sets-empty {
+  color: #B0B0B0;
+  text-align: center;
+  padding: 2rem 0;
+}
+
+/* ============================================
+   ADMIN SETS - TABLE
+   ============================================ */
+.admin-sets-table-wrap {
+  overflow-x: auto;
+  width: 100%;
+}
+
+.admin-sets-table-header {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.admin-sets-table-th {
+  text-align: left;
+  padding: 0.75rem 1rem;
+  font-size: 0.75rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #B0B0B0;
+}
+
+.admin-sets-table-row {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+  transition: background 0.3s ease;
+}
+
+.admin-sets-table-row:hover {
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.admin-sets-table-cell {
+  padding: 0.75rem 1rem;
+  vertical-align: middle;
+  color: #FFFFFF;
+}
+
+.admin-sets-table-cell-name {
+  padding: 0.75rem 1rem;
+  vertical-align: middle;
+  font-weight: 500;
+  color: #FFFFFF;
+}
+
+.admin-sets-table-cell-actions {
+  padding: 0.75rem 1rem;
+  vertical-align: middle;
+  display: flex;
+  gap: 0.5rem;
+  justify-content: flex-end;
+}
+
+/* ============================================
+   ADMIN SETS - PRODUCT COUNT
+   ============================================ */
+.admin-sets-product-count {
+  font-weight: 600;
+  color: #FFCB05;
+}
+
+.admin-sets-product-detail {
+  font-size: 0.75rem;
+  color: #B0B0B0;
+  margin-left: 0.5rem;
+}
+
+/* ============================================
+   ADMIN SETS - BUTTONS
+   ============================================ */
+.admin-sets-btn-edit {
+  border-color: rgba(255, 255, 255, 0.06);
+  background: rgba(255, 255, 255, 0.03);
+  color: #B0B0B0;
+  transition: all 0.3s ease;
+}
+
+.admin-sets-btn-edit:hover {
+  border-color: rgba(255, 203, 5, 0.3);
+  color: #FFFFFF;
+  background: rgba(255, 203, 5, 0.05);
+}
+
+.admin-sets-btn-delete {
+  background: rgba(239, 68, 68, 0.05);
+  color: #F87171;
+  border: 1px solid rgba(239, 68, 68, 0.1);
+  transition: all 0.3s ease;
+}
+
+.admin-sets-btn-delete:hover {
+  background: rgba(239, 68, 68, 0.1);
+  border-color: rgba(239, 68, 68, 0.2);
+}
+
+/* ============================================
+   ADMIN SETS - RESPONSIVE
+   ============================================ */
+@media (max-width: 768px) {
+  .admin-sets-table-cell-actions {
+    justify-content: flex-start;
+  }
+}
+
+@media (max-width: 640px) {
+  .admin-sets-card {
+    padding: 0.75rem;
+  }
+  
+  .admin-sets-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .admin-sets-btn-new {
+    width: 100%;
+    justify-content: center;
+  }
+  
+  .admin-sets-product-detail {
+    display: block;
+    margin-left: 0;
+    margin-top: 0.25rem;
+  }
+}

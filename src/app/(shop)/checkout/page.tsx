@@ -3,27 +3,37 @@
 
 import { useSession } from 'next-auth/react'
 import { useRouter } from 'next/navigation'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { PaymentForm } from '@/components/checkout/PaymentForm'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { formatPrice } from '@/lib/utils'
 import { useCartStore } from '@/store/cartStore'
+import './checkout-page.css'
 
 export default function CheckoutPage() {
   const { data: session, status } = useSession()
   const router = useRouter()
   const { items, getTotalPrice } = useCartStore()
+  const [isProcessing, setIsProcessing] = useState(false)
 
   useEffect(() => {
     if (status === 'unauthenticated') {
-      router.push('/login')
+      router.push('/login?callbackUrl=/checkout')
     }
   }, [status, router])
 
+  // NO redirigir por carrito vacío mientras se procesa el pago
+  useEffect(() => {
+    if (items.length === 0 && status === 'authenticated' && !isProcessing) {
+      // Solo redirigir si NO estamos en medio de un pago
+      router.push('/products')
+    }
+  }, [items, status, router, isProcessing])
+
   if (status === 'loading') {
     return (
-      <div className="container mx-auto px-4 py-8">
-        <div className="text-center">Cargando...</div>
+      <div className="checkout-page">
+        <div className="checkout-loading">Cargando...</div>
       </div>
     )
   }
@@ -35,39 +45,43 @@ export default function CheckoutPage() {
   const total = getTotalPrice()
   const cartItems = items
 
-  if (cartItems.length === 0) {
-    router.push('/products')
+  if (cartItems.length === 0 && !isProcessing) {
     return null
   }
 
   return (
-    <div className="container mx-auto px-4 py-8 max-w-4xl">
-      <h1 className="text-3xl font-bold mb-8">Finalizar Compra</h1>
+    <div className="checkout-page">
+      <h1 className="checkout-title">Finalizar Compra</h1>
 
-      <div className="grid md:grid-cols-3 gap-8">
+      <div className="checkout-grid">
         <div className="md:col-span-2">
-          <PaymentForm userId={session.user.id} />
+          <PaymentForm 
+            userId={session.user.id} 
+            onProcessingChange={setIsProcessing}
+            onError={(message) => {
+              setIsProcessing(false)
+              router.push(`/checkout/error?message=${encodeURIComponent(message)}`)
+            }}
+          />
         </div>
 
         <div>
-          <Card>
-            <CardHeader>
-              <CardTitle>Resumen del Pedido</CardTitle>
+          <Card className="checkout-summary-card">
+            <CardHeader className="checkout-summary-header">
+              <CardTitle className="checkout-summary-title">Resumen del Pedido</CardTitle>
             </CardHeader>
-            <CardContent className="space-y-4">
+            <CardContent className="checkout-summary-content">
               {cartItems.map((item) => (
-                <div key={item.productId} className="flex justify-between text-sm">
+                <div key={item.productId} className="checkout-summary-item">
                   <span>
                     {item.name} x{item.quantity}
                   </span>
-                  <span>{formatPrice(item.price * item.quantity)}</span>
+                  <span className="price">{formatPrice(item.price * item.quantity)}</span>
                 </div>
               ))}
-              <div className="border-t pt-4">
-                <div className="flex justify-between font-bold">
-                  <span>Total</span>
-                  <span>{formatPrice(total)}</span>
-                </div>
+              <div className="checkout-summary-total">
+                <span className="label">Total</span>
+                <span className="value">{formatPrice(total)}</span>
               </div>
             </CardContent>
           </Card>

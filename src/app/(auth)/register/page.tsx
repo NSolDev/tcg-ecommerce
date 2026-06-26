@@ -6,6 +6,7 @@ import { Label } from '@/components/ui/label'
 import Link from 'next/link'
 import { registerUser } from '@/lib/actions/auth.actions'
 import '../auth.css'
+import './register.css'
 
 export default function RegisterPage() {
   return (
@@ -49,7 +50,7 @@ export default function RegisterPage() {
               minLength={6}
               className="auth-form-input"
             />
-            <p className="text-xs text-[rgba(255,255,255,0.3)]">Mínimo 6 caracteres</p>
+            <p className="register-password-hint">Mínimo 6 caracteres</p>
           </div>
           <button type="submit" className="auth-form-submit">
             Registrarse

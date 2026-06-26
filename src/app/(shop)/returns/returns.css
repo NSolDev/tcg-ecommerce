@@ -1,0 +1,180 @@
+/* src/app/(shop)/returns/returns.css */
+
+/* ============================================
+   RETURNS - LAYOUT
+   ============================================ */
+.returns-container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+}
+
+/* ============================================
+   RETURNS - HERO
+   ============================================ */
+.returns-hero {
+  text-align: center;
+  padding: 3rem 1rem;
+  margin-bottom: 3rem;
+  background: linear-gradient(135deg, rgba(255, 203, 5, 0.05), rgba(42, 117, 187, 0.05));
+  border-radius: 1rem;
+  border: 1px solid rgba(255, 203, 5, 0.1);
+}
+
+.returns-hero-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #FFFFFF;
+  margin-bottom: 0.5rem;
+}
+
+@media (min-width: 768px) {
+  .returns-hero-title {
+    font-size: 3rem;
+  }
+}
+
+.returns-hero-subtitle {
+  font-size: 1.125rem;
+  color: #B0B0B0;
+}
+
+/* ============================================
+   RETURNS - CONTENT
+   ============================================ */
+.returns-content {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+
+.returns-section-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #FFFFFF;
+  margin-bottom: 1.5rem;
+}
+
+/* ============================================
+   RETURNS - INFO GRID
+   ============================================ */
+.returns-info-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .returns-info-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.returns-info-card {
+  padding: 1.5rem;
+  background: #1E1E1E;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 0.75rem;
+  text-align: center;
+}
+
+.returns-info-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 0.5rem;
+  background: rgba(255, 203, 5, 0.1);
+  color: #FFCB05;
+  margin-bottom: 0.75rem;
+}
+
+.returns-info-title {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: #FFFFFF;
+  margin-bottom: 0.25rem;
+}
+
+.returns-info-description {
+  font-size: 0.875rem;
+  color: #B0B0B0;
+}
+
+/* ============================================
+   RETURNS - STEPS
+   ============================================ */
+.returns-steps {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.returns-step {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  padding: 1rem;
+  background: #1E1E1E;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 0.5rem;
+}
+
+.returns-step-number {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 2rem;
+  height: 2rem;
+  border-radius: 9999px;
+  background: #FFCB05;
+  color: #121212;
+  font-weight: 700;
+  font-size: 0.875rem;
+}
+
+.returns-step-title {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #FFFFFF;
+  margin-bottom: 0.25rem;
+}
+
+.returns-step-description {
+  font-size: 0.875rem;
+  color: #B0B0B0;
+}
+
+/* ============================================
+   RETURNS - EXCEPTIONS
+   ============================================ */
+.returns-exception {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  padding: 1rem;
+  background: #1E1E1E;
+  border: 1px solid rgba(255, 203, 5, 0.1);
+  border-radius: 0.5rem;
+}
+
+.returns-exception-icon {
+  width: 1.5rem;
+  height: 1.5rem;
+  color: #FFCB05;
+  flex-shrink: 0;
+  margin-top: 0.125rem;
+}
+
+.returns-exception-title {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #FFFFFF;
+  margin-bottom: 0.25rem;
+}
+
+.returns-exception-description {
+  font-size: 0.875rem;
+  color: #B0B0B0;
+}

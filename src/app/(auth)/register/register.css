@@ -1,0 +1,23 @@
+/* src/app/(auth)/register/register.css */
+
+/* ============================================
+   REGISTER - LAYOUT (extiende auth.css)
+   ============================================ */
+
+/* ============================================
+   REGISTER - PASSWORD HINT
+   ============================================ */
+.register-password-hint {
+  font-size: 0.75rem;
+  color: #B0B0B0;
+  margin-top: 0.25rem;
+}
+
+/* ============================================
+   REGISTER - RESPONSIVE
+   ============================================ */
+@media (max-width: 480px) {
+  .auth-card {
+    padding: 1.5rem;
+  }
+}

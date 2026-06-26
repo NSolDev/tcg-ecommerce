@@ -13,6 +13,7 @@ import {
   User,
   AlertCircle
 } from 'lucide-react'
+import './admin-audit.css'
 
 const actionIcons: Record<string, any> = {
   CREATE: Package,
@@ -24,14 +25,14 @@ const actionIcons: Record<string, any> = {
   LOGIN: User,
 }
 
-const actionColors: Record<string, string> = {
-  CREATE: 'bg-green-500/20 text-green-400 border-green-500/20',
-  UPDATE: 'bg-blue-500/20 text-blue-400 border-blue-500/20',
-  DELETE: 'bg-red-500/20 text-red-400 border-red-500/20',
-  RESTORE: 'bg-green-500/20 text-green-400 border-green-500/20',
-  DEACTIVATE: 'bg-yellow-500/20 text-yellow-400 border-yellow-500/20',
-  VIEW: 'bg-gray-500/20 text-gray-400 border-gray-500/20',
-  LOGIN: 'bg-purple-500/20 text-purple-400 border-purple-500/20',
+const actionBadgeClasses: Record<string, string> = {
+  CREATE: 'admin-audit-badge-create',
+  UPDATE: 'admin-audit-badge-update',
+  DELETE: 'admin-audit-badge-delete',
+  RESTORE: 'admin-audit-badge-restore',
+  DEACTIVATE: 'admin-audit-badge-deactivate',
+  VIEW: 'admin-audit-badge-view',
+  LOGIN: 'admin-audit-badge-login',
 }
 
 const actionLabels: Record<string, string> = {
@@ -54,85 +55,91 @@ export default async function AuditPage() {
   })
 
   return (
-    <div className="space-y-6">
-      <div>
-        <h1 className="text-3xl font-bold text-white">Auditoría</h1>
-        <p className="text-muted-foreground">
+    <div className="admin-audit-page">
+      <div className="admin-audit-header">
+        <h1 className="admin-audit-title">Auditoría</h1>
+        <p className="admin-audit-subtitle">
           Historial de acciones de administradores
         </p>
       </div>
 
-      <Card className="bg-[#1a1a2e]/50 border-white/10 backdrop-blur-sm">
-        <CardHeader className="px-6 pt-6 pb-3">
-          <CardTitle className="text-lg text-white">Registro de Actividad</CardTitle>
+      <Card className="admin-audit-card">
+        <CardHeader className="admin-audit-card-header">
+          <CardTitle className="admin-audit-card-title">Registro de Actividad</CardTitle>
         </CardHeader>
-        <CardContent className="px-6 pb-6">
+        <CardContent className="admin-audit-card-content">
           {logs.length === 0 ? (
-            <p className="text-muted-foreground text-center py-8">No hay registros de auditoría</p>
+            <p className="admin-audit-empty">No hay registros de auditoría</p>
           ) : (
-            <Table>
-              <TableHeader>
-                <TableRow className="border-white/10 hover:bg-white/5">
-                  <TableHead className="text-white/60">Fecha</TableHead>
-                  <TableHead className="text-white/60">Usuario</TableHead>
-                  <TableHead className="text-white/60">Acción</TableHead>
-                  <TableHead className="text-white/60">Entidad</TableHead>
-                  <TableHead className="text-white/60">Detalles</TableHead>
-                </TableRow>
-              </TableHeader>
-              <TableBody>
-                {logs.map((log) => {
-                  const Icon = actionIcons[log.action] || Package
-                  const colorClass = actionColors[log.action] || 'bg-gray-500/20 text-gray-400 border-gray-500/20'
-                  const label = actionLabels[log.action] || log.action
+            <div className="admin-audit-table-wrap">
+              <Table>
+                <TableHeader>
+                  <TableRow className="admin-audit-table-header">
+                    <TableHead className="admin-audit-table-th">Fecha</TableHead>
+                    <TableHead className="admin-audit-table-th">Usuario</TableHead>
+                    <TableHead className="admin-audit-table-th">Acción</TableHead>
+                    <TableHead className="admin-audit-table-th">Entidad</TableHead>
+                    <TableHead className="admin-audit-table-th">Detalles</TableHead>
+                  </TableRow>
+                </TableHeader>
+                <TableBody>
+                  {logs.map((log) => {
+                    const Icon = actionIcons[log.action] || Package
+                    const badgeClass = actionBadgeClasses[log.action] || 'admin-audit-badge-default'
+                    const label = actionLabels[log.action] || log.action
 
-                  return (
-                    <TableRow key={log.id} className="border-white/5 hover:bg-white/5">
-                      <TableCell className="text-white/80 text-sm">
-                        {formatDate(log.createdAt)}
-                        <span className="block text-xs text-muted-foreground">
-                          {new Date(log.createdAt).toLocaleTimeString()}
-                        </span>
-                      </TableCell>
-                      <TableCell>
-                        <div className="flex items-center gap-2">
-                          <span className="text-white">{log.user.name || log.user.email}</span>
-                        </div>
-                      </TableCell>
-                      <TableCell>
-                        <Badge className={colorClass}>
-                          <Icon className="h-3 w-3 mr-1" />
-                          {label}
-                        </Badge>
-                      </TableCell>
-                      <TableCell>
-                        <span className="text-white/80">
-                          {log.entityType}
-                          <span className="block text-xs text-muted-foreground">
-                            ID: {log.entityId.slice(0, 8)}
+                    return (
+                      <TableRow key={log.id} className="admin-audit-table-row">
+                        <TableCell className="admin-audit-table-cell">
+                          <span className="admin-audit-date">
+                            {formatDate(log.createdAt)}
                           </span>
-                        </span>
-                      </TableCell>
-                      <TableCell>
-                        <div className="text-sm text-muted-foreground max-w-xs">
-                          {log.reason || 'Sin detalles adicionales'}
-                          {log.changes && (
-                            <details className="mt-1">
-                              <summary className="text-xs text-primary cursor-pointer hover:text-primary/80">
-                                Ver cambios
-                              </summary>
-                              <pre className="text-xs bg-white/5 p-2 rounded mt-1 overflow-x-auto">
-                                {JSON.stringify(log.changes, null, 2)}
-                              </pre>
-                            </details>
-                          )}
-                        </div>
-                      </TableCell>
-                    </TableRow>
-                  )
-                })}
-              </TableBody>
-            </Table>
+                          <span className="admin-audit-time">
+                            {new Date(log.createdAt).toLocaleTimeString()}
+                          </span>
+                        </TableCell>
+                        <TableCell className="admin-audit-table-cell">
+                          <div className="admin-audit-user">
+                            <span className="admin-audit-user-name">
+                              {log.user.name || log.user.email}
+                            </span>
+                          </div>
+                        </TableCell>
+                        <TableCell className="admin-audit-table-cell">
+                          <Badge className={`admin-audit-badge ${badgeClass}`}>
+                            <Icon className="admin-audit-badge-icon" />
+                            {label}
+                          </Badge>
+                        </TableCell>
+                        <TableCell className="admin-audit-table-cell">
+                          <span className="admin-audit-entity">
+                            {log.entityType}
+                            <span className="admin-audit-entity-id">
+                              ID: {log.entityId.slice(0, 8)}
+                            </span>
+                          </span>
+                        </TableCell>
+                        <TableCell className="admin-audit-table-cell">
+                          <div className="admin-audit-details">
+                            {log.reason || 'Sin detalles adicionales'}
+                            {log.changes && (
+                              <details className="admin-audit-details-details">
+                                <summary className="admin-audit-details-summary">
+                                  Ver cambios
+                                </summary>
+                                <pre className="admin-audit-details-changes">
+                                  {JSON.stringify(log.changes, null, 2)}
+                                </pre>
+                              </details>
+                            )}
+                          </div>
+                        </TableCell>
+                      </TableRow>
+                    )
+                  })}
+                </TableBody>
+              </Table>
+            </div>
           )}
         </CardContent>
       </Card>

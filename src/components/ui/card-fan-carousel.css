@@ -1,0 +1,328 @@
+/* src/components/ui/card-fan-carousel.css */
+
+/* ============================================
+   FAN CAROUSEL - LAYOUT
+   ============================================ */
+.fan-carousel {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background: #121212;
+}
+
+.fan-carousel-empty {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  background: #1E1E1E;
+  border-radius: 0.75rem;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.fan-carousel-empty-text {
+  color: #B0B0B0;
+}
+
+/* ============================================
+   FAN CAROUSEL - CONTAINER
+   ============================================ */
+.fan-carousel-container {
+  position: relative;
+  width: 100%;
+  max-width: 56rem;
+  height: 500px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ============================================
+   FAN CAROUSEL - CARD
+   ============================================ */
+.fan-carousel-card {
+  position: absolute;
+  width: 18rem;
+  height: 26rem;
+  border-radius: 1rem;
+  overflow: hidden;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+  cursor: pointer;
+  will-change: transform, opacity;
+  background: #1E1E1E;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  transform-origin: center center;
+}
+
+@media (min-width: 768px) {
+  .fan-carousel-card {
+    width: 20rem;
+    height: 28rem;
+  }
+}
+
+.fan-carousel-card-image {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.fan-carousel-card-img {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+
+.fan-carousel-card-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.6), transparent);
+}
+
+/* ============================================
+   FAN CAROUSEL - CONTENIDO (precio y nombre)
+   ============================================ */
+.fan-carousel-card-content {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 1.5rem;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  /* 🔥 FONDO OSCURO COMO fan-carousel-card-number */
+  background: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.fan-carousel-card.active .fan-carousel-card-content {
+  opacity: 1;
+}
+
+.fan-carousel-card-content.visible {
+  opacity: 1;
+}
+
+.fan-carousel-card-title {
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: #FFFFFF;
+  margin-bottom: 0.25rem;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.fan-carousel-card-description {
+  font-size: 0.875rem;
+  color: #FFCB05;
+  font-weight: 500;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* ============================================
+   FAN CAROUSEL - BADGE (Destacado)
+   ============================================ */
+.fan-carousel-card-badge {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.375rem;
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  /* 🔥 MISMO ESTILO QUE fan-carousel-card-number */
+  background: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 203, 5, 0.3);
+}
+
+.fan-carousel-card-badge-text {
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: #FFCB05;
+}
+
+/* ============================================
+   FAN CAROUSEL - NÚMERO DE CARTA
+   ============================================ */
+.fan-carousel-card-number {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.25rem;
+  /* 🔥 FONDO OSCURO CON BLUR */
+  background: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  font-size: 0.75rem;
+  color: #B0B0B0;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+/* ============================================
+   FAN CAROUSEL - CONTROLES
+   ============================================ */
+.fan-carousel-control {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 40;
+  padding: 0.75rem;
+  border-radius: 9999px;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(4px);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.fan-carousel-control:hover {
+  background: rgba(0, 0, 0, 0.7);
+}
+
+.fan-carousel-control-left {
+  left: 1rem;
+}
+
+.fan-carousel-control-right {
+  right: 1rem;
+}
+
+.fan-carousel-control-icon {
+  width: 1.25rem;
+  height: 1.25rem;
+  color: #FFFFFF;
+  transition: color 0.3s ease;
+}
+
+.fan-carousel-control:hover .fan-carousel-control-icon {
+  color: #FFCB05;
+}
+
+/* ============================================
+   FAN CAROUSEL - INDICADORES
+   ============================================ */
+.fan-carousel-indicators {
+  position: absolute;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 40;
+  display: flex;
+  gap: 0.5rem;
+}
+
+.fan-carousel-indicator {
+  border-radius: 9999px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  border: none;
+}
+
+.fan-carousel-indicator.inactive {
+  width: 0.375rem;
+  height: 0.375rem;
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.fan-carousel-indicator.active {
+  width: 2rem;
+  height: 0.375rem;
+  background: #FFCB05;
+}
+
+.fan-carousel-indicator:hover {
+  background: rgba(255, 255, 255, 0.4);
+}
+
+.fan-carousel-indicator.active:hover {
+  background: #FFCB05;
+}
+
+/* ============================================
+   FAN CAROUSEL - AUTOPLAY BADGE
+   ============================================ */
+.fan-carousel-autoplay {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.375rem 0.75rem;
+  border-radius: 9999px;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(4px);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.fan-carousel-autoplay-icon {
+  width: 0.75rem;
+  height: 0.75rem;
+  color: #FFCB05;
+  animation: pulse 2s infinite;
+}
+
+.fan-carousel-autoplay-text {
+  font-size: 0.75rem;
+  color: #B0B0B0;
+}
+
+/* ============================================
+   ANIMACIONES
+   ============================================ */
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.6; }
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+@media (max-width: 768px) {
+  .fan-carousel-container {
+    height: 400px;
+  }
+  
+  .fan-carousel-card {
+    width: 14rem;
+    height: 20rem;
+  }
+  
+  .fan-carousel-control {
+    padding: 0.5rem;
+  }
+  
+  .fan-carousel-card-content {
+    padding: 1rem;
+  }
+  
+  .fan-carousel-card-title {
+    font-size: 0.875rem;
+  }
+  
+  .fan-carousel-card-description {
+    font-size: 0.75rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .fan-carousel-container {
+    height: 350px;
+  }
+  
+  .fan-carousel-card {
+    width: 12rem;
+    height: 17rem;
+  }
+}

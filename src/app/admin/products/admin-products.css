@@ -1,0 +1,258 @@
+/* src/app/admin/products/admin-products.css */
+
+/* ============================================
+   ADMIN PRODUCTS - PAGE
+   ============================================ */
+.admin-products-page {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* ============================================
+   ADMIN PRODUCTS - HEADER
+   ============================================ */
+.admin-products-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.admin-products-title {
+  font-size: 1.875rem;
+  font-weight: 700;
+  color: #FFFFFF;
+}
+
+.admin-products-subtitle {
+  color: #B0B0B0;
+}
+
+.admin-products-actions {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.admin-products-btn-inactive {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  font-weight: 500;
+  font-size: 0.875rem;
+  color: #FFCB05;
+  background: rgba(255, 203, 5, 0.1);
+  border: 1px solid rgba(255, 203, 5, 0.15);
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+
+.admin-products-btn-inactive:hover {
+  background: rgba(255, 203, 5, 0.15);
+  border-color: rgba(255, 203, 5, 0.25);
+}
+
+.admin-products-btn-new {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  font-weight: 500;
+  font-size: 0.875rem;
+  color: #121212;
+  background: #FFCB05;
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+
+.admin-products-btn-new:hover {
+  background: #E6B800;
+  transform: translateY(-1px);
+  box-shadow: 0 0 30px rgba(255, 203, 5, 0.3);
+}
+
+/* ============================================
+   ADMIN PRODUCTS - CARD
+   ============================================ */
+.admin-products-card {
+  background: rgba(30, 30, 30, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 0.75rem;
+  padding: 1.5rem;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+.admin-products-card-header {
+  padding: 0 0 0.75rem 0;
+}
+
+.admin-products-card-title {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: #FFFFFF;
+}
+
+.admin-products-card-content {
+  padding: 0;
+}
+
+.admin-products-empty {
+  color: #B0B0B0;
+  text-align: center;
+  padding: 2rem 0;
+}
+
+/* ============================================
+   ADMIN PRODUCTS - TABLE
+   ============================================ */
+.admin-products-table-wrap {
+  overflow-x: auto;
+  width: 100%;
+}
+
+.admin-products-table-header {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.admin-products-table-th {
+  text-align: left;
+  padding: 0.75rem 1rem;
+  font-size: 0.75rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #B0B0B0;
+}
+
+.admin-products-table-row {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+  transition: background 0.3s ease;
+}
+
+.admin-products-table-row:hover {
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.admin-products-table-cell {
+  padding: 0.75rem 1rem;
+  vertical-align: middle;
+  color: #FFFFFF;
+}
+
+.admin-products-table-cell-name {
+  padding: 0.75rem 1rem;
+  vertical-align: middle;
+  font-weight: 500;
+  color: #FFFFFF;
+  max-width: 200px;
+}
+
+.admin-products-table-cell-actions {
+  padding: 0.75rem 1rem;
+  vertical-align: middle;
+  text-align: right;
+  display: flex;
+  gap: 0.5rem;
+  justify-content: flex-end;
+}
+
+/* ============================================
+   ADMIN PRODUCTS - BADGES
+   ============================================ */
+.admin-products-badge {
+  border-color: rgba(255, 255, 255, 0.06);
+  color: #B0B0B0;
+}
+
+.admin-products-badge-low-stock {
+  background: rgba(255, 203, 5, 0.15);
+  color: #FFCB05;
+  border-color: rgba(255, 203, 5, 0.15);
+}
+
+.admin-products-badge-stock {
+  background: rgba(34, 197, 94, 0.15);
+  color: #34D399;
+  border-color: rgba(34, 197, 94, 0.15);
+}
+
+/* ============================================
+   ADMIN PRODUCTS - BUTTONS
+   ============================================ */
+.admin-products-btn-edit {
+  border-color: rgba(255, 255, 255, 0.06);
+  background: rgba(255, 255, 255, 0.03);
+  color: #B0B0B0;
+  transition: all 0.3s ease;
+}
+
+.admin-products-btn-edit:hover {
+  border-color: rgba(255, 203, 5, 0.3);
+  color: #FFFFFF;
+  background: rgba(255, 203, 5, 0.05);
+}
+
+/* ============================================
+   ADMIN PRODUCTS - TOOLTIP
+   ============================================ */
+.admin-product-name-trigger {
+  display: block;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  cursor: help;
+}
+
+.admin-product-tooltip {
+  max-width: 400px;
+  background: #1E1E1E;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  color: #FFFFFF;
+  z-index: 50;
+}
+
+.admin-product-tooltip-text {
+  word-break: break-word;
+}
+
+/* ============================================
+   ADMIN PRODUCTS - RESPONSIVE
+   ============================================ */
+@media (max-width: 768px) {
+  .admin-products-table-cell-name {
+    max-width: 100%;
+  }
+  
+  .admin-products-table-cell-actions {
+    justify-content: flex-start;
+    padding-left: 50%;
+  }
+}
+
+@media (max-width: 640px) {
+  .admin-products-card {
+    padding: 0.75rem;
+  }
+  
+  .admin-products-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .admin-products-actions {
+    width: 100%;
+  }
+  
+  .admin-products-btn-inactive,
+  .admin-products-btn-new {
+    flex: 1;
+    justify-content: center;
+  }
+}

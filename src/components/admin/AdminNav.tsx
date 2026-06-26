@@ -13,13 +13,14 @@ import {
   Tag,
   FileText,
 } from 'lucide-react'
+import './admin-nav.css'
 
 const navItems = [
   {
     title: 'Dashboard',
     href: '/admin',
     icon: LayoutDashboard,
-    exact: true, // Solo se activa cuando es exactamente /admin
+    exact: true,
   },
   {
     title: 'Productos',
@@ -41,10 +42,10 @@ const navItems = [
     href: '/admin/users',
     icon: Users,
   },
-    {
-    title: 'Auditoría',     
+  {
+    title: 'Auditoría',
     href: '/admin/audit',
-    icon: FileText,          
+    icon: FileText,
   },
   {
     title: 'Configuración',
@@ -57,17 +58,14 @@ export function AdminNav() {
   const pathname = usePathname()
 
   return (
-    <nav className="space-y-1.5 bg-[#1a1a2e]/50 rounded-xl border border-white/10 p-3 backdrop-blur-sm">
+    <nav className="admin-nav">
       {navItems.map((item) => {
-        // Lógica de activación mejorada
         let isActive = false
         
         if (item.exact) {
-          // Para Dashboard: solo activo si pathname es exactamente '/admin'
           isActive = pathname === item.href
         } else {
-          // Para otras rutas: activo si pathname comienza con item.href
-          isActive = pathname?.startsWith(item.href)
+          isActive = pathname?.startsWith(item.href) || false
         }
         
         const Icon = item.icon
@@ -77,20 +75,13 @@ export function AdminNav() {
             key={item.href}
             href={item.href}
             className={cn(
-              'flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm transition-all duration-300',
-              isActive
-                ? 'bg-gradient-to-r from-primary/20 to-primary/10 text-primary border border-primary/20 shadow-lg shadow-primary/10'
-                : 'text-muted-foreground hover:text-white hover:bg-white/5 hover:border hover:border-white/10'
+              'admin-nav-item',
+              isActive && 'active'
             )}
           >
-            <Icon className={cn(
-              'h-4 w-4',
-              isActive ? 'text-primary' : 'text-muted-foreground'
-            )} />
+            <Icon className="icon" />
             {item.title}
-            {isActive && (
-              <span className="ml-auto w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
-            )}
+            {isActive && <span className="indicator" />}
           </Link>
         )
       })}

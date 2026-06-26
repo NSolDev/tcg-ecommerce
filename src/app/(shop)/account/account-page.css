@@ -1,0 +1,224 @@
+/* src/app/(shop)/account/account-page.css */
+
+/* ============================================
+   ACCOUNT - LAYOUT
+   ============================================ */
+.account-container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+}
+
+.account-title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #FFFFFF;
+  margin-bottom: 2rem;
+}
+
+/* ============================================
+   ACCOUNT - GRID
+   ============================================ */
+.account-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .account-grid {
+    grid-template-columns: 1fr 2fr;
+  }
+}
+
+/* ============================================
+   ACCOUNT - PROFILE CARD
+   ============================================ */
+.account-profile-card {
+  background: #1E1E1E;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 0.75rem;
+  padding: 1.5rem;
+  text-align: center;
+}
+
+.account-avatar {
+  width: 6rem;
+  height: 6rem;
+  border-radius: 9999px;
+  border: 2px solid rgba(255, 203, 5, 0.3);
+  margin: 0 auto 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  font-weight: 700;
+  background: rgba(255, 203, 5, 0.1);
+  color: #FFCB05;
+}
+
+.account-avatar img {
+  width: 100%;
+  height: 100%;
+  border-radius: 9999px;
+  object-fit: cover;
+}
+
+.account-profile-name {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #FFFFFF;
+}
+
+.account-profile-role {
+  font-size: 0.875rem;
+  color: #B0B0B0;
+}
+
+.account-profile-divider {
+  border: none;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  margin: 1rem 0;
+}
+
+.account-profile-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  text-align: left;
+}
+
+.account-profile-info .row {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 0.875rem;
+}
+
+.account-profile-info .row .icon {
+  width: 1rem;
+  height: 1rem;
+  color: #B0B0B0;
+  flex-shrink: 0;
+}
+
+.account-profile-info .row .label {
+  color: #B0B0B0;
+}
+
+.account-profile-info .row .value {
+  color: #FFFFFF;
+}
+
+.account-profile-edit {
+  width: 100%;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  font-weight: 500;
+  color: #B0B0B0;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  transition: all 0.3s ease;
+  cursor: pointer;
+  margin-top: 1rem;
+}
+
+.account-profile-edit:hover {
+  border-color: rgba(255, 203, 5, 0.3);
+  color: #FFFFFF;
+}
+
+/* ============================================
+   ACCOUNT - QUICK ACTIONS
+   ============================================ */
+.account-actions-card {
+  background: #1E1E1E;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 0.75rem;
+  padding: 1.5rem;
+}
+
+.account-actions-title {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: #FFFFFF;
+  margin-bottom: 0.25rem;
+}
+
+.account-actions-description {
+  font-size: 0.875rem;
+  color: #B0B0B0;
+  margin-bottom: 1.25rem;
+}
+
+.account-actions-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.account-action-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 1.5rem 1rem;
+  border-radius: 0.5rem;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  transition: all 0.3s ease;
+  color: #B0B0B0;
+  text-decoration: none;
+  min-height: 5rem;
+}
+
+.account-action-btn:hover {
+  border-color: rgba(255, 203, 5, 0.3);
+  background: rgba(255, 203, 5, 0.03);
+  color: #FFFFFF;
+}
+
+.account-action-btn .icon {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+.account-action-btn .icon.primary {
+  color: #FFCB05;
+}
+
+.account-action-btn .icon.wishlist {
+  color: #FFCB05;
+}
+
+.account-action-btn .icon.muted {
+  color: #B0B0B0;
+}
+
+.account-action-btn .label {
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+/* ============================================
+   ACCOUNT - RESPONSIVE
+   ============================================ */
+@media (max-width: 640px) {
+  .account-container {
+    padding: 1rem;
+  }
+  
+  .account-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .account-actions-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+  
+  .account-action-btn {
+    padding: 1rem 0.75rem;
+    min-height: 4rem;
+  }
+}

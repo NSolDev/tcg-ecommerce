@@ -1,0 +1,11 @@
+# https://www.robotstxt.org/robotstxt.html
+User-agent: *
+Allow: /
+Disallow: /admin/
+Disallow: /api/
+Disallow: /checkout/
+Disallow: /account/
+Disallow: /cart/
+
+Sitemap: https://tcgstore.com/sitemap.xml
+Host: https://tcgstore.com

@@ -1,0 +1,141 @@
+/* src/app/(shop)/faq/faq.css */
+
+/* ============================================
+   FAQ - LAYOUT
+   ============================================ */
+.faq-container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+}
+
+/* ============================================
+   FAQ - HERO
+   ============================================ */
+.faq-hero {
+  text-align: center;
+  padding: 3rem 1rem;
+  margin-bottom: 3rem;
+  background: linear-gradient(135deg, rgba(255, 203, 5, 0.05), rgba(42, 117, 187, 0.05));
+  border-radius: 1rem;
+  border: 1px solid rgba(255, 203, 5, 0.1);
+}
+
+.faq-hero-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #FFFFFF;
+  margin-bottom: 0.5rem;
+}
+
+@media (min-width: 768px) {
+  .faq-hero-title {
+    font-size: 3rem;
+  }
+}
+
+.faq-hero-subtitle {
+  font-size: 1.125rem;
+  color: #B0B0B0;
+}
+
+/* ============================================
+   FAQ - LIST
+   ============================================ */
+.faq-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  max-width: 768px;
+  margin: 0 auto;
+}
+
+.faq-item {
+  background: #1E1E1E;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 0.75rem;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.faq-item:hover {
+  border-color: rgba(255, 203, 5, 0.15);
+}
+
+.faq-question {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 1.25rem;
+  background: transparent;
+  border: none;
+  color: #FFFFFF;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  text-align: left;
+  transition: all 0.2s ease;
+}
+
+.faq-question:hover {
+  color: #FFCB05;
+}
+
+.faq-icon {
+  width: 1.25rem;
+  height: 1.25rem;
+  color: #B0B0B0;
+  flex-shrink: 0;
+  transition: transform 0.3s ease;
+}
+
+.faq-answer {
+  padding: 0 1.25rem 1.25rem 1.25rem;
+  color: #B0B0B0;
+  line-height: 1.7;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* ============================================
+   FAQ - CONTACT
+   ============================================ */
+.faq-contact {
+  text-align: center;
+  margin-top: 3rem;
+  padding: 2rem;
+  background: #1E1E1E;
+  border-radius: 0.75rem;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.faq-contact-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #FFFFFF;
+  margin-bottom: 0.25rem;
+}
+
+.faq-contact-text {
+  color: #B0B0B0;
+  margin-bottom: 1rem;
+}
+
+.faq-contact-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 2rem;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  color: #121212;
+  background: #FFCB05;
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+
+.faq-contact-button:hover {
+  background: #E6B800;
+  transform: translateY(-2px);
+  box-shadow: 0 0 30px rgba(255, 203, 5, 0.3);
+}

@@ -1,0 +1,223 @@
+/* src/app/(shop)/contact/contact.css */
+
+/* ============================================
+   CONTACT - LAYOUT
+   ============================================ */
+.contact-container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+}
+
+/* ============================================
+   CONTACT - HERO
+   ============================================ */
+.contact-hero {
+  text-align: center;
+  padding: 3rem 1rem;
+  margin-bottom: 3rem;
+  background: linear-gradient(135deg, rgba(255, 203, 5, 0.05), rgba(42, 117, 187, 0.05));
+  border-radius: 1rem;
+  border: 1px solid rgba(255, 203, 5, 0.1);
+}
+
+.contact-hero-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #FFFFFF;
+  margin-bottom: 0.5rem;
+}
+
+@media (min-width: 768px) {
+  .contact-hero-title {
+    font-size: 3rem;
+  }
+}
+
+.contact-hero-subtitle {
+  font-size: 1.125rem;
+  color: #B0B0B0;
+}
+
+/* ============================================
+   CONTACT - GRID
+   ============================================ */
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+}
+
+@media (min-width: 1024px) {
+  .contact-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+/* ============================================
+   CONTACT - INFO
+   ============================================ */
+.contact-info {
+  background: #1E1E1E;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 0.75rem;
+  padding: 2rem;
+}
+
+.contact-info-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #FFFFFF;
+  margin-bottom: 1.5rem;
+}
+
+.contact-info-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  margin-bottom: 2rem;
+}
+
+.contact-info-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.contact-info-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 0.5rem;
+  background: rgba(255, 203, 5, 0.1);
+  color: #FFCB05;
+  flex-shrink: 0;
+}
+
+.contact-info-label {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #B0B0B0;
+}
+
+.contact-info-value {
+  font-size: 1rem;
+  color: #FFFFFF;
+}
+
+/* ============================================
+   CONTACT - HOURS
+   ============================================ */
+.contact-hours {
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.contact-hours-title {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #FFFFFF;
+  margin-bottom: 0.5rem;
+}
+
+.contact-hours-text {
+  font-size: 0.875rem;
+  color: #B0B0B0;
+  margin-bottom: 0.25rem;
+}
+
+/* ============================================
+   CONTACT - FORM
+   ============================================ */
+.contact-form {
+  background: #1E1E1E;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 0.75rem;
+  padding: 2rem;
+}
+
+.contact-form-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #FFFFFF;
+  margin-bottom: 1.5rem;
+}
+
+.contact-form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  margin-bottom: 1rem;
+}
+
+.contact-form-label {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #B0B0B0;
+}
+
+.contact-form-input {
+  padding: 0.5rem 0.75rem;
+  border-radius: 0.5rem;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  color: #FFFFFF;
+  transition: all 0.3s ease;
+  width: 100%;
+}
+
+.contact-form-input:focus {
+  border-color: rgba(255, 203, 5, 0.3);
+  outline: none;
+  box-shadow: 0 0 20px rgba(255, 203, 5, 0.05);
+}
+
+.contact-form-input::placeholder {
+  color: #B0B0B0;
+}
+
+.contact-form-textarea {
+  padding: 0.5rem 0.75rem;
+  border-radius: 0.5rem;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  color: #FFFFFF;
+  transition: all 0.3s ease;
+  width: 100%;
+  resize: vertical;
+  min-height: 100px;
+}
+
+.contact-form-textarea:focus {
+  border-color: rgba(255, 203, 5, 0.3);
+  outline: none;
+  box-shadow: 0 0 20px rgba(255, 203, 5, 0.05);
+}
+
+.contact-form-textarea::placeholder {
+  color: #B0B0B0;
+}
+
+.contact-form-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  color: #121212;
+  background: #FFCB05;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.contact-form-button:hover {
+  background: #E6B800;
+  transform: translateY(-1px);
+  box-shadow: 0 0 30px rgba(255, 203, 5, 0.3);
+}

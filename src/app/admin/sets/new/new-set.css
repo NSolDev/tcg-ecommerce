@@ -1,0 +1,167 @@
+/* src/app/admin/sets/new/new-set.css */
+
+/* ============================================
+   NEW SET - PAGE
+   ============================================ */
+.new-set-page {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* ============================================
+   NEW SET - HEADER
+   ============================================ */
+.new-set-header {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.new-set-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #B0B0B0;
+  text-decoration: none;
+  transition: color 0.3s ease;
+  font-size: 0.875rem;
+}
+
+.new-set-back:hover {
+  color: #FFFFFF;
+}
+
+.new-set-title {
+  font-size: 1.875rem;
+  font-weight: 700;
+  color: #FFFFFF;
+}
+
+.new-set-subtitle {
+  color: #B0B0B0;
+}
+
+/* ============================================
+   NEW SET - CARD
+   ============================================ */
+.new-set-card {
+  background: rgba(30, 30, 30, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 0.75rem;
+  padding: 1.5rem;
+}
+
+.new-set-card-header {
+  padding: 0 0 0.75rem 0;
+}
+
+.new-set-card-title {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: #FFFFFF;
+}
+
+.new-set-card-content {
+  padding: 0;
+}
+
+/* ============================================
+   NEW SET - FORM
+   ============================================ */
+.new-set-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.new-set-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.new-set-label {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #B0B0B0;
+}
+
+.new-set-input {
+  width: 100%;
+  padding: 0.5rem 0.75rem;
+  border-radius: 0.5rem;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  color: #FFFFFF;
+  transition: all 0.3s ease;
+}
+
+.new-set-input:focus {
+  border-color: rgba(255, 203, 5, 0.3);
+  outline: none;
+  box-shadow: 0 0 20px rgba(255, 203, 5, 0.05);
+}
+
+.new-set-input::placeholder {
+  color: #B0B0B0;
+}
+
+/* ============================================
+   NEW SET - ACTIONS
+   ============================================ */
+.new-set-actions {
+  display: flex;
+  gap: 1rem;
+  margin-top: 0.5rem;
+}
+
+.new-set-btn-cancel {
+  flex: 1;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  font-weight: 500;
+  color: #B0B0B0;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  transition: all 0.3s ease;
+  text-decoration: none;
+  text-align: center;
+}
+
+.new-set-btn-cancel:hover {
+  border-color: rgba(255, 203, 5, 0.3);
+  color: #FFFFFF;
+  background: rgba(255, 203, 5, 0.05);
+}
+
+.new-set-btn-submit {
+  flex: 1;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  color: #121212;
+  background: #FFCB05;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.new-set-btn-submit:hover {
+  background: #E6B800;
+  transform: translateY(-1px);
+  box-shadow: 0 0 30px rgba(255, 203, 5, 0.3);
+}
+
+/* ============================================
+   NEW SET - RESPONSIVE
+   ============================================ */
+@media (max-width: 640px) {
+  .new-set-card {
+    padding: 1rem;
+  }
+  
+  .new-set-actions {
+    flex-direction: column;
+  }
+}

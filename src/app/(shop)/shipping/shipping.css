@@ -1,0 +1,139 @@
+/* src/app/(shop)/shipping/shipping.css */
+
+/* ============================================
+   SHIPPING - LAYOUT
+   ============================================ */
+.shipping-container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+}
+
+/* ============================================
+   SHIPPING - HERO
+   ============================================ */
+.shipping-hero {
+  text-align: center;
+  padding: 3rem 1rem;
+  margin-bottom: 3rem;
+  background: linear-gradient(135deg, rgba(255, 203, 5, 0.05), rgba(42, 117, 187, 0.05));
+  border-radius: 1rem;
+  border: 1px solid rgba(255, 203, 5, 0.1);
+}
+
+.shipping-hero-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #FFFFFF;
+  margin-bottom: 0.5rem;
+}
+
+@media (min-width: 768px) {
+  .shipping-hero-title {
+    font-size: 3rem;
+  }
+}
+
+.shipping-hero-subtitle {
+  font-size: 1.125rem;
+  color: #B0B0B0;
+}
+
+/* ============================================
+   SHIPPING - CONTENT
+   ============================================ */
+.shipping-content {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.shipping-section-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #FFFFFF;
+  margin-bottom: 1.5rem;
+}
+
+/* ============================================
+   SHIPPING - METHODS
+   ============================================ */
+.shipping-methods {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .shipping-methods {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.shipping-method {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  padding: 1.5rem;
+  background: #1E1E1E;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 0.75rem;
+}
+
+.shipping-method-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 0.5rem;
+  background: rgba(255, 203, 5, 0.1);
+  color: #FFCB05;
+  flex-shrink: 0;
+}
+
+.shipping-method-title {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: #FFFFFF;
+  margin-bottom: 0.25rem;
+}
+
+.shipping-method-description {
+  font-size: 0.875rem;
+  color: #B0B0B0;
+}
+
+.shipping-method-price {
+  font-size: 0.875rem;
+  color: #FFCB05;
+  font-weight: 500;
+  margin-top: 0.25rem;
+}
+
+/* ============================================
+   SHIPPING - LIST
+   ============================================ */
+.shipping-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.shipping-list-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem 1rem;
+  background: #1E1E1E;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 0.5rem;
+  color: #B0B0B0;
+}
+
+.shipping-list-icon {
+  font-size: 1.25rem;
+}

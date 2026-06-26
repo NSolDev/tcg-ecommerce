@@ -8,13 +8,14 @@ export default async function NewProductPage() {
   })
 
   return (
-    <div className="space-y-6">
-      <div>
-        <h1 className="text-3xl font-bold">Nuevo Producto</h1>
-        <p className="text-muted-foreground">Agrega una nueva carta al catálogo</p>
+    <div className="admin-page-section">
+      <div className="admin-page-header">
+        <h1 className="admin-page-title">Nuevo Producto</h1>
+        <p className="admin-page-description">Agrega una nueva carta, sobre o caja al catálogo</p>
       </div>
-
-      <ProductForm sets={sets} />
+      <div className="admin-form-card">
+        <ProductForm sets={sets} />
+      </div>
     </div>
   )
 }

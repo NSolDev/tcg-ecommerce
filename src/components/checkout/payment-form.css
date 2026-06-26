@@ -1,0 +1,167 @@
+/* src/components/checkout/payment-form.css */
+
+/* ============================================
+   PAYMENT FORM - CARD
+   ============================================ */
+.payment-form-card {
+  background: rgba(30, 30, 30, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 0.75rem;
+  overflow: hidden;
+}
+
+.payment-form-header {
+  padding: 1.5rem 1.5rem 0.5rem 1.5rem;
+}
+
+.payment-form-title {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: #FFFFFF;
+}
+
+.payment-form-description {
+  font-size: 0.875rem;
+  color: #B0B0B0;
+}
+
+.payment-form-content {
+  padding: 0.5rem 1.5rem 1.5rem 1.5rem;
+}
+
+.payment-form-processing {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  padding: 0.75rem;
+  background: rgba(255, 203, 5, 0.1);
+  border-radius: 0.5rem;
+  border: 1px solid rgba(255, 203, 5, 0.15);
+  color: #B0B0B0;
+  font-size: 0.875rem;
+}
+
+.payment-form-spinner {
+  width: 1.25rem;
+  height: 1.25rem;
+  border: 2px solid rgba(255, 203, 5, 0.2);
+  border-top-color: #FFCB05;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* ============================================
+   PAYMENT FORM - FORM
+   ============================================ */
+.payment-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.payment-form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.payment-form-label {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #B0B0B0;
+}
+
+.payment-form-input {
+  width: 100%;
+  padding: 0.625rem 0.75rem;
+  border-radius: 0.5rem;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  color: #FFFFFF;
+  transition: all 0.3s ease;
+}
+
+.payment-form-input:focus {
+  border-color: rgba(255, 203, 5, 0.3);
+  outline: none;
+  box-shadow: 0 0 20px rgba(255, 203, 5, 0.05);
+}
+
+.payment-form-input::placeholder {
+  color: #B0B0B0;
+}
+
+.payment-form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+/* ============================================
+   PAYMENT FORM - ERROR
+   ============================================ */
+.payment-form-error {
+  color: #F87171;
+  font-size: 0.875rem;
+  background: rgba(239, 68, 68, 0.1);
+  border: 1px solid rgba(239, 68, 68, 0.15);
+  border-radius: 0.5rem;
+  padding: 0.75rem 1rem;
+}
+
+/* ============================================
+   PAYMENT FORM - SUBMIT
+   ============================================ */
+.payment-form-submit {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  color: #121212;
+  background: #FFCB05;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 0.5rem;
+}
+
+.payment-form-submit:hover:not(:disabled) {
+  background: #E6B800;
+  transform: translateY(-1px);
+  box-shadow: 0 0 30px rgba(255, 203, 5, 0.3);
+}
+
+.payment-form-submit:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* ============================================
+   PAYMENT FORM - RESPONSIVE
+   ============================================ */
+@media (max-width: 640px) {
+  .payment-form-header {
+    padding: 1rem 1rem 0.25rem 1rem;
+  }
+  
+  .payment-form-content {
+    padding: 0.25rem 1rem 1rem 1rem;
+  }
+  
+  .payment-form-row {
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+  }
+  
+  .payment-form {
+    gap: 0.75rem;
+  }
+}

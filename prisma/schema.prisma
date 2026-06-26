@@ -1,3 +1,5 @@
+// prisma/schema.prisma
+
 generator client {
   provider = "prisma-client-js"
 }
@@ -6,6 +8,47 @@ datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
+
+// ============================================
+// ENUMS
+// ============================================
+
+enum UserRole {
+  USER
+  ADMIN
+}
+
+enum ProductRarity {
+  COMUN
+  NORMAL
+  RARA
+  SUPER_RARA
+  SECRETA
+}
+
+enum ProductCondition {
+  MINT
+  NEAR_MINT
+  PLAYED
+  DAMAGED
+}
+
+enum OrderStatus {
+  PENDING
+  COMPLETED
+  CANCELLED
+  REFUNDED
+}
+
+enum ProductType {
+  CARD
+  PACK
+  BOX
+}
+
+// ============================================
+// MODELOS DE USUARIO Y AUTENTICACIÓN
+// ============================================
 
 model User {
   id            String    @id @default(cuid())
@@ -17,12 +60,14 @@ model User {
   role          UserRole  @default(USER)
   createdAt     DateTime  @default(now())
   updatedAt     DateTime  @updatedAt
+  
   accounts      Account[]
   addresses     Address[]
   cart          Cart?
   orders        Order[]
   sessions      Session[]
   wishlist      Wishlist?
+  auditLogs     AuditLog[]
 
   @@map("users")
 }
@@ -56,6 +101,10 @@ model Session {
   @@map("sessions")
 }
 
+// ============================================
+// MODELOS DE PRODUCTOS
+// ============================================
+
 model Set {
   id          String    @id @default(cuid())
   name        String    @unique
@@ -63,36 +112,118 @@ model Set {
   logoUrl     String?
   createdAt   DateTime  @default(now())
   updatedAt   DateTime  @updatedAt
-  products    Product[]
+  
+  cards       Card[]
+  packs       Pack[]
+  boxes       Box[]
 
   @@map("sets")
 }
 
+// ============================================
+// TABLA BASE DE PRODUCTOS
+// ============================================
+
 model Product {
-  id            String           @id @default(cuid())
-  name          String
-  slug          String           @unique
-  description   String
-  price         Float
-  stock         Int
-  imageUrl      String
-  rarity        ProductRarity
-  condition     ProductCondition
-  type          String
-  hp            Int?
-  attack        Int?
-  weakness      String?
-  evolution     String?
-  setId         String
-  createdAt     DateTime         @default(now())
-  updatedAt     DateTime         @updatedAt
-  cartItems     CartItem[]
-  orderItems    OrderItem[]
-  set           Set              @relation(fields: [setId], references: [id])
+  id          String   @id @default(cuid())
+  name        String
+  slug        String   @unique
+  description String   @db.Text
+  price       Float
+  stock       Int
+  type        ProductType
+  isActive    Boolean  @default(true)
+  inactiveReason String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  // Relaciones con tablas específicas
+  card        Card?
+  pack        Pack?
+  box         Box?
+
+  // Relaciones existentes
+  images      ProductImage[]
+  cartItems   CartItem[]
+  orderItems  OrderItem[]
   wishlistItems WishlistItem[]
+  auditLogs   AuditLog[]
 
   @@map("products")
 }
+
+// ============================================
+// TABLA DE CARTAS (CARD)
+// ============================================
+
+model Card {
+  id          String   @id @default(cuid())
+  productId   String   @unique
+  product     Product  @relation(fields: [productId], references: [id], onDelete: Cascade)
+  
+  // Campos específicos de cartas
+  setId       String
+  set         Set      @relation(fields: [setId], references: [id])
+  rarity      ProductRarity
+  condition   ProductCondition
+  language    String   @default("Español")
+
+  @@map("cards")
+}
+
+// ============================================
+// TABLA DE SOBRES (PACK)
+// ============================================
+
+model Pack {
+  id          String   @id @default(cuid())
+  productId   String   @unique
+  product     Product  @relation(fields: [productId], references: [id], onDelete: Cascade)
+  
+  setId       String
+  set         Set      @relation(fields: [setId], references: [id])
+  language    String   @default("Español")
+  cardsPerPack Int?
+
+  @@map("packs")
+}
+
+// ============================================
+// TABLA DE CAJAS (BOX)
+// ============================================
+
+model Box {
+  id          String   @id @default(cuid())
+  productId   String   @unique
+  product     Product  @relation(fields: [productId], references: [id], onDelete: Cascade)
+  
+  setId       String
+  set         Set      @relation(fields: [setId], references: [id])
+  language    String   @default("Español")
+  packsPerBox Int?
+
+  @@map("boxes")
+}
+
+// ============================================
+// TABLA DE IMÁGENES DE PRODUCTOS
+// ============================================
+
+model ProductImage {
+  id          String   @id @default(cuid())
+  productId   String
+  product     Product  @relation(fields: [productId], references: [id], onDelete: Cascade)
+  url         String
+  isPrimary   Boolean  @default(false)
+  order       Int      @default(0)
+  createdAt   DateTime @default(now())
+
+  @@map("product_images")
+}
+
+// ============================================
+// TABLAS DE CARRITO, PEDIDOS, FAVORITOS
+// ============================================
 
 model Cart {
   id        String     @id @default(cuid())
@@ -184,29 +315,20 @@ model Address {
   @@map("addresses")
 }
 
-enum UserRole {
-  USER
-  ADMIN
-}
+model AuditLog {
+  id          String   @id @default(cuid())
+  userId      String
+  user        User     @relation(fields: [userId], references: [id])
+  action      String
+  entityType  String
+  entityId    String
+  changes     Json?
+  reason      String?
+  ipAddress   String?
+  userAgent   String?
+  createdAt   DateTime @default(now())
 
-enum ProductRarity {
-  COMUN
-  NORMAL
-  RARA
-  SUPER_RARA
-  SECRETA
-}
+  product     Product? @relation(fields: [entityId], references: [id], onDelete: SetNull)
 
-enum ProductCondition {
-  MINT
-  NEAR_MINT
-  PLAYED
-  DAMAGED
-}
-
-enum OrderStatus {
-  PENDING
-  COMPLETED
-  CANCELLED
-  REFUNDED
+  @@map("audit_logs")
 }
