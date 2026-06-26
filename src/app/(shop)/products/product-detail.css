@@ -1,4 +1,4 @@
-/* src/app/(shop)/products/product-detail.css */
+/* src/app/(shop)/product-detail.css */
 
 /* ============================================
    DETALLE - LAYOUT
@@ -16,7 +16,7 @@
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  color: rgba(255, 255, 255, 0.5);
+  color: #B0B0B0;
   transition: all 0.3s ease;
   text-decoration: none;
   margin-bottom: 1.5rem;
@@ -37,21 +37,6 @@
 }
 
 /* ============================================
-   DETALLE - GRID PRINCIPAL
-   ============================================ */
-.product-detail-grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 2rem;
-}
-
-@media (min-width: 1024px) {
-  .product-detail-grid {
-    grid-template-columns: 1fr 1fr;
-  }
-}
-
-/* ============================================
    DETALLE - IMAGEN
    ============================================ */
 .product-detail-image {
@@ -59,14 +44,14 @@
   aspect-ratio: 1 / 1;
   border-radius: 1rem;
   overflow: hidden;
-  background: linear-gradient(135deg, rgba(21, 27, 35, 0.8), rgba(11, 15, 20, 0.9));
+  background: #1E1E1E;
   border: 1px solid rgba(255, 255, 255, 0.06);
 }
 
 .product-detail-image .image-glow {
   position: absolute;
   inset: 0;
-  background: radial-gradient(circle at 50% 50%, rgba(168, 85, 247, 0.1), transparent 70%);
+  background: radial-gradient(circle at 50% 50%, rgba(255, 203, 5, 0.05), transparent 70%);
   pointer-events: none;
 }
 
@@ -104,7 +89,6 @@
   gap: 1.5rem;
 }
 
-/* Badges */
 .product-detail-badges {
   display: flex;
   flex-wrap: wrap;
@@ -155,17 +139,16 @@
 
 .product-detail-badge.set {
   background: rgba(255, 255, 255, 0.05);
-  color: rgba(255, 255, 255, 0.7);
+  color: #B0B0B0;
   border: 1px solid rgba(255, 255, 255, 0.06);
 }
 
 .product-detail-badge.category {
-  background: rgba(168, 85, 247, 0.15);
-  color: #A855F7;
-  border: 1px solid rgba(168, 85, 247, 0.2);
+  background: rgba(42, 117, 187, 0.15);
+  color: #2A75BB;
+  border: 1px solid rgba(42, 117, 187, 0.2);
 }
 
-/* Título */
 .product-detail-name {
   font-size: 2rem;
   font-weight: 700;
@@ -182,48 +165,32 @@
 .product-detail-price {
   font-size: 1.75rem;
   font-weight: 700;
-  background: linear-gradient(135deg, #A855F7, #22D3EE);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  color: #FFCB05;
 }
 
-/* Separador */
 .product-detail-separator {
   border: none;
   border-top: 1px solid rgba(255, 255, 255, 0.06);
 }
 
-/* Descripción */
-.product-detail-description {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-}
-
 .product-detail-description .label {
   font-weight: 600;
-  color: rgba(255, 255, 255, 0.7);
+  color: #FFFFFF;
 }
 
 .product-detail-description .text {
-  color: rgba(255, 255, 255, 0.6);
+  color: #B0B0B0;
   line-height: 1.7;
 }
 
-/* Especificaciones */
 .product-detail-specs {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 0.75rem;
-  background: rgba(21, 27, 35, 0.5);
+  background: #1E1E1E;
   border: 1px solid rgba(255, 255, 255, 0.05);
   border-radius: 0.75rem;
   padding: 1rem;
-}
-
-.product-detail-specs .spec {
-  display: flex;
-  flex-direction: column;
 }
 
 .product-detail-specs .spec .label {
@@ -231,7 +198,7 @@
   font-weight: 500;
   text-transform: uppercase;
   letter-spacing: 0.05em;
-  color: rgba(255, 255, 255, 0.4);
+  color: #B0B0B0;
 }
 
 .product-detail-specs .spec .value {
@@ -241,25 +208,23 @@
 }
 
 .product-detail-specs .spec .value.in-stock {
-  color: #34D399;
+  color: #22C55E;
 }
 
 .product-detail-specs .spec .value.low-stock {
-  color: #FBBF24;
+  color: #FFCB05;
 }
 
 .product-detail-specs .spec .value.out-of-stock {
   color: #F87171;
 }
 
-/* Acciones */
 .product-detail-actions {
   display: flex;
   flex-wrap: wrap;
   gap: 1rem;
 }
 
-/* Beneficios */
 .product-detail-benefits {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -271,7 +236,7 @@
   text-align: center;
   padding: 0.75rem;
   border-radius: 0.5rem;
-  background: rgba(255, 255, 255, 0.03);
+  background: rgba(255, 255, 255, 0.02);
   border: 1px solid rgba(255, 255, 255, 0.05);
 }
 
@@ -279,12 +244,57 @@
   width: 1.25rem;
   height: 1.25rem;
   margin: 0 auto 0.25rem;
-  color: #A855F7;
+  color: #FFCB05;
 }
 
 .product-detail-benefits .benefit .label {
   font-size: 0.625rem;
-  color: rgba(255, 255, 255, 0.5);
+  color: #B0B0B0;
+}
+
+.product-detail-actions .btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 2rem;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  color: #121212;
+  background: #FFCB05;
+  transition: all 0.3s ease;
+  border: none;
+  cursor: pointer;
+}
+
+.product-detail-actions .btn-primary:hover {
+  background: #E6B800;
+  transform: translateY(-2px);
+  box-shadow: 0 0 30px rgba(255, 203, 5, 0.3);
+}
+
+.product-detail-actions .btn-primary:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.product-detail-actions .btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 2rem;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  color: #FFFFFF;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.product-detail-actions .btn-secondary:hover {
+  border-color: rgba(42, 117, 187, 0.4);
+  background: rgba(42, 117, 187, 0.1);
 }
 
 /* ============================================
@@ -308,14 +318,14 @@
 }
 
 .product-related-header .link {
-  color: #A855F7;
+  color: #2A75BB;
   font-size: 0.875rem;
   transition: color 0.3s ease;
   text-decoration: none;
 }
 
 .product-related-header .link:hover {
-  color: #8B5CF6;
+  color: #1A5A9A;
 }
 
 .product-related-grid {
