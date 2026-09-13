@@ -22,24 +22,24 @@
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  color: #B0B0B0;
+  color: #b0b0b0;
   text-decoration: none;
   transition: color 0.3s ease;
   font-size: 0.875rem;
 }
 
 .new-set-back:hover {
-  color: #FFFFFF;
+  color: #ffffff;
 }
 
 .new-set-title {
   font-size: 1.875rem;
   font-weight: 700;
-  color: #FFFFFF;
+  color: #ffffff;
 }
 
 .new-set-subtitle {
-  color: #B0B0B0;
+  color: #b0b0b0;
 }
 
 /* ============================================
@@ -59,7 +59,7 @@
 .new-set-card-title {
   font-size: 1.125rem;
   font-weight: 600;
-  color: #FFFFFF;
+  color: #ffffff;
 }
 
 .new-set-card-content {
@@ -84,7 +84,7 @@
 .new-set-label {
   font-size: 0.875rem;
   font-weight: 500;
-  color: #B0B0B0;
+  color: #b0b0b0;
 }
 
 .new-set-input {
@@ -93,7 +93,7 @@
   border-radius: 0.5rem;
   background: rgba(255, 255, 255, 0.03);
   border: 1px solid rgba(255, 255, 255, 0.06);
-  color: #FFFFFF;
+  color: #ffffff;
   transition: all 0.3s ease;
 }
 
@@ -104,7 +104,7 @@
 }
 
 .new-set-input::placeholder {
-  color: #B0B0B0;
+  color: #b0b0b0;
 }
 
 /* ============================================
@@ -121,7 +121,7 @@
   padding: 0.5rem 1rem;
   border-radius: 0.5rem;
   font-weight: 500;
-  color: #B0B0B0;
+  color: #b0b0b0;
   background: rgba(255, 255, 255, 0.03);
   border: 1px solid rgba(255, 255, 255, 0.06);
   transition: all 0.3s ease;
@@ -131,7 +131,7 @@
 
 .new-set-btn-cancel:hover {
   border-color: rgba(255, 203, 5, 0.3);
-  color: #FFFFFF;
+  color: #ffffff;
   background: rgba(255, 203, 5, 0.05);
 }
 
@@ -141,14 +141,14 @@
   border-radius: 0.5rem;
   font-weight: 600;
   color: #121212;
-  background: #FFCB05;
+  background: #ffcb05;
   border: none;
   cursor: pointer;
   transition: all 0.3s ease;
 }
 
 .new-set-btn-submit:hover {
-  background: #E6B800;
+  background: #e6b800;
   transform: translateY(-1px);
   box-shadow: 0 0 30px rgba(255, 203, 5, 0.3);
 }
@@ -160,7 +160,7 @@
   .new-set-card {
     padding: 1rem;
   }
-  
+
   .new-set-actions {
     flex-direction: column;
   }

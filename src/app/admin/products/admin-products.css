@@ -23,11 +23,11 @@
 .admin-products-title {
   font-size: 1.875rem;
   font-weight: 700;
-  color: #FFFFFF;
+  color: #ffffff;
 }
 
 .admin-products-subtitle {
-  color: #B0B0B0;
+  color: #b0b0b0;
 }
 
 .admin-products-actions {
@@ -44,7 +44,7 @@
   border-radius: 0.5rem;
   font-weight: 500;
   font-size: 0.875rem;
-  color: #FFCB05;
+  color: #ffcb05;
   background: rgba(255, 203, 5, 0.1);
   border: 1px solid rgba(255, 203, 5, 0.15);
   transition: all 0.3s ease;
@@ -65,13 +65,13 @@
   font-weight: 500;
   font-size: 0.875rem;
   color: #121212;
-  background: #FFCB05;
+  background: #ffcb05;
   transition: all 0.3s ease;
   text-decoration: none;
 }
 
 .admin-products-btn-new:hover {
-  background: #E6B800;
+  background: #e6b800;
   transform: translateY(-1px);
   box-shadow: 0 0 30px rgba(255, 203, 5, 0.3);
 }
@@ -95,7 +95,7 @@
 .admin-products-card-title {
   font-size: 1.125rem;
   font-weight: 600;
-  color: #FFFFFF;
+  color: #ffffff;
 }
 
 .admin-products-card-content {
@@ -103,7 +103,7 @@
 }
 
 .admin-products-empty {
-  color: #B0B0B0;
+  color: #b0b0b0;
   text-align: center;
   padding: 2rem 0;
 }
@@ -127,7 +127,7 @@
   font-weight: 500;
   text-transform: uppercase;
   letter-spacing: 0.05em;
-  color: #B0B0B0;
+  color: #b0b0b0;
 }
 
 .admin-products-table-row {
@@ -142,14 +142,14 @@
 .admin-products-table-cell {
   padding: 0.75rem 1rem;
   vertical-align: middle;
-  color: #FFFFFF;
+  color: #ffffff;
 }
 
 .admin-products-table-cell-name {
   padding: 0.75rem 1rem;
   vertical-align: middle;
   font-weight: 500;
-  color: #FFFFFF;
+  color: #ffffff;
   max-width: 200px;
 }
 
@@ -167,18 +167,18 @@
    ============================================ */
 .admin-products-badge {
   border-color: rgba(255, 255, 255, 0.06);
-  color: #B0B0B0;
+  color: #b0b0b0;
 }
 
 .admin-products-badge-low-stock {
   background: rgba(255, 203, 5, 0.15);
-  color: #FFCB05;
+  color: #ffcb05;
   border-color: rgba(255, 203, 5, 0.15);
 }
 
 .admin-products-badge-stock {
   background: rgba(34, 197, 94, 0.15);
-  color: #34D399;
+  color: #34d399;
   border-color: rgba(34, 197, 94, 0.15);
 }
 
@@ -188,13 +188,13 @@
 .admin-products-btn-edit {
   border-color: rgba(255, 255, 255, 0.06);
   background: rgba(255, 255, 255, 0.03);
-  color: #B0B0B0;
+  color: #b0b0b0;
   transition: all 0.3s ease;
 }
 
 .admin-products-btn-edit:hover {
   border-color: rgba(255, 203, 5, 0.3);
-  color: #FFFFFF;
+  color: #ffffff;
   background: rgba(255, 203, 5, 0.05);
 }
 
@@ -212,9 +212,9 @@
 
 .admin-product-tooltip {
   max-width: 400px;
-  background: #1E1E1E;
+  background: #1e1e1e;
   border: 1px solid rgba(255, 255, 255, 0.06);
-  color: #FFFFFF;
+  color: #ffffff;
   z-index: 50;
 }
 
@@ -229,7 +229,7 @@
   .admin-products-table-cell-name {
     max-width: 100%;
   }
-  
+
   .admin-products-table-cell-actions {
     justify-content: flex-start;
     padding-left: 50%;
@@ -240,16 +240,16 @@
   .admin-products-card {
     padding: 0.75rem;
   }
-  
+
   .admin-products-header {
     flex-direction: column;
     align-items: flex-start;
   }
-  
+
   .admin-products-actions {
     width: 100%;
   }
-  
+
   .admin-products-btn-inactive,
   .admin-products-btn-new {
     flex: 1;

@@ -24,7 +24,7 @@
 .faq-hero-title {
   font-size: 2.5rem;
   font-weight: 700;
-  color: #FFFFFF;
+  color: #ffffff;
   margin-bottom: 0.5rem;
 }
 
@@ -36,7 +36,7 @@
 
 .faq-hero-subtitle {
   font-size: 1.125rem;
-  color: #B0B0B0;
+  color: #b0b0b0;
 }
 
 /* ============================================
@@ -51,7 +51,7 @@
 }
 
 .faq-item {
-  background: #1E1E1E;
+  background: #1e1e1e;
   border: 1px solid rgba(255, 255, 255, 0.06);
   border-radius: 0.75rem;
   overflow: hidden;
@@ -70,7 +70,7 @@
   padding: 1.25rem;
   background: transparent;
   border: none;
-  color: #FFFFFF;
+  color: #ffffff;
   font-size: 1rem;
   font-weight: 500;
   cursor: pointer;
@@ -79,20 +79,20 @@
 }
 
 .faq-question:hover {
-  color: #FFCB05;
+  color: #ffcb05;
 }
 
 .faq-icon {
   width: 1.25rem;
   height: 1.25rem;
-  color: #B0B0B0;
+  color: #b0b0b0;
   flex-shrink: 0;
   transition: transform 0.3s ease;
 }
 
 .faq-answer {
   padding: 0 1.25rem 1.25rem 1.25rem;
-  color: #B0B0B0;
+  color: #b0b0b0;
   line-height: 1.7;
   border-top: 1px solid rgba(255, 255, 255, 0.05);
 }
@@ -104,7 +104,7 @@
   text-align: center;
   margin-top: 3rem;
   padding: 2rem;
-  background: #1E1E1E;
+  background: #1e1e1e;
   border-radius: 0.75rem;
   border: 1px solid rgba(255, 255, 255, 0.06);
 }
@@ -112,12 +112,12 @@
 .faq-contact-title {
   font-size: 1.25rem;
   font-weight: 600;
-  color: #FFFFFF;
+  color: #ffffff;
   margin-bottom: 0.25rem;
 }
 
 .faq-contact-text {
-  color: #B0B0B0;
+  color: #b0b0b0;
   margin-bottom: 1rem;
 }
 
@@ -129,13 +129,13 @@
   border-radius: 0.5rem;
   font-weight: 600;
   color: #121212;
-  background: #FFCB05;
+  background: #ffcb05;
   transition: all 0.3s ease;
   text-decoration: none;
 }
 
 .faq-contact-button:hover {
-  background: #E6B800;
+  background: #e6b800;
   transform: translateY(-2px);
   box-shadow: 0 0 30px rgba(255, 203, 5, 0.3);
 }

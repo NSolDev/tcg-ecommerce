@@ -1,49 +1,59 @@
 ﻿// src/app/page.tsx
-import { getProducts, getCards, getBoxes, getPacks } from '@/lib/actions/product.actions'
-import { InteractiveProductCard } from '@/components/ui/card-7'
-import { Header } from '@/components/shared/Header'
-import { CartDrawer } from '@/components/cart/CartDrawer'
-import SocialCards from '@/components/ui/card-fan-carousel'
-import Link from 'next/link'
-import { ArrowRight, Package, Shield, Truck, ChevronDown, Sparkles } from 'lucide-react'
-import IntroAnimation from '@/components/ui/scroll-morph-hero'
-import { PLACEHOLDER_IMAGE } from '@/lib/constants'
-import './page.css'
+import { getProducts, getCards, getBoxes, getPacks } from '@/lib/actions/product.actions';
+import { InteractiveProductCard } from '@/components/ui/card-7';
+import { Header } from '@/components/shared/Header';
+import { CartDrawer } from '@/components/cart/CartDrawer';
+import SocialCards from '@/components/ui/card-fan-carousel';
+import Link from 'next/link';
+import { ArrowRight, Package, Shield, Truck, ChevronDown, Sparkles } from 'lucide-react';
+import IntroAnimation from '@/components/ui/scroll-morph-hero';
+import { PLACEHOLDER_IMAGE } from '@/lib/constants';
+import './page.css';
+
+// Reads live catalog data at request time (not prerendered at build).
+export const dynamic = 'force-dynamic';
 
 export default async function HomePage() {
   // Obtener productos para el hero
-  const { products } = await getProducts({ page: 1, pageSize: 8 })
-  
+  const { products } = await getProducts({ page: 1, pageSize: 8 });
+
   // Obtener datos específicos
-  const cards = await getCards() // Últimas 7 cartas
-  const boxes = await getBoxes() // Últimas 4 cajas
-  const packs = await getPacks() // Últimos 4 sobres
+  const cards = await getCards(); // Últimas 7 cartas
+  const boxes = await getBoxes(); // Últimas 4 cajas
+  const packs = await getPacks(); // Últimos 4 sobres
 
   // Preparar productos para el hero
-  const heroProducts = products.map(p => {
-    const primaryImage = p.images?.find(img => img.isPrimary) || p.images?.[0]
-    console.log('Producto:', p.name, 'Tiene imágenes:', p.images?.length || 0, 'Primary:', primaryImage?.url)
+  const heroProducts = products.map((p) => {
+    const primaryImage = p.images?.find((img) => img.isPrimary) || p.images?.[0];
+    console.log(
+      'Producto:',
+      p.name,
+      'Tiene imágenes:',
+      p.images?.length || 0,
+      'Primary:',
+      primaryImage?.url
+    );
     return {
       id: p.id,
       name: p.name,
       imageUrl: primaryImage?.url || PLACEHOLDER_IMAGE,
       slug: p.slug,
       images: p.images || [],
-    }
-  })
+    };
+  });
   // Preparar datos para el carousel de cartas destacadas
   const carouselCards = cards.map((card) => {
-    const primaryImage = card.images?.find(img => img.isPrimary) || card.images?.[0]
-    let rarity = ''
+    const primaryImage = card.images?.find((img) => img.isPrimary) || card.images?.[0];
+    let rarity = '';
     const rarityMap = {
       COMUN: 'Común',
       NORMAL: 'Normal',
       RARA: 'Rara',
       SUPER_RARA: 'Súper Rara',
       SECRETA: 'Secreta',
-    }
-    rarity = rarityMap[card.card?.rarity as keyof typeof rarityMap] || ''
-        
+    };
+    rarity = rarityMap[card.card?.rarity as keyof typeof rarityMap] || '';
+
     return {
       imgUrl: primaryImage?.url || PLACEHOLDER_IMAGE,
       alt: card.name,
@@ -51,8 +61,8 @@ export default async function HomePage() {
       description: `${card.price.toFixed(2)}€${rarity ? ` · ${rarity}` : ''}`,
       link: `/products/${card.slug}`,
       slug: card.slug,
-    }
-  })
+    };
+  });
 
   return (
     <>
@@ -78,16 +88,12 @@ export default async function HomePage() {
               <p className="section-subtitle">Las cartas más exclusivas de nuestra colección</p>
             </div>
             <div className="carousel-wrapper">
-              <SocialCards 
-                cards={carouselCards} 
-                autoplay={true} 
-                interval={5000} 
-              />
+              <SocialCards cards={carouselCards} autoplay={true} interval={5000} />
             </div>
             <div className="section-footer">
               <Link href="/products?category=CARD" className="btn-primary">
                 Ver todas las cartas
-                <ArrowRight className="w-4 h-4" />
+                <ArrowRight className="h-4 w-4" />
               </Link>
             </div>
           </div>
@@ -105,26 +111,26 @@ export default async function HomePage() {
             </div>
             <div className="home-featured-grid">
               {boxes.map((product) => {
-                const primaryImage = product.images?.find(img => img.isPrimary) || product.images?.[0]
+                const primaryImage =
+                  product.images?.find((img) => img.isPrimary) || product.images?.[0];
                 return (
                   <InteractiveProductCard
                     key={product.id}
+                    productId={product.id}
                     slug={product.slug}
                     title={product.name}
                     description={`Caja · ${product.box?.set?.name || ''}`}
                     price={`${product.price.toFixed(2)}€`}
                     imageUrl={primaryImage?.url || PLACEHOLDER_IMAGE}
                     images={product.images}
-                    rating={4.9}
-                    reviews={128}
                   />
-                )
+                );
               })}
             </div>
             <div className="section-footer">
               <Link href="/products?category=BOX" className="btn-primary">
                 Ver todas las cajas
-                <ArrowRight className="w-4 h-4" />
+                <ArrowRight className="h-4 w-4" />
               </Link>
             </div>
           </div>
@@ -142,26 +148,26 @@ export default async function HomePage() {
             </div>
             <div className="home-featured-grid">
               {packs.map((product) => {
-                const primaryImage = product.images?.find(img => img.isPrimary) || product.images?.[0]
+                const primaryImage =
+                  product.images?.find((img) => img.isPrimary) || product.images?.[0];
                 return (
                   <InteractiveProductCard
                     key={product.id}
+                    productId={product.id}
                     slug={product.slug}
                     title={product.name}
                     description={`Sobre · ${product.pack?.set?.name || ''}`}
                     price={`${product.price.toFixed(2)}€`}
                     imageUrl={primaryImage?.url || PLACEHOLDER_IMAGE}
                     images={product.images}
-                    rating={4.9}
-                    reviews={128}
                   />
-                )
+                );
               })}
             </div>
             <div className="section-footer">
               <Link href="/products?category=PACK" className="btn-primary">
                 Ver todos los sobres
-                <ArrowRight className="w-4 h-4" />
+                <ArrowRight className="h-4 w-4" />
               </Link>
             </div>
           </div>
@@ -190,7 +196,9 @@ export default async function HomePage() {
                   <Shield className="benefit-icon" />
                 </div>
                 <h3 className="benefit-title">100% Auténtico</h3>
-                <p className="benefit-description">Todas nuestras cartas son originales y certificadas</p>
+                <p className="benefit-description">
+                  Todas nuestras cartas son originales y certificadas
+                </p>
               </div>
               <div className="benefit-card">
                 <div className="benefit-icon-wrapper">
@@ -216,7 +224,7 @@ export default async function HomePage() {
                 </p>
                 <Link href="/products" className="btn-primary">
                   Explorar Catálogo
-                  <ArrowRight className="w-4 h-4" />
+                  <ArrowRight className="h-4 w-4" />
                 </Link>
               </div>
             </div>
@@ -225,5 +233,5 @@ export default async function HomePage() {
       </main>
       <CartDrawer />
     </>
-  )
+  );
 }

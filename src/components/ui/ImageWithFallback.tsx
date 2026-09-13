@@ -1,15 +1,15 @@
 // src/components/ui/ImageWithFallback.tsx
-'use client'
+'use client';
 
-import Image, { ImageProps } from 'next/image'
-import { useState } from 'react'
-import { PLACEHOLDER_IMAGE } from '@/lib/constants'
-import { getLocalImage } from '@/lib/imageMap'
+import Image, { ImageProps } from 'next/image';
+import { useState } from 'react';
+import { PLACEHOLDER_IMAGE } from '@/lib/constants';
+import { getLocalImage } from '@/lib/imageMap';
 
 interface ImageWithFallbackProps extends Omit<ImageProps, 'src'> {
-  src: string
-  fallbackSrc?: string
-  slug?: string
+  src: string;
+  fallbackSrc?: string;
+  slug?: string;
 }
 
 export function ImageWithFallback({
@@ -19,22 +19,22 @@ export function ImageWithFallback({
   alt,
   ...props
 }: ImageWithFallbackProps) {
-  const [imgSrc, setImgSrc] = useState(src)
-  const [hasError, setHasError] = useState(false)
+  const [imgSrc, setImgSrc] = useState(src);
+  const [hasError, setHasError] = useState(false);
 
-  const localImage = getLocalImage(slug)
+  const localImage = getLocalImage(slug);
 
   const handleError = () => {
     if (!hasError && localImage) {
-      setImgSrc(localImage)
-      setHasError(true)
-      return
+      setImgSrc(localImage);
+      setHasError(true);
+      return;
     }
     if (!hasError) {
-      setImgSrc(fallbackSrc)
-      setHasError(true)
+      setImgSrc(fallbackSrc);
+      setHasError(true);
     }
-  }
+  };
 
   return (
     <Image
@@ -44,5 +44,5 @@ export function ImageWithFallback({
       onError={handleError}
       unoptimized={imgSrc.includes('cardmarket') || imgSrc.includes('data:image')}
     />
-  )
+  );
 }

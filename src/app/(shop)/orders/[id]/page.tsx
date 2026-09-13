@@ -1,34 +1,34 @@
 // src/app/(shop)/orders/[id]/page.tsx
-import { auth } from '@/lib/auth'
-import { redirect } from 'next/navigation'
-import { prisma } from '@/lib/db/prisma'
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
-import { Badge } from '@/components/ui/badge'
-import { Button } from '@/components/ui/button'
-import { Separator } from '@/components/ui/separator'
-import { ArrowLeft, Package, MapPin, CreditCard, User } from 'lucide-react'
-import { formatPrice, formatDate } from '@/lib/utils'
-import Link from 'next/link'
-import { notFound } from 'next/navigation'
-import '../order-detail.css'
+import { auth } from '@/lib/auth';
+import { redirect } from 'next/navigation';
+import { prisma } from '@/lib/db/prisma';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Badge } from '@/components/ui/badge';
+import { Button } from '@/components/ui/button';
+import { Separator } from '@/components/ui/separator';
+import { ArrowLeft, Package, MapPin, CreditCard, User } from 'lucide-react';
+import { formatPrice, formatDate } from '@/lib/utils';
+import Link from 'next/link';
+import { notFound } from 'next/navigation';
+import '../order-detail.css';
 
 interface OrderDetailPageProps {
   params: {
-    id: string
-  }
+    id: string;
+  };
 }
 
 export default async function OrderDetailPage({ params }: OrderDetailPageProps) {
-  const session = await auth()
+  const session = await auth();
 
   if (!session?.user) {
-    redirect('/login')
+    redirect('/login');
   }
 
   const order = await prisma.order.findUnique({
     where: { id: params.id },
     include: {
-      user: true,
+      user: { select: { name: true, email: true } },
       items: {
         include: {
           product: true,
@@ -36,10 +36,10 @@ export default async function OrderDetailPage({ params }: OrderDetailPageProps) 
       },
       address: true,
     },
-  })
+  });
 
   if (!order || order.userId !== session.user.id) {
-    notFound()
+    notFound();
   }
 
   const statusLabels: Record<string, string> = {
@@ -47,14 +47,14 @@ export default async function OrderDetailPage({ params }: OrderDetailPageProps) 
     COMPLETED: 'Completado',
     CANCELLED: 'Cancelado',
     REFUNDED: 'Reembolsado',
-  }
+  };
 
   const statusClasses: Record<string, string> = {
     PENDING: 'order-detail-status-pending',
     COMPLETED: 'order-detail-status-completed',
     CANCELLED: 'order-detail-status-cancelled',
     REFUNDED: 'order-detail-status-refunded',
-  }
+  };
 
   return (
     <div className="order-detail-page">
@@ -66,12 +66,8 @@ export default async function OrderDetailPage({ params }: OrderDetailPageProps) 
           </Link>
         </Button>
         <div className="order-detail-info">
-          <h1 className="order-detail-id">
-            Pedido #{order.id.slice(0, 8)}
-          </h1>
-          <p className="order-detail-date">
-            Realizado el {formatDate(order.createdAt)}
-          </p>
+          <h1 className="order-detail-id">Pedido #{order.id.slice(0, 8)}</h1>
+          <p className="order-detail-date">Realizado el {formatDate(order.createdAt)}</p>
         </div>
         <Badge className={`order-detail-status-badge ${statusClasses[order.status]}`}>
           {statusLabels[order.status]}
@@ -88,9 +84,7 @@ export default async function OrderDetailPage({ params }: OrderDetailPageProps) 
             </CardTitle>
           </CardHeader>
           <CardContent className="order-detail-card-content">
-            <p className="order-detail-card-text">
-              {order.user.name || 'Sin nombre'}
-            </p>
+            <p className="order-detail-card-text">{order.user.name || 'Sin nombre'}</p>
             <p className="order-detail-card-sub">{order.user.email}</p>
           </CardContent>
         </Card>
@@ -177,5 +171,5 @@ export default async function OrderDetailPage({ params }: OrderDetailPageProps) 
         </Card>
       </div>
     </div>
-  )
+  );
 }

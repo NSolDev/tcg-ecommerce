@@ -1,12 +1,19 @@
 // src/app/admin/orders/page.tsx
-import { prisma } from '@/lib/db/prisma'
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table'
-import { Badge } from '@/components/ui/badge'
-import { Button } from '@/components/ui/button'
-import { Eye } from 'lucide-react'
-import Link from 'next/link'
-import { formatPrice } from '@/lib/utils'
+import { prisma } from '@/lib/db/prisma';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from '@/components/ui/table';
+import { Badge } from '@/components/ui/badge';
+import { Button } from '@/components/ui/button';
+import { Eye } from 'lucide-react';
+import Link from 'next/link';
+import { formatPrice } from '@/lib/utils';
 
 export default async function AdminOrdersPage() {
   const orders = await prisma.order.findMany({
@@ -15,21 +22,21 @@ export default async function AdminOrdersPage() {
       items: true,
     },
     orderBy: { createdAt: 'desc' },
-  })
+  });
 
   const statusColors = {
     PENDING: 'bg-yellow-500',
     COMPLETED: 'bg-green-500',
     CANCELLED: 'bg-red-500',
     REFUNDED: 'bg-gray-500',
-  }
+  };
 
   const statusLabels = {
     PENDING: 'Pendiente',
     COMPLETED: 'Completado',
     CANCELLED: 'Cancelado',
     REFUNDED: 'Reembolsado',
-  }
+  };
 
   return (
     <div className="space-y-6">
@@ -60,25 +67,19 @@ export default async function AdminOrdersPage() {
               <TableBody>
                 {orders.map((order) => (
                   <TableRow key={order.id}>
-                    <TableCell className="font-mono">
-                      #{order.id.slice(0, 8)}
-                    </TableCell>
-                    <TableCell>
-                      {order.user.name || order.user.email}
-                    </TableCell>
+                    <TableCell className="font-mono">#{order.id.slice(0, 8)}</TableCell>
+                    <TableCell>{order.user.name || order.user.email}</TableCell>
                     <TableCell>{formatPrice(order.total)}</TableCell>
                     <TableCell>
                       <Badge className={statusColors[order.status]}>
                         {statusLabels[order.status]}
                       </Badge>
                     </TableCell>
-                    <TableCell>
-                      {new Date(order.createdAt).toLocaleDateString()}
-                    </TableCell>
+                    <TableCell>{new Date(order.createdAt).toLocaleDateString()}</TableCell>
                     <TableCell className="text-right">
                       <Button variant="outline" size="sm" asChild>
                         <Link href={`/admin/orders/${order.id}`}>
-                          <Eye className="h-4 w-4 mr-1" />
+                          <Eye className="mr-1 h-4 w-4" />
                           Ver
                         </Link>
                       </Button>
@@ -91,5 +92,5 @@ export default async function AdminOrdersPage() {
         </CardContent>
       </Card>
     </div>
-  )
+  );
 }

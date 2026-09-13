@@ -1,9 +1,9 @@
 // src/lib/actions/product.actions.ts
-'use server'
+'use server';
 
-import { prisma } from '@/lib/db/prisma'
-import { z } from 'zod'
-import { PLACEHOLDER_IMAGE } from '@/lib/constants'
+import { prisma } from '@/lib/db/prisma';
+import { z } from 'zod';
+import { PLACEHOLDER_IMAGE } from '@/lib/constants';
 
 const productQuerySchema = z.object({
   search: z.string().optional(),
@@ -15,54 +15,58 @@ const productQuerySchema = z.object({
   maxPrice: z.number().min(0).optional(),
   page: z.number().min(1).default(1),
   pageSize: z.number().min(1).max(100).default(12),
-})
+});
 
 export async function getProducts(query: z.infer<typeof productQuerySchema>) {
-  const validated = productQuerySchema.parse(query)
-  const { search, set, category, rarity, type, minPrice, maxPrice, page, pageSize } = validated
+  const validated = productQuerySchema.parse(query);
+  const { search, set, category, rarity, type, minPrice, maxPrice, page, pageSize } = validated;
 
+  // Construir filtros
   const where: any = {
     isActive: true,
-  }
+  };
 
   if (search) {
     where.OR = [
       { name: { contains: search, mode: 'insensitive' } },
       { description: { contains: search, mode: 'insensitive' } },
-    ]
+    ];
   }
 
+  // ✅ CORRECCIÓN: category debe ser un valor del enum ProductType
   if (category) {
-    where.type = category
+    where.type = category; // 'CARD', 'PACK' o 'BOX'
   }
 
   if (minPrice !== undefined) {
-    where.price = { ...where.price, gte: minPrice }
+    where.price = { ...where.price, gte: minPrice };
   }
 
   if (maxPrice !== undefined) {
-    where.price = { ...where.price, lte: maxPrice }
+    where.price = { ...where.price, lte: maxPrice };
   }
 
+  // Filtro por colección (set) - se aplica a través de las relaciones
   if (set) {
-    where.OR = [
-      { card: { setId: set } },
-      { pack: { setId: set } },
-      { box: { setId: set } },
-    ]
+    where.OR = [{ card: { setId: set } }, { pack: { setId: set } }, { box: { setId: set } }];
   }
 
+  // Filtro por rareza (solo para cartas)
   if (rarity) {
-    where.card = { rarity: rarity }
+    where.card = { rarity: rarity };
   }
 
-  if (type) {
-    where.type = type
+  // ✅ CORRECCIÓN: type es un filtro adicional, no debe sobrescribir category
+  // Si type es "Pokémon", "Entrenador", etc. (el campo type de Product)
+  if (type && !category) {
+    where.type = type;
   }
 
-  const skip = (page - 1) * pageSize
-  const take = pageSize
+  // Calcular paginación
+  const skip = (page - 1) * pageSize;
+  const take = pageSize;
 
+  // Ejecutar consultas en paralelo
   const [products, totalCount] = await Promise.all([
     prisma.product.findMany({
       where,
@@ -92,23 +96,24 @@ export async function getProducts(query: z.infer<typeof productQuerySchema>) {
       },
     }),
     prisma.product.count({ where }),
-  ])
+  ]);
 
+  // Transformar los productos para incluir la información del set
   const productsWithSet = products.map((product) => {
-    let setInfo = null
+    let setInfo = null;
     if (product.card) {
-      setInfo = product.card.set
+      setInfo = product.card.set;
     } else if (product.pack) {
-      setInfo = product.pack.set
+      setInfo = product.pack.set;
     } else if (product.box) {
-      setInfo = product.box.set
+      setInfo = product.box.set;
     }
 
     return {
       ...product,
       set: setInfo,
-    }
-  })
+    };
+  });
 
   return {
     products: productsWithSet,
@@ -116,7 +121,7 @@ export async function getProducts(query: z.infer<typeof productQuerySchema>) {
     totalPages: Math.ceil(totalCount / pageSize),
     currentPage: page,
     pageSize,
-  }
+  };
 }
 
 export async function getProductBySlug(slug: string) {
@@ -142,31 +147,32 @@ export async function getProductBySlug(slug: string) {
         },
       },
     },
-  })
+  });
 
   if (!product) {
-    throw new Error('Producto no encontrado')
+    throw new Error('Producto no encontrado');
   }
 
-  let setInfo = null
+  // Transformar para incluir set
+  let setInfo = null;
   if (product.card) {
-    setInfo = product.card.set
+    setInfo = product.card.set;
   } else if (product.pack) {
-    setInfo = product.pack.set
+    setInfo = product.pack.set;
   } else if (product.box) {
-    setInfo = product.box.set
+    setInfo = product.box.set;
   }
 
   return {
     ...product,
     set: setInfo,
-  }
+  };
 }
 
 export async function getSets() {
   return prisma.set.findMany({
     orderBy: { name: 'asc' },
-  })
+  });
 }
 
 export async function getRelatedProducts(productId: string, setId: string, productType: string) {
@@ -174,14 +180,15 @@ export async function getRelatedProducts(productId: string, setId: string, produ
     id: { not: productId },
     isActive: true,
     stock: { gt: 0 },
-  }
+  };
 
+  // Buscar productos del mismo tipo y misma colección
   if (productType === 'CARD') {
-    where.card = { setId }
+    where.card = { setId };
   } else if (productType === 'PACK') {
-    where.pack = { setId }
+    where.pack = { setId };
   } else if (productType === 'BOX') {
-    where.box = { setId }
+    where.box = { setId };
   }
 
   const products = await prisma.product.findMany({
@@ -209,22 +216,23 @@ export async function getRelatedProducts(productId: string, setId: string, produ
         },
       },
     },
-  })
+  });
 
+  // Transformar productos
   return products.map((product) => {
-    let setInfo = null
+    let setInfo = null;
     if (product.card) {
-      setInfo = product.card.set
+      setInfo = product.card.set;
     } else if (product.pack) {
-      setInfo = product.pack.set
+      setInfo = product.pack.set;
     } else if (product.box) {
-      setInfo = product.box.set
+      setInfo = product.box.set;
     }
     return {
       ...product,
       set: setInfo,
-    }
-  })
+    };
+  });
 }
 
 export async function getCards() {
@@ -245,17 +253,22 @@ export async function getCards() {
     },
     orderBy: { createdAt: 'desc' },
     take: 7,
-  })
+  });
 
-  return cards.map(card => ({
+  return cards.map((card) => ({
     ...card,
-    images: card.images.length > 0 ? card.images : [{ 
-      id: 'placeholder',
-      url: PLACEHOLDER_IMAGE, 
-      isPrimary: true, 
-      order: 0 
-    }]
-  }))
+    images:
+      card.images.length > 0
+        ? card.images
+        : [
+            {
+              id: 'placeholder',
+              url: PLACEHOLDER_IMAGE,
+              isPrimary: true,
+              order: 0,
+            },
+          ],
+  }));
 }
 
 export async function getBoxes() {
@@ -275,23 +288,24 @@ export async function getBoxes() {
       },
     },
     orderBy: { createdAt: 'desc' },
-    take: 4, // Cambiado de 5 a 4 para coincidir con la página principal
-  })
+    take: 4,
+  });
 
-  return boxes.map(box => ({
+  return boxes.map((box) => ({
     ...box,
-    images: box.images.length > 0 ? box.images : [{ 
-      id: 'placeholder',
-      url: PLACEHOLDER_IMAGE, 
-      isPrimary: true, 
-      order: 0 
-    }]
-  }))
+    images:
+      box.images.length > 0
+        ? box.images
+        : [
+            {
+              id: 'placeholder',
+              url: PLACEHOLDER_IMAGE,
+              isPrimary: true,
+              order: 0,
+            },
+          ],
+  }));
 }
-
-// ============================================
-// NUEVA FUNCIÓN: getPacks
-// ============================================
 
 export async function getPacks() {
   const packs = await prisma.product.findMany({
@@ -311,15 +325,20 @@ export async function getPacks() {
     },
     orderBy: { createdAt: 'desc' },
     take: 4,
-  })
+  });
 
-  return packs.map(pack => ({
+  return packs.map((pack) => ({
     ...pack,
-    images: pack.images.length > 0 ? pack.images : [{ 
-      id: 'placeholder',
-      url: PLACEHOLDER_IMAGE, 
-      isPrimary: true, 
-      order: 0 
-    }]
-  }))
+    images:
+      pack.images.length > 0
+        ? pack.images
+        : [
+            {
+              id: 'placeholder',
+              url: PLACEHOLDER_IMAGE,
+              isPrimary: true,
+              order: 0,
+            },
+          ],
+  }));
 }

@@ -1,10 +1,10 @@
 // src/components/admin/DeleteUserButton.tsx
-'use client'
+'use client';
 
-import { useState } from 'react'
-import { useRouter } from 'next/navigation'
-import { Button } from '@/components/ui/button'
-import { UserX } from 'lucide-react'
+import { useState } from 'react';
+import { useRouter } from 'next/navigation';
+import { Button } from '@/components/ui/button';
+import { UserX } from 'lucide-react';
 import {
   AlertDialog,
   AlertDialogAction,
@@ -15,60 +15,59 @@ import {
   AlertDialogHeader,
   AlertDialogTitle,
   AlertDialogTrigger,
-} from '@/components/ui/alert-dialog'
-import { deleteUser } from '@/lib/actions/admin.actions'
+} from '@/components/ui/alert-dialog';
+import { deleteUser } from '@/lib/actions/admin.actions';
 
 interface DeleteUserButtonProps {
-  userId: string
-  isAdmin: boolean
+  userId: string;
+  isAdmin: boolean;
 }
 
 export function DeleteUserButton({ userId, isAdmin }: DeleteUserButtonProps) {
-  const [loading, setLoading] = useState(false)
-  const [open, setOpen] = useState(false)
-  const router = useRouter()
+  const [loading, setLoading] = useState(false);
+  const [open, setOpen] = useState(false);
+  const router = useRouter();
 
   const handleDelete = async () => {
-    setLoading(true)
+    setLoading(true);
     try {
-      await deleteUser(userId)
-      setOpen(false)
-      router.refresh()
+      await deleteUser(userId);
+      setOpen(false);
+      router.refresh();
     } catch (error) {
-      console.error('Error eliminando usuario:', error)
-      alert(error instanceof Error ? error.message : 'Error al eliminar el usuario')
+      console.error('Error eliminando usuario:', error);
+      alert(error instanceof Error ? error.message : 'Error al eliminar el usuario');
     } finally {
-      setLoading(false)
+      setLoading(false);
     }
-  }
+  };
 
   return (
     <AlertDialog open={open} onOpenChange={setOpen}>
       <AlertDialogTrigger asChild>
-        <Button 
-          variant="destructive" 
+        <Button
+          variant="destructive"
           size="sm"
-          className="bg-red-500/20 hover:bg-red-500/30 text-red-400 border border-red-500/20 hover:text-red-300"
+          className="border border-red-500/20 bg-red-500/20 text-red-400 hover:bg-red-500/30 hover:text-red-300"
         >
           <UserX className="h-4 w-4" />
         </Button>
       </AlertDialogTrigger>
-      <AlertDialogContent className="bg-[#1E1E1E] border-white/10 text-white">
+      <AlertDialogContent className="border-white/10 bg-[#1E1E1E] text-white">
         <AlertDialogHeader>
           <AlertDialogTitle className="text-white">¿Eliminar usuario?</AlertDialogTitle>
           <AlertDialogDescription className="text-B0B0B0">
-            {isAdmin 
+            {isAdmin
               ? 'Este usuario es administrador. Asegúrate de que haya otro administrador antes de eliminarlo.'
-              : 'Esta acción eliminará permanentemente al usuario y todos sus datos asociados.'
-            }
+              : 'Esta acción eliminará permanentemente al usuario y todos sus datos asociados.'}
           </AlertDialogDescription>
         </AlertDialogHeader>
         <AlertDialogFooter>
-          <AlertDialogCancel className="bg-white/5 border-white/10 text-white hover:bg-white/10">
+          <AlertDialogCancel className="border-white/10 bg-white/5 text-white hover:bg-white/10">
             Cancelar
           </AlertDialogCancel>
-          <AlertDialogAction 
-            onClick={handleDelete} 
+          <AlertDialogAction
+            onClick={handleDelete}
             disabled={loading}
             className="bg-red-500 hover:bg-red-600"
           >
@@ -77,5 +76,5 @@ export function DeleteUserButton({ userId, isAdmin }: DeleteUserButtonProps) {
         </AlertDialogFooter>
       </AlertDialogContent>
     </AlertDialog>
-  )
+  );
 }

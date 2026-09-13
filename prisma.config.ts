@@ -1,5 +1,5 @@
 // prisma.config.ts
-import 'dotenv/config'
+import 'dotenv/config';
 
 // Definimos la configuración directamente sin usar defineConfig
 // para evitar problemas de tipos
@@ -8,6 +8,6 @@ const config = {
   datasource: {
     url: process.env.DATABASE_URL,
   },
-}
+};
 
-export default config
+export default config;

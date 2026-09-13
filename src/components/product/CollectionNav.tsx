@@ -1,88 +1,88 @@
 // src/components/product/CollectionNav.tsx
-'use client'
+'use client';
 
-import Link from 'next/link'
-import { usePathname, useSearchParams } from 'next/navigation'
-import { cn } from '@/lib/utils'
-import { ChevronDown, Package, Sparkles, Zap } from 'lucide-react'
-import { useState, useRef, useEffect } from 'react'
-import './collection-nav.css'
+import Link from 'next/link';
+import { usePathname, useSearchParams } from 'next/navigation';
+import { cn } from '@/lib/utils';
+import { ChevronDown, Package, Sparkles, Zap } from 'lucide-react';
+import { useState, useRef, useEffect } from 'react';
+import './collection-nav.css';
 
 interface CollectionNavProps {
-  collections: string[]
-  categories: { value: string; label: string; icon: React.ReactNode }[]
+  collections: string[];
+  categories: { value: string; label: string; icon: React.ReactNode }[];
 }
 
 export function CollectionNav({ collections, categories }: CollectionNavProps) {
-  const pathname = usePathname()
-  const searchParams = useSearchParams()
-  const [isCollectionsOpen, setIsCollectionsOpen] = useState(false)
-  const [isCategoriesOpen, setIsCategoriesOpen] = useState(false)
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
+  const [isCollectionsOpen, setIsCollectionsOpen] = useState(false);
+  const [isCategoriesOpen, setIsCategoriesOpen] = useState(false);
 
   // Refs para detectar clics fuera
-  const collectionsRef = useRef<HTMLDivElement>(null)
-  const categoriesRef = useRef<HTMLDivElement>(null)
+  const collectionsRef = useRef<HTMLDivElement>(null);
+  const categoriesRef = useRef<HTMLDivElement>(null);
 
-  const currentCategory = searchParams.get('category') || 'all'
-  const currentSet = searchParams.get('set') || 'all'
+  const currentCategory = searchParams.get('category') || 'all';
+  const currentSet = searchParams.get('set') || 'all';
 
   // Cerrar dropdowns al hacer clic fuera
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (collectionsRef.current && !collectionsRef.current.contains(event.target as Node)) {
-        setIsCollectionsOpen(false)
+        setIsCollectionsOpen(false);
       }
       if (categoriesRef.current && !categoriesRef.current.contains(event.target as Node)) {
-        setIsCategoriesOpen(false)
+        setIsCategoriesOpen(false);
       }
-    }
+    };
 
-    document.addEventListener('mousedown', handleClickOutside)
+    document.addEventListener('mousedown', handleClickOutside);
     return () => {
-      document.removeEventListener('mousedown', handleClickOutside)
-    }
-  }, [])
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, []);
 
   // Cerrar al hacer scroll
   useEffect(() => {
     const handleScroll = () => {
-      if (isCollectionsOpen) setIsCollectionsOpen(false)
-      if (isCategoriesOpen) setIsCategoriesOpen(false)
-    }
+      if (isCollectionsOpen) setIsCollectionsOpen(false);
+      if (isCategoriesOpen) setIsCategoriesOpen(false);
+    };
 
-    window.addEventListener('scroll', handleScroll)
+    window.addEventListener('scroll', handleScroll);
     return () => {
-      window.removeEventListener('scroll', handleScroll)
-    }
-  }, [isCollectionsOpen, isCategoriesOpen])
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, [isCollectionsOpen, isCategoriesOpen]);
 
   const isActive = (path: string) => {
     if (path === '/products') {
-      return pathname === '/products' && !searchParams.get('category') && !searchParams.get('set')
+      return pathname === '/products' && !searchParams.get('category') && !searchParams.get('set');
     }
-    return pathname === path
-  }
+    return pathname === path;
+  };
 
   const getCategoryUrl = (category: string) => {
-    const params = new URLSearchParams(searchParams)
+    const params = new URLSearchParams(searchParams);
     if (category === 'all') {
-      params.delete('category')
+      params.delete('category');
     } else {
-      params.set('category', category)
+      params.set('category', category);
     }
-    params.delete('set')
-    return `/products?${params.toString()}`
-  }
+    params.delete('set');
+    return `/products?${params.toString()}`;
+  };
 
   const getSetUrl = (setId: string) => {
-    const params = new URLSearchParams(searchParams)
+    const params = new URLSearchParams(searchParams);
     if (setId === 'all') {
-      params.delete('set')
+      params.delete('set');
     } else {
-      params.set('set', setId)
+      params.set('set', setId);
     }
-    return `/products?${params.toString()}`
-  }
+    return `/products?${params.toString()}`;
+  };
 
   return (
     <nav className="collection-nav">
@@ -109,7 +109,7 @@ export function CollectionNav({ collections, categories }: CollectionNavProps) {
             <ChevronDown className={cn('dropdown-arrow', isCategoriesOpen && 'open')} />
             {currentCategory !== 'all' && (
               <span className="collection-nav-active-badge">
-                {categories.find(c => c.value === currentCategory)?.label || currentCategory}
+                {categories.find((c) => c.value === currentCategory)?.label || currentCategory}
               </span>
             )}
           </button>
@@ -117,7 +117,10 @@ export function CollectionNav({ collections, categories }: CollectionNavProps) {
             <div className="collection-nav-dropdown-menu">
               <Link
                 href="/products"
-                className={cn('collection-nav-dropdown-item', currentCategory === 'all' && 'active')}
+                className={cn(
+                  'collection-nav-dropdown-item',
+                  currentCategory === 'all' && 'active'
+                )}
                 onClick={() => setIsCategoriesOpen(false)}
               >
                 <Sparkles className="item-icon" />
@@ -127,7 +130,10 @@ export function CollectionNav({ collections, categories }: CollectionNavProps) {
                 <Link
                   key={category.value}
                   href={getCategoryUrl(category.value)}
-                  className={cn('collection-nav-dropdown-item', currentCategory === category.value && 'active')}
+                  className={cn(
+                    'collection-nav-dropdown-item',
+                    currentCategory === category.value && 'active'
+                  )}
                   onClick={() => setIsCategoriesOpen(false)}
                 >
                   <span className="item-icon">{category.icon}</span>
@@ -149,7 +155,7 @@ export function CollectionNav({ collections, categories }: CollectionNavProps) {
             <ChevronDown className={cn('dropdown-arrow', isCollectionsOpen && 'open')} />
             {currentSet !== 'all' && (
               <span className="collection-nav-active-badge">
-                {collections.find(c => c === currentSet) || currentSet}
+                {collections.find((c) => c === currentSet) || currentSet}
               </span>
             )}
           </button>
@@ -167,7 +173,10 @@ export function CollectionNav({ collections, categories }: CollectionNavProps) {
                 <Link
                   key={collection}
                   href={getSetUrl(collection)}
-                  className={cn('collection-nav-dropdown-item', currentSet === collection && 'active')}
+                  className={cn(
+                    'collection-nav-dropdown-item',
+                    currentSet === collection && 'active'
+                  )}
                   onClick={() => setIsCollectionsOpen(false)}
                 >
                   <span className="item-icon">📦</span>
@@ -179,5 +188,5 @@ export function CollectionNav({ collections, categories }: CollectionNavProps) {
         </div>
       </div>
     </nav>
-  )
+  );
 }

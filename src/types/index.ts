@@ -1,7 +1,7 @@
 ﻿// Tipos globales del proyecto
-import { OrderItem as PrismaOrderItem } from '@prisma/client'
+import { OrderItem as PrismaOrderItem } from '@prisma/client';
 
-export type OrderItem = PrismaOrderItem
+export type OrderItem = PrismaOrderItem;
 
 export interface Product {
   id: string;

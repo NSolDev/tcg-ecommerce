@@ -1,34 +1,38 @@
 // src/components/seo/ProductSchema.tsx
-'use client'
+'use client';
 
-import { Product } from '@prisma/client'
-import Script from 'next/script'
+import { Product } from '@prisma/client';
+import Script from 'next/script';
 
 interface ProductSchemaProps {
-  product: Product & { set: { name: string } }
+  product: Product & {
+    set: { name: string } | null;
+    images?: { url: string; isPrimary: boolean }[];
+    card?: { rarity: string; condition: string } | null;
+  };
 }
 
 export function ProductSchema({ product }: ProductSchemaProps) {
+  const primaryImage = product.images?.find((i) => i.isPrimary) ?? product.images?.[0];
   const schema = {
     '@context': 'https://schema.org',
     '@type': 'Product',
     name: product.name,
     description: product.description,
-    image: product.imageUrl,
+    image: primaryImage?.url,
     sku: product.id,
     mpn: product.id,
     brand: {
       '@type': 'Brand',
       name: 'Pokémon',
     },
-    category: product.category,
+    category: product.type,
     offers: {
       '@type': 'Offer',
       price: product.price,
       priceCurrency: 'EUR',
-      availability: product.stock > 0 
-        ? 'https://schema.org/InStock' 
-        : 'https://schema.org/OutOfStock',
+      availability:
+        product.stock > 0 ? 'https://schema.org/InStock' : 'https://schema.org/OutOfStock',
       shippingDetails: {
         '@type': 'OfferShippingDetails',
         shippingRate: {
@@ -71,40 +75,26 @@ export function ProductSchema({ product }: ProductSchemaProps) {
       reviewCount: 128,
     },
     additionalProperty: [
-      {
-        '@type': 'PropertyValue',
-        name: 'Rareza',
-        value: product.rarity,
-      },
-      {
-        '@type': 'PropertyValue',
-        name: 'Condición',
-        value: product.condition,
-      },
-      {
-        '@type': 'PropertyValue',
-        name: 'Colección',
-        value: product.set.name,
-      },
-      ...(product.hp ? [{
-        '@type': 'PropertyValue',
-        name: 'HP',
-        value: product.hp,
-      }] : []),
-      ...(product.attack ? [{
-        '@type': 'PropertyValue',
-        name: 'Ataque',
-        value: product.attack,
-      }] : []),
+      ...(product.card
+        ? [
+            { '@type': 'PropertyValue', name: 'Rareza', value: product.card.rarity },
+            { '@type': 'PropertyValue', name: 'Condición', value: product.card.condition },
+          ]
+        : []),
+      ...(product.set
+        ? [{ '@type': 'PropertyValue', name: 'Colección', value: product.set.name }]
+        : []),
     ],
-  }
+  };
 
   return (
     <Script
       id={`product-schema-${product.id}`}
       type="application/ld+json"
-      dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+      dangerouslySetInnerHTML={{
+        __html: JSON.stringify(schema).replace(/</g, String.fromCharCode(92) + 'u003c'),
+      }}
       strategy="afterInteractive"
     />
-  )
+  );
 }

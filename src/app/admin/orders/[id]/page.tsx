@@ -1,19 +1,19 @@
 // src/app/admin/orders/[id]/page.tsx
-import { prisma } from '@/lib/db/prisma'
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
-import { Badge } from '@/components/ui/badge'
-import { Button } from '@/components/ui/button'
-import { Separator } from '@/components/ui/separator'
-import { ArrowLeft, Package, User, MapPin, CreditCard } from 'lucide-react'
-import Link from 'next/link'
-import { notFound } from 'next/navigation'
-import { formatPrice, formatDate } from '@/lib/utils'
-import { CompleteOrderButton, CancelOrderButton } from '@/components/admin/OrderActionButtons'
+import { prisma } from '@/lib/db/prisma';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Badge } from '@/components/ui/badge';
+import { Button } from '@/components/ui/button';
+import { Separator } from '@/components/ui/separator';
+import { ArrowLeft, Package, User, MapPin, CreditCard } from 'lucide-react';
+import Link from 'next/link';
+import { notFound } from 'next/navigation';
+import { formatPrice, formatDate } from '@/lib/utils';
+import { CompleteOrderButton, CancelOrderButton } from '@/components/admin/OrderActionButtons';
 
 interface OrderDetailPageProps {
   params: {
-    id: string
-  }
+    id: string;
+  };
 }
 
 export default async function OrderDetailPage({ params }: OrderDetailPageProps) {
@@ -28,10 +28,10 @@ export default async function OrderDetailPage({ params }: OrderDetailPageProps) 
       },
       address: true,
     },
-  })
+  });
 
   if (!order) {
-    notFound()
+    notFound();
   }
 
   const statusColors = {
@@ -39,14 +39,14 @@ export default async function OrderDetailPage({ params }: OrderDetailPageProps) 
     COMPLETED: 'bg-green-500',
     CANCELLED: 'bg-red-500',
     REFUNDED: 'bg-gray-500',
-  }
+  };
 
   const statusLabels = {
     PENDING: 'Pendiente',
     COMPLETED: 'Completado',
     CANCELLED: 'Cancelado',
     REFUNDED: 'Reembolsado',
-  }
+  };
 
   return (
     <div className="space-y-6">
@@ -54,22 +54,20 @@ export default async function OrderDetailPage({ params }: OrderDetailPageProps) 
       <div className="flex items-center gap-4">
         <Button variant="outline" size="sm" asChild>
           <Link href="/admin/orders">
-            <ArrowLeft className="h-4 w-4 mr-2" />
+            <ArrowLeft className="mr-2 h-4 w-4" />
             Volver
           </Link>
         </Button>
         <div>
           <h1 className="text-3xl font-bold">Pedido #{order.id.slice(0, 8)}</h1>
-          <p className="text-muted-foreground">
-            Realizado el {formatDate(order.createdAt)}
-          </p>
+          <p className="text-muted-foreground">Realizado el {formatDate(order.createdAt)}</p>
         </div>
         <Badge className={`ml-auto ${statusColors[order.status]} text-white`}>
           {statusLabels[order.status]}
         </Badge>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
         {/* Información del Cliente */}
         <Card>
           <CardHeader>
@@ -81,9 +79,7 @@ export default async function OrderDetailPage({ params }: OrderDetailPageProps) 
           <CardContent className="space-y-2">
             <p className="font-medium">{order.user.name || 'Sin nombre'}</p>
             <p className="text-sm text-muted-foreground">{order.user.email}</p>
-            <p className="text-sm text-muted-foreground">
-              ID: {order.user.id.slice(0, 8)}
-            </p>
+            <p className="text-sm text-muted-foreground">ID: {order.user.id.slice(0, 8)}</p>
           </CardContent>
         </Card>
 
@@ -134,7 +130,7 @@ export default async function OrderDetailPage({ params }: OrderDetailPageProps) 
             {order.stripePaymentIntentId && (
               <div className="flex justify-between">
                 <span className="text-muted-foreground">Stripe ID</span>
-                <span className="text-xs font-mono truncate max-w-[120px]">
+                <span className="max-w-[120px] truncate font-mono text-xs">
                   {order.stripePaymentIntentId.slice(0, 16)}...
                 </span>
               </div>
@@ -157,7 +153,10 @@ export default async function OrderDetailPage({ params }: OrderDetailPageProps) 
           ) : (
             <div className="space-y-4">
               {order.items.map((item) => (
-                <div key={item.id} className="flex items-center justify-between border-b pb-4 last:border-0">
+                <div
+                  key={item.id}
+                  className="flex items-center justify-between border-b pb-4 last:border-0"
+                >
                   <div className="flex-1">
                     <p className="font-medium">{item.product.name}</p>
                     <p className="text-sm text-muted-foreground">
@@ -187,12 +186,8 @@ export default async function OrderDetailPage({ params }: OrderDetailPageProps) 
             <CancelOrderButton orderId={order.id} />
           </>
         )}
-        {order.status === 'COMPLETED' && (
-          <Button variant="outline">
-            Ver Factura
-          </Button>
-        )}
+        {order.status === 'COMPLETED' && <Button variant="outline">Ver Factura</Button>}
       </div>
     </div>
-  )
+  );
 }

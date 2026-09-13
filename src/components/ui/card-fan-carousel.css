@@ -20,13 +20,13 @@
   justify-content: center;
   width: 100%;
   height: 100%;
-  background: #1E1E1E;
+  background: #1e1e1e;
   border-radius: 0.75rem;
   border: 1px solid rgba(255, 255, 255, 0.06);
 }
 
 .fan-carousel-empty-text {
-  color: #B0B0B0;
+  color: #b0b0b0;
 }
 
 /* ============================================
@@ -54,7 +54,7 @@
   box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
   cursor: pointer;
   will-change: transform, opacity;
-  background: #1E1E1E;
+  background: #1e1e1e;
   border: 1px solid rgba(255, 255, 255, 0.06);
   transform-origin: center center;
 }
@@ -113,14 +113,14 @@
 .fan-carousel-card-title {
   font-size: 1.125rem;
   font-weight: 700;
-  color: #FFFFFF;
+  color: #ffffff;
   margin-bottom: 0.25rem;
   text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 }
 
 .fan-carousel-card-description {
   font-size: 0.875rem;
-  color: #FFCB05;
+  color: #ffcb05;
   font-weight: 500;
   text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
@@ -147,7 +147,7 @@
 .fan-carousel-card-badge-text {
   font-size: 0.75rem;
   font-weight: 500;
-  color: #FFCB05;
+  color: #ffcb05;
 }
 
 /* ============================================
@@ -164,7 +164,7 @@
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
   font-size: 0.75rem;
-  color: #B0B0B0;
+  color: #b0b0b0;
   border: 1px solid rgba(255, 255, 255, 0.06);
 }
 
@@ -200,12 +200,12 @@
 .fan-carousel-control-icon {
   width: 1.25rem;
   height: 1.25rem;
-  color: #FFFFFF;
+  color: #ffffff;
   transition: color 0.3s ease;
 }
 
 .fan-carousel-control:hover .fan-carousel-control-icon {
-  color: #FFCB05;
+  color: #ffcb05;
 }
 
 /* ============================================
@@ -237,7 +237,7 @@
 .fan-carousel-indicator.active {
   width: 2rem;
   height: 0.375rem;
-  background: #FFCB05;
+  background: #ffcb05;
 }
 
 .fan-carousel-indicator:hover {
@@ -245,7 +245,7 @@
 }
 
 .fan-carousel-indicator.active:hover {
-  background: #FFCB05;
+  background: #ffcb05;
 }
 
 /* ============================================
@@ -269,21 +269,26 @@
 .fan-carousel-autoplay-icon {
   width: 0.75rem;
   height: 0.75rem;
-  color: #FFCB05;
+  color: #ffcb05;
   animation: pulse 2s infinite;
 }
 
 .fan-carousel-autoplay-text {
   font-size: 0.75rem;
-  color: #B0B0B0;
+  color: #b0b0b0;
 }
 
 /* ============================================
    ANIMACIONES
    ============================================ */
 @keyframes pulse {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.6; }
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.6;
+  }
 }
 
 /* ============================================
@@ -293,24 +298,24 @@
   .fan-carousel-container {
     height: 400px;
   }
-  
+
   .fan-carousel-card {
     width: 14rem;
     height: 20rem;
   }
-  
+
   .fan-carousel-control {
     padding: 0.5rem;
   }
-  
+
   .fan-carousel-card-content {
     padding: 1rem;
   }
-  
+
   .fan-carousel-card-title {
     font-size: 0.875rem;
   }
-  
+
   .fan-carousel-card-description {
     font-size: 0.75rem;
   }
@@ -320,7 +325,7 @@
   .fan-carousel-container {
     height: 350px;
   }
-  
+
   .fan-carousel-card {
     width: 12rem;
     height: 17rem;

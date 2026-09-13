@@ -60,7 +60,7 @@
 
 .scroll-indicator-text {
   font-size: 0.75rem;
-  color: #B0B0B0;
+  color: #b0b0b0;
   text-transform: uppercase;
   letter-spacing: 0.1em;
 }
@@ -68,12 +68,17 @@
 .scroll-indicator-icon {
   width: 1.5rem;
   height: 1.5rem;
-  color: #B0B0B0;
+  color: #b0b0b0;
 }
 
 @keyframes bounce {
-  0%, 100% { transform: translateX(-50%) translateY(0); }
-  50% { transform: translateX(-50%) translateY(8px); }
+  0%,
+  100% {
+    transform: translateX(-50%) translateY(0);
+  }
+  50% {
+    transform: translateX(-50%) translateY(8px);
+  }
 }
 
 /* ============================================
@@ -91,17 +96,17 @@
   align-items: center;
   justify-content: center;
   gap: 0.75rem;
-  color: #FFFFFF;
+  color: #ffffff;
 }
 
 .section-title-icon {
   width: 2rem;
   height: 2rem;
-  color: #FFCB05;
+  color: #ffcb05;
 }
 
 .section-subtitle {
-  color: #B0B0B0;
+  color: #b0b0b0;
   margin-top: 0.5rem;
   font-size: 1.125rem;
 }
@@ -127,7 +132,7 @@
 }
 
 .benefit-card {
-  background: #1E1E1E;
+  background: #1e1e1e;
   backdrop-filter: blur(8px);
   border: 1px solid rgba(255, 255, 255, 0.06);
   border-radius: 0.75rem;
@@ -158,19 +163,19 @@
 .benefit-icon {
   width: 1.5rem;
   height: 1.5rem;
-  color: #FFCB05;
+  color: #ffcb05;
 }
 
 .benefit-title {
   font-size: 1.125rem;
   font-weight: 600;
-  color: #FFFFFF;
+  color: #ffffff;
   margin-bottom: 0.25rem;
 }
 
 .benefit-description {
   font-size: 0.875rem;
-  color: #B0B0B0;
+  color: #b0b0b0;
 }
 
 /* ============================================
@@ -233,7 +238,7 @@
 .home-cta-title {
   font-size: 2.5rem;
   font-weight: 700;
-  color: #FFFFFF;
+  color: #ffffff;
   margin-bottom: 1rem;
 }
 
@@ -244,7 +249,7 @@
 }
 
 .home-cta-description {
-  color: #B0B0B0;
+  color: #b0b0b0;
   max-width: 42rem;
   margin: 0 auto 2rem;
   font-size: 1.125rem;
@@ -285,14 +290,14 @@
   border-radius: 0.5rem;
   font-weight: 600;
   color: #121212;
-  background: #FFCB05;
+  background: #ffcb05;
   transition: all 0.3s ease;
   box-shadow: 0 0 20px rgba(255, 203, 5, 0.3);
   text-decoration: none;
 }
 
 .btn-primary:hover {
-  background: #E6B800;
+  background: #e6b800;
   transform: translateY(-2px);
   box-shadow: 0 0 30px rgba(255, 203, 5, 0.5);
 }
@@ -305,7 +310,7 @@
   padding: 0.75rem 2rem;
   border-radius: 0.5rem;
   font-weight: 600;
-  color: #FFFFFF;
+  color: #ffffff;
   background: rgba(255, 255, 255, 0.05);
   border: 1px solid rgba(255, 255, 255, 0.15);
   backdrop-filter: blur(4px);
@@ -333,7 +338,7 @@
   .home-section-content-carousel {
     padding: 0.25rem 0.5rem;
   }
-  
+
   .carousel-wrapper > div {
     min-height: 350px;
   }

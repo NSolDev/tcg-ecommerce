@@ -1,8 +1,14 @@
 // prisma/seed.ts
-import { PrismaClient, ProductRarity, ProductCondition, UserRole, ProductType } from '@prisma/client'
-import bcrypt from 'bcryptjs'
+import {
+  PrismaClient,
+  ProductRarity,
+  ProductCondition,
+  UserRole,
+  ProductType,
+} from '@prisma/client';
+import bcrypt from 'bcryptjs';
 
-const prisma = new PrismaClient()
+const prisma = new PrismaClient();
 
 // Colecciones disponibles
 const COLLECTIONS = [
@@ -15,16 +21,16 @@ const COLLECTIONS = [
   { name: 'Black Bolt & White Flames', id: 'black-bolt-white-flames' },
   { name: 'Megaevolution', id: 'megaevolution' },
   { name: 'Paldea Evolved', id: 'paldea-evolved' },
-]
+];
 
 async function main() {
-  console.log('🌱 Iniciando seeding de base de datos...')
+  console.log('🌱 Iniciando seeding de base de datos...');
 
   // 1. Crear Colecciones (Sets)
-  console.log('📦 Creando colecciones...')
-  
+  console.log('📦 Creando colecciones...');
+
   const sets = await Promise.all(
-    COLLECTIONS.map(col => 
+    COLLECTIONS.map((col) =>
       prisma.set.upsert({
         where: { name: col.name },
         update: {},
@@ -35,24 +41,25 @@ async function main() {
         },
       })
     )
-  )
+  );
 
-  console.log(`✅ ${sets.length} colecciones creadas`)
+  console.log(`✅ ${sets.length} colecciones creadas`);
 
   // 2. Crear Productos
-  console.log('🃏 Creando productos...')
+  console.log('🃏 Creando productos...');
 
-  const setMap = Object.fromEntries(sets.map(s => [s.name, s]))
+  const setMap = Object.fromEntries(sets.map((s) => [s.name, s]));
 
   // ============================================
   // CARTAS (7)
   // ============================================
-  
+
   const cardData = [
     {
       name: 'Charizard ex',
       slug: 'charizard-ex-ascended-heroes',
-      description: 'Carta individual Charizard ex de la colección Ascended Heroes. Pokémon de fuego con ataque devastador.',
+      description:
+        'Carta individual Charizard ex de la colección Ascended Heroes. Pokémon de fuego con ataque devastador.',
       price: 49.99,
       stock: 15,
       imageUrl: 'https://product-images.s3.cardmarket.com/51/ASC/869633/869633.jpg',
@@ -63,8 +70,9 @@ async function main() {
     {
       name: 'Mewtwo VSTAR',
       slug: 'mewtwo-vstar-prismatic-evolutions',
-      description: 'Carta individual Mewtwo VSTAR de la colección Prismatic Evolutions. Legendario psíquico.',
-      price: 35.50,
+      description:
+        'Carta individual Mewtwo VSTAR de la colección Prismatic Evolutions. Legendario psíquico.',
+      price: 35.5,
       stock: 8,
       imageUrl: 'https://product-images.s3.cardmarket.com/51/CRZ/691924/691924.jpg',
       rarity: ProductRarity.RARA,
@@ -74,7 +82,8 @@ async function main() {
     {
       name: 'Pikachu ex',
       slug: 'pikachu-ex-surging-sparks',
-      description: 'Carta individual Pikachu ex de la colección Surging Sparks. El Pokémon eléctrico más famoso.',
+      description:
+        'Carta individual Pikachu ex de la colección Surging Sparks. El Pokémon eléctrico más famoso.',
       price: 29.99,
       stock: 20,
       imageUrl: 'https://product-images.s3.cardmarket.com/51/SSP/794611/794611.jpg',
@@ -85,8 +94,9 @@ async function main() {
     {
       name: 'Gengar ex',
       slug: 'gengar-ex-twilight-masquerade',
-      description: 'Carta individual Gengar ex de la colección Twilight Masquerade. Pokémon Sombra.',
-      price: 42.00,
+      description:
+        'Carta individual Gengar ex de la colección Twilight Masquerade. Pokémon Sombra.',
+      price: 42.0,
       stock: 12,
       imageUrl: 'https://product-images.s3.cardmarket.com/51/TEF/760823/760823.jpg',
       rarity: ProductRarity.SUPER_RARA,
@@ -104,10 +114,10 @@ async function main() {
       condition: ProductCondition.NEAR_MINT,
       set: '151',
     },
-  ]
+  ];
 
   for (const data of cardData) {
-    const set = setMap[data.set]
+    const set = setMap[data.set];
     const product = await prisma.product.create({
       data: {
         name: data.name,
@@ -133,8 +143,8 @@ async function main() {
           },
         },
       },
-    })
-    console.log(`✅ Carta creada: ${product.name}`)
+    });
+    console.log(`✅ Carta creada: ${product.name}`);
   }
 
   // ============================================
@@ -145,7 +155,8 @@ async function main() {
     {
       name: 'Sobre Ascended Heroes',
       slug: 'pack-ascended-heroes',
-      description: 'Sobre individual de la colección Ascended Heroes. Contiene 10 cartas aleatorias.',
+      description:
+        'Sobre individual de la colección Ascended Heroes. Contiene 10 cartas aleatorias.',
       price: 4.99,
       stock: 50,
       imageUrl: 'https://product-images.s3.cardmarket.com/52/860562/860562.jpg',
@@ -154,7 +165,8 @@ async function main() {
     {
       name: 'Sobre Prismatic Evolutions',
       slug: 'pack-prismatic-evolutions',
-      description: 'Sobre individual de la colección Prismatic Evolutions. Incluye 11 cartas con ilustraciones especiales.',
+      description:
+        'Sobre individual de la colección Prismatic Evolutions. Incluye 11 cartas con ilustraciones especiales.',
       price: 5.99,
       stock: 45,
       imageUrl: 'https://product-images.s3.cardmarket.com/52/798923/798923.jpg',
@@ -163,16 +175,17 @@ async function main() {
     {
       name: 'Sobre Surging Sparks',
       slug: 'pack-surging-sparks',
-      description: 'Sobre individual de la colección Surging Sparks. Incluye 10 cartas de la nueva expansión.',
+      description:
+        'Sobre individual de la colección Surging Sparks. Incluye 10 cartas de la nueva expansión.',
       price: 4.49,
       stock: 60,
       imageUrl: 'https://product-images.s3.cardmarket.com/52/784945/784945.jpg',
       set: 'Surging Sparks',
     },
-  ]
+  ];
 
   for (const data of packData) {
-    const set = setMap[data.set]
+    const set = setMap[data.set];
     const product = await prisma.product.create({
       data: {
         name: data.name,
@@ -197,8 +210,8 @@ async function main() {
           },
         },
       },
-    })
-    console.log(`✅ Sobre creado: ${product.name}`)
+    });
+    console.log(`✅ Sobre creado: ${product.name}`);
   }
 
   // ============================================
@@ -209,7 +222,8 @@ async function main() {
     {
       name: 'Caja de Entrenador Élite de Caos Creciente',
       slug: 'box-chaos-rising-elite-trainer',
-      description: 'Caja de Entrenador Élite de Caos Creciente. Incluye 8 sobres, 40 cartas de energía y accesorios exclusivos.',
+      description:
+        'Caja de Entrenador Élite de Caos Creciente. Incluye 8 sobres, 40 cartas de energía y accesorios exclusivos.',
       price: 49.99,
       stock: 10,
       imageUrl: 'https://product-images.s3.cardmarket.com/1016/877294/877294.jpg',
@@ -218,7 +232,8 @@ async function main() {
     {
       name: 'Caja de Entrenador Élite de Evoluciones Prismáticas',
       slug: 'box-prismatic-evolutions-elite-trainer',
-      description: 'Caja de Entrenador Élite de Evoluciones Prismáticas. Incluye 9 sobres y accesorios exclusivos.',
+      description:
+        'Caja de Entrenador Élite de Evoluciones Prismáticas. Incluye 9 sobres y accesorios exclusivos.',
       price: 59.99,
       stock: 8,
       imageUrl: 'https://product-images.s3.cardmarket.com/1016/798930/798930.jpg',
@@ -227,7 +242,8 @@ async function main() {
     {
       name: 'Caja de Entrenador Élite de Héroes Ascendentes',
       slug: 'box-ascended-heroes-elite-trainer',
-      description: 'Caja de Entrenador Élite de Héroes Ascendentes. Incluye 8 sobres y accesorios temáticos.',
+      description:
+        'Caja de Entrenador Élite de Héroes Ascendentes. Incluye 8 sobres y accesorios temáticos.',
       price: 54.99,
       stock: 12,
       imageUrl: 'https://product-images.s3.cardmarket.com/1016/860574/860574.jpg',
@@ -236,7 +252,8 @@ async function main() {
     {
       name: 'Caja de Entrenador Élite de Fulgor Negro',
       slug: 'box-black-bolt-white-flames-elite-trainer',
-      description: 'Caja de Entrenador Élite de Fulgor Negro. Incluye 8 sobres y accesorios exclusivos.',
+      description:
+        'Caja de Entrenador Élite de Fulgor Negro. Incluye 8 sobres y accesorios exclusivos.',
       price: 52.99,
       stock: 10,
       imageUrl: 'https://product-images.s3.cardmarket.com/1016/824088/824088.jpg',
@@ -245,7 +262,8 @@ async function main() {
     {
       name: 'Caja de Entrenador Élite Mega Lucario de Megaevolución',
       slug: 'box-megaevolution-mega-lucario-elite-trainer',
-      description: 'Caja de Entrenador Élite Mega Lucario de Megaevolución. Incluye 9 sobres y accesorios exclusivos.',
+      description:
+        'Caja de Entrenador Élite Mega Lucario de Megaevolución. Incluye 9 sobres y accesorios exclusivos.',
       price: 64.99,
       stock: 6,
       imageUrl: 'https://product-images.s3.cardmarket.com/1016/834830/834830.jpg',
@@ -254,16 +272,17 @@ async function main() {
     {
       name: 'Caja de Entrenador Élite de Destinos de Paldea',
       slug: 'box-paldea-evolved-elite-trainer',
-      description: 'Caja de Entrenador Élite de Destinos de Paldea. Incluye 8 sobres y accesorios temáticos.',
+      description:
+        'Caja de Entrenador Élite de Destinos de Paldea. Incluye 8 sobres y accesorios temáticos.',
       price: 47.99,
       stock: 15,
       imageUrl: 'https://product-images.s3.cardmarket.com/1016/745548/745548.png',
       set: 'Paldea Evolved',
     },
-  ]
+  ];
 
   for (const data of boxData) {
-    const set = setMap[data.set]
+    const set = setMap[data.set];
     const product = await prisma.product.create({
       data: {
         name: data.name,
@@ -288,17 +307,17 @@ async function main() {
           },
         },
       },
-    })
-    console.log(`✅ Caja creada: ${product.name}`)
+    });
+    console.log(`✅ Caja creada: ${product.name}`);
   }
 
   // ============================================
   // USUARIOS
   // ============================================
 
-  console.log('👤 Creando usuarios...')
+  console.log('👤 Creando usuarios...');
 
-  const adminPassword = await bcrypt.hash('Admin123!', 10)
+  const adminPassword = await bcrypt.hash('Admin123!', 10);
   await prisma.user.upsert({
     where: { email: 'admin@tcgstore.com' },
     update: { password: adminPassword },
@@ -308,10 +327,10 @@ async function main() {
       role: UserRole.ADMIN,
       password: adminPassword,
     },
-  })
-  console.log('✅ Usuario admin creado')
+  });
+  console.log('✅ Usuario admin creado');
 
-  const testPassword = await bcrypt.hash('Test123!', 10)
+  const testPassword = await bcrypt.hash('Test123!', 10);
   await prisma.user.upsert({
     where: { email: 'test@tcgstore.com' },
     update: { password: testPassword },
@@ -321,17 +340,17 @@ async function main() {
       role: UserRole.USER,
       password: testPassword,
     },
-  })
-  console.log('✅ Usuario test creado')
+  });
+  console.log('✅ Usuario test creado');
 
-  console.log('🎉 Seeding completado exitosamente!')
+  console.log('🎉 Seeding completado exitosamente!');
 }
 
 main()
   .catch((e) => {
-    console.error('❌ Error en el seeding:', e)
-    process.exit(1)
+    console.error('❌ Error en el seeding:', e);
+    process.exit(1);
   })
   .finally(async () => {
-    await prisma.$disconnect()
-  })
+    await prisma.$disconnect();
+  });

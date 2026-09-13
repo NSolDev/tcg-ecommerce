@@ -49,27 +49,41 @@
    ============================================ */
 @layer utilities {
   @keyframes float {
-    0%, 100% { transform: translateY(0px); }
-    50% { transform: translateY(-10px); }
+    0%,
+    100% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
   }
   .animate-float {
     animation: float 3s ease-in-out infinite;
   }
 
   @keyframes glow-pulse {
-    0%, 100% { box-shadow: 0 0 20px rgba(255, 203, 5, 0.2); }
-    50% { box-shadow: 0 0 40px rgba(255, 203, 5, 0.4); }
+    0%,
+    100% {
+      box-shadow: 0 0 20px rgba(255, 203, 5, 0.2);
+    }
+    50% {
+      box-shadow: 0 0 40px rgba(255, 203, 5, 0.4);
+    }
   }
   .animate-glow-pulse {
     animation: glow-pulse 2s ease-in-out infinite;
   }
 
   @keyframes shimmer {
-    0% { background-position: -200% center; }
-    100% { background-position: 200% center; }
+    0% {
+      background-position: -200% center;
+    }
+    100% {
+      background-position: 200% center;
+    }
   }
   .shimmer {
-    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.05), transparent);
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.05), transparent);
     background-size: 200% 100%;
     animation: shimmer 3s infinite;
   }
@@ -86,20 +100,28 @@
     background: linear-gradient(45deg, rgba(255, 203, 5, 0.5), rgba(42, 117, 187, 0.5));
     background-size: 300% 300%;
     animation: gradient-shift 3s ease-in-out infinite;
-    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask:
+      linear-gradient(#fff 0 0) content-box,
+      linear-gradient(#fff 0 0);
     -webkit-mask-composite: xor;
     mask-composite: exclude;
     pointer-events: none;
   }
 
   @keyframes gradient-shift {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
   }
 
   .glass {
-    @apply bg-white/5 backdrop-blur-sm border border-white/10;
+    @apply border border-white/10 bg-white/5 backdrop-blur-sm;
   }
 }
 
@@ -114,14 +136,12 @@
   @apply bg-[#121212];
 }
 ::-webkit-scrollbar-thumb {
-  @apply bg-[#FFCB05]/50 rounded-full hover:bg-[#FFCB05]/70 transition-colors;
+  @apply rounded-full bg-[#FFCB05]/50 transition-colors hover:bg-[#FFCB05]/70;
 }
-
 
 /* ============================================
    IMPORTACIONES DE ESTILOS 
    ============================================ */
-
 
 /* Componentes UI */
 @import url('../components/shared/header.css');

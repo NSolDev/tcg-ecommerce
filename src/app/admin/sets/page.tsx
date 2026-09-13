@@ -1,13 +1,20 @@
 // src/app/admin/sets/page.tsx
-import { prisma } from '@/lib/db/prisma'
-import { Button } from '@/components/ui/button'
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table'
-import { Plus, Pencil, Trash2 } from 'lucide-react'
-import Link from 'next/link'
-import { formatDate } from '@/lib/utils'
-import { DeleteSetButton } from '@/components/admin/DeleteSetButton'
-import './admin-sets.css'
+import { prisma } from '@/lib/db/prisma';
+import { Button } from '@/components/ui/button';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from '@/components/ui/table';
+import { Plus, Pencil } from 'lucide-react';
+import Link from 'next/link';
+import { formatDate } from '@/lib/utils';
+import { DeleteSetButton } from '@/components/admin/DeleteSetButton';
+import './admin-sets.css';
 
 export default async function AdminSetsPage() {
   const sets = await prisma.set.findMany({
@@ -21,12 +28,12 @@ export default async function AdminSetsPage() {
       },
     },
     orderBy: { releaseDate: 'desc' },
-  })
+  });
 
   const setsWithTotal = sets.map((set) => ({
     ...set,
     totalProducts: set._count.cards + set._count.packs + set._count.boxes,
-  }))
+  }));
 
   return (
     <div className="admin-sets-page">
@@ -37,7 +44,7 @@ export default async function AdminSetsPage() {
         </div>
         <Button asChild className="admin-sets-btn-new">
           <Link href="/admin/sets/new">
-            <Plus className="h-4 w-4 mr-2" />
+            <Plus className="mr-2 h-4 w-4" />
             Nueva Colección
           </Link>
         </Button>
@@ -64,18 +71,15 @@ export default async function AdminSetsPage() {
                 <TableBody>
                   {setsWithTotal.map((set) => (
                     <TableRow key={set.id} className="admin-sets-table-row">
-                      <TableCell className="admin-sets-table-cell-name">
-                        {set.name}
-                      </TableCell>
+                      <TableCell className="admin-sets-table-cell-name">{set.name}</TableCell>
                       <TableCell className="admin-sets-table-cell">
                         {formatDate(set.releaseDate)}
                       </TableCell>
                       <TableCell className="admin-sets-table-cell">
-                        <span className="admin-sets-product-count">
-                          {set.totalProducts}
-                        </span>
+                        <span className="admin-sets-product-count">{set.totalProducts}</span>
                         <span className="admin-sets-product-detail">
-                          ({set._count.cards} cartas, {set._count.packs} sobres, {set._count.boxes} cajas)
+                          ({set._count.cards} cartas, {set._count.packs} sobres, {set._count.boxes}{' '}
+                          cajas)
                         </span>
                       </TableCell>
                       <TableCell className="admin-sets-table-cell-actions">
@@ -95,5 +99,5 @@ export default async function AdminSetsPage() {
         </CardContent>
       </Card>
     </div>
-  )
+  );
 }

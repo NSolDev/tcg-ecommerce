@@ -1,20 +1,20 @@
 // src/app/(shop)/orders/page.tsx
-import { auth } from '@/lib/auth'
-import { redirect } from 'next/navigation'
-import { prisma } from '@/lib/db/prisma'
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
-import { Badge } from '@/components/ui/badge'
-import { Button } from '@/components/ui/button'
-import { Package, Eye } from 'lucide-react'
-import { formatPrice, formatDate } from '@/lib/utils'
-import Link from 'next/link'
-import './orders-page.css'
+import { auth } from '@/lib/auth';
+import { redirect } from 'next/navigation';
+import { prisma } from '@/lib/db/prisma';
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import { Badge } from '@/components/ui/badge';
+import { Button } from '@/components/ui/button';
+import { Package, Eye } from 'lucide-react';
+import { formatPrice, formatDate } from '@/lib/utils';
+import Link from 'next/link';
+import './orders-page.css';
 
 export default async function OrdersPage() {
-  const session = await auth()
+  const session = await auth();
 
   if (!session?.user) {
-    redirect('/login')
+    redirect('/login');
   }
 
   const orders = await prisma.order.findMany({
@@ -23,21 +23,21 @@ export default async function OrdersPage() {
       items: true,
     },
     orderBy: { createdAt: 'desc' },
-  })
+  });
 
   const statusLabels: Record<string, string> = {
     PENDING: 'Pendiente',
     COMPLETED: 'Completado',
     CANCELLED: 'Cancelado',
     REFUNDED: 'Reembolsado',
-  }
+  };
 
   const statusClasses: Record<string, string> = {
     PENDING: 'orders-card-status-pending',
     COMPLETED: 'orders-card-status-completed',
     CANCELLED: 'orders-card-status-cancelled',
     REFUNDED: 'orders-card-status-refunded',
-  }
+  };
 
   return (
     <div className="orders-page">
@@ -47,9 +47,7 @@ export default async function OrdersPage() {
           <p className="orders-header-subtitle">Historial de tus compras</p>
         </div>
         <Button asChild variant="outline" className="orders-header-action">
-          <Link href="/products">
-            Seguir Comprando
-          </Link>
+          <Link href="/products">Seguir Comprando</Link>
         </Button>
       </div>
 
@@ -60,9 +58,7 @@ export default async function OrdersPage() {
               <Package />
             </div>
             <h3 className="orders-empty-title">No tienes pedidos</h3>
-            <p className="orders-empty-description">
-              Aún no has realizado ninguna compra
-            </p>
+            <p className="orders-empty-description">Aún no has realizado ninguna compra</p>
             <Button asChild className="orders-empty-button">
               <Link href="/products">Explorar Catálogo</Link>
             </Button>
@@ -74,9 +70,7 @@ export default async function OrdersPage() {
             <Card key={order.id} className="orders-card">
               <CardHeader className="orders-card-header">
                 <div>
-                  <CardTitle className="orders-card-id">
-                    Pedido #{order.id.slice(0, 8)}
-                  </CardTitle>
+                  <CardTitle className="orders-card-id">Pedido #{order.id.slice(0, 8)}</CardTitle>
                   <CardDescription className="orders-card-date">
                     {formatDate(order.createdAt)}
                   </CardDescription>
@@ -85,9 +79,7 @@ export default async function OrdersPage() {
                   <Badge className={statusClasses[order.status]}>
                     {statusLabels[order.status]}
                   </Badge>
-                  <span className="orders-card-total">
-                    {formatPrice(order.total)}
-                  </span>
+                  <span className="orders-card-total">{formatPrice(order.total)}</span>
                 </div>
               </CardHeader>
               <CardContent className="orders-card-content">
@@ -105,7 +97,7 @@ export default async function OrdersPage() {
                 </div>
                 <Button variant="outline" size="sm" asChild className="orders-card-detail-btn">
                   <Link href={`/orders/${order.id}`}>
-                    <Eye className="h-4 w-4 mr-2" />
+                    <Eye className="mr-2 h-4 w-4" />
                     Ver Detalles
                   </Link>
                 </Button>
@@ -115,5 +107,5 @@ export default async function OrdersPage() {
         </div>
       )}
     </div>
-  )
+  );
 }

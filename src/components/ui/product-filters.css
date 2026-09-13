@@ -6,7 +6,7 @@
 }
 
 .filters-card {
-  border: 2px solid rgba(255,255,255,0.1);
+  border: 2px solid rgba(255, 255, 255, 0.1);
   transition: border-color 0.3s;
   background: rgba(26, 26, 46, 0.8);
   backdrop-filter: blur(8px);
@@ -72,12 +72,12 @@
 .filter-label {
   font-size: 0.875rem;
   font-weight: 500;
-  color: rgba(255,255,255,0.8);
+  color: rgba(255, 255, 255, 0.8);
 }
 
 .filter-input {
-  background: rgba(255,255,255,0.05);
-  border: 1px solid rgba(255,255,255,0.1);
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
   color: white;
   padding: 0.5rem 0.75rem;
   border-radius: 0.5rem;
@@ -94,8 +94,8 @@
 }
 
 .filter-select {
-  background: rgba(255,255,255,0.05);
-  border: 1px solid rgba(255,255,255,0.1);
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
   color: white;
   padding: 0.5rem 0.75rem;
   border-radius: 0.5rem;
@@ -109,7 +109,7 @@
 
 .filter-select-content {
   background: #1a1a2e;
-  border: 1px solid rgba(255,255,255,0.1);
+  border: 1px solid rgba(255, 255, 255, 0.1);
   color: white;
 }
 
@@ -120,7 +120,7 @@
 }
 
 .filter-select-item:hover {
-  background: rgba(255,255,255,0.1);
+  background: rgba(255, 255, 255, 0.1);
 }
 
 /* Rango de precio */
@@ -131,8 +131,8 @@
 
 .price-input {
   flex: 1;
-  background: rgba(255,255,255,0.05);
-  border: 1px solid rgba(255,255,255,0.1);
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
   color: white;
   padding: 0.5rem 0.75rem;
   border-radius: 0.5rem;
@@ -165,8 +165,13 @@
 }
 
 @keyframes pulse {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.6; }
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.6;
+  }
 }
 
 /* ============================================
@@ -175,7 +180,7 @@
 .filter-collection-select {
   background: rgba(255, 255, 255, 0.03);
   border: 1px solid rgba(255, 255, 255, 0.06);
-  color: #FFFFFF;
+  color: #ffffff;
   padding: 0.5rem 0.75rem;
   border-radius: 0.5rem;
   transition: all 0.3s ease;
@@ -188,8 +193,8 @@
 }
 
 .filter-collection-select option {
-  background: #151B23;
-  color: #FFFFFF;
+  background: #151b23;
+  color: #ffffff;
   padding: 0.5rem;
 }
 

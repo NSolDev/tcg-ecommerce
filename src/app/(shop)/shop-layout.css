@@ -56,19 +56,19 @@
 .shop-footer-brand {
   font-size: 1.125rem;
   font-weight: 700;
-  color: #FFCB05;
+  color: #ffcb05;
   margin-bottom: 0.5rem;
 }
 
 .shop-footer-description {
   font-size: 0.875rem;
-  color: #B0B0B0;
+  color: #b0b0b0;
 }
 
 .shop-footer-title {
   font-weight: 600;
   margin-bottom: 0.5rem;
-  color: #FFFFFF;
+  color: #ffffff;
 }
 
 .shop-footer-list {
@@ -82,17 +82,17 @@
 
 .shop-footer-list li {
   font-size: 0.875rem;
-  color: #B0B0B0;
+  color: #b0b0b0;
 }
 
 .shop-footer-link {
   transition: color 0.3s;
   text-decoration: none;
-  color: #B0B0B0;
+  color: #b0b0b0;
 }
 
 .shop-footer-link:hover {
-  color: #2A75BB;
+  color: #2a75bb;
 }
 
 .shop-footer-social {
@@ -101,13 +101,13 @@
 }
 
 .shop-footer-social a {
-  color: #B0B0B0;
+  color: #b0b0b0;
   transition: color 0.3s;
   text-decoration: none;
 }
 
 .shop-footer-social a:hover {
-  color: #2A75BB;
+  color: #2a75bb;
 }
 
 .shop-footer-bottom {
@@ -116,7 +116,7 @@
   border-top: 1px solid rgba(255, 255, 255, 0.05);
   text-align: center;
   font-size: 0.875rem;
-  color: #B0B0B0;
+  color: #b0b0b0;
 }
 
 /* ============================================
@@ -137,7 +137,7 @@
     padding: 1rem;
     padding-top: 4.5rem;
   }
-  
+
   .shop-footer-grid {
     grid-template-columns: 1fr 1fr;
   }

@@ -24,7 +24,7 @@
 .about-hero-title {
   font-size: 2.5rem;
   font-weight: 700;
-  color: #FFFFFF;
+  color: #ffffff;
   margin-bottom: 0.5rem;
 }
 
@@ -36,7 +36,7 @@
 
 .about-hero-subtitle {
   font-size: 1.125rem;
-  color: #B0B0B0;
+  color: #b0b0b0;
 }
 
 /* ============================================
@@ -51,12 +51,12 @@
 .about-section-title {
   font-size: 1.75rem;
   font-weight: 700;
-  color: #FFFFFF;
+  color: #ffffff;
   margin-bottom: 1rem;
 }
 
 .about-section-text {
-  color: #B0B0B0;
+  color: #b0b0b0;
   line-height: 1.8;
   margin-bottom: 1rem;
 }
@@ -78,7 +78,7 @@
 }
 
 .about-value-card {
-  background: #1E1E1E;
+  background: #1e1e1e;
   border: 1px solid rgba(255, 255, 255, 0.06);
   border-radius: 0.75rem;
   padding: 1.5rem;
@@ -100,20 +100,20 @@
   height: 3rem;
   border-radius: 9999px;
   background: rgba(255, 203, 5, 0.1);
-  color: #FFCB05;
+  color: #ffcb05;
   margin-bottom: 0.75rem;
 }
 
 .about-value-title {
   font-size: 1.125rem;
   font-weight: 600;
-  color: #FFFFFF;
+  color: #ffffff;
   margin-bottom: 0.25rem;
 }
 
 .about-value-description {
   font-size: 0.875rem;
-  color: #B0B0B0;
+  color: #b0b0b0;
 }
 
 /* ============================================
@@ -122,7 +122,7 @@
 .about-cta {
   text-align: center;
   padding: 2rem;
-  background: #1E1E1E;
+  background: #1e1e1e;
   border-radius: 0.75rem;
   border: 1px solid rgba(255, 255, 255, 0.06);
 }
@@ -130,7 +130,7 @@
 .about-cta-title {
   font-size: 1.5rem;
   font-weight: 700;
-  color: #FFFFFF;
+  color: #ffffff;
   margin-bottom: 1rem;
 }
 
@@ -142,13 +142,13 @@
   border-radius: 0.5rem;
   font-weight: 600;
   color: #121212;
-  background: #FFCB05;
+  background: #ffcb05;
   transition: all 0.3s ease;
   text-decoration: none;
 }
 
 .about-cta-button:hover {
-  background: #E6B800;
+  background: #e6b800;
   transform: translateY(-2px);
   box-shadow: 0 0 30px rgba(255, 203, 5, 0.3);
 }

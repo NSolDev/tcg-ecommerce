@@ -1,7 +1,7 @@
 // src/components/seo/StoreSchema.tsx
-'use client'
+'use client';
 
-import Script from 'next/script'
+import Script from 'next/script';
 
 export function StoreSchema() {
   const schema = {
@@ -25,7 +25,7 @@ export function StoreSchema() {
     geo: {
       '@type': 'GeoCoordinates',
       latitude: 40.416775,
-      longitude: -3.703790,
+      longitude: -3.70379,
     },
     openingHoursSpecification: [
       {
@@ -49,14 +49,16 @@ export function StoreSchema() {
     priceRange: '€€',
     currenciesAccepted: 'EUR',
     paymentAccepted: ['Credit Card', 'Debit Card', 'PayPal', 'Google Pay', 'Apple Pay'],
-  }
+  };
 
   return (
     <Script
       id="store-schema"
       type="application/ld+json"
-      dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+      dangerouslySetInnerHTML={{
+        __html: JSON.stringify(schema).replace(/</g, String.fromCharCode(92) + 'u003c'),
+      }}
       strategy="afterInteractive"
     />
-  )
+  );
 }

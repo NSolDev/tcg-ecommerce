@@ -18,11 +18,11 @@
 .admin-settings-title {
   font-size: 1.875rem;
   font-weight: 700;
-  color: #FFFFFF;
+  color: #ffffff;
 }
 
 .admin-settings-subtitle {
-  color: #B0B0B0;
+  color: #b0b0b0;
 }
 
 /* ============================================
@@ -64,12 +64,12 @@
 .admin-settings-card-title {
   font-size: 1.125rem;
   font-weight: 600;
-  color: #FFFFFF;
+  color: #ffffff;
 }
 
 .admin-settings-card-description {
   font-size: 0.875rem;
-  color: #B0B0B0;
+  color: #b0b0b0;
 }
 
 .admin-settings-card-content {
@@ -101,12 +101,12 @@
 }
 
 .admin-settings-stat-label {
-  color: #B0B0B0;
+  color: #b0b0b0;
 }
 
 .admin-settings-stat-value {
   font-weight: 500;
-  color: #FFFFFF;
+  color: #ffffff;
 }
 
 .admin-settings-separator {
@@ -123,12 +123,12 @@
 }
 
 .admin-settings-version-label {
-  color: #B0B0B0;
+  color: #b0b0b0;
 }
 
 .admin-settings-version-value {
   font-weight: 500;
-  color: #FFFFFF;
+  color: #ffffff;
 }
 
 /* ============================================
@@ -143,7 +143,7 @@
 .admin-settings-label {
   font-size: 0.875rem;
   font-weight: 500;
-  color: #B0B0B0;
+  color: #b0b0b0;
 }
 
 .admin-settings-input {
@@ -152,7 +152,7 @@
   border-radius: 0.5rem;
   background: rgba(255, 255, 255, 0.03);
   border: 1px solid rgba(255, 255, 255, 0.06);
-  color: #FFFFFF;
+  color: #ffffff;
   transition: all 0.3s ease;
 }
 
@@ -163,7 +163,7 @@
 }
 
 .admin-settings-input::placeholder {
-  color: #B0B0B0;
+  color: #b0b0b0;
 }
 
 .admin-settings-input:disabled {
@@ -190,12 +190,12 @@
 .admin-settings-toggle-label {
   font-size: 0.875rem;
   font-weight: 500;
-  color: #FFFFFF;
+  color: #ffffff;
 }
 
 .admin-settings-toggle-description {
   font-size: 0.75rem;
-  color: #B0B0B0;
+  color: #b0b0b0;
 }
 
 .admin-settings-switch {
@@ -211,14 +211,14 @@
   border-radius: 0.5rem;
   font-weight: 600;
   color: #121212;
-  background: #FFCB05;
+  background: #ffcb05;
   border: none;
   cursor: pointer;
   transition: all 0.3s ease;
 }
 
 .admin-settings-btn-primary:hover {
-  background: #E6B800;
+  background: #e6b800;
   transform: translateY(-1px);
   box-shadow: 0 0 30px rgba(255, 203, 5, 0.3);
 }
@@ -228,7 +228,7 @@
   padding: 0.5rem 1rem;
   border-radius: 0.5rem;
   font-weight: 500;
-  color: #B0B0B0;
+  color: #b0b0b0;
   background: rgba(255, 255, 255, 0.03);
   border: 1px solid rgba(255, 255, 255, 0.06);
   cursor: pointer;
@@ -237,7 +237,7 @@
 
 .admin-settings-btn-outline:hover {
   border-color: rgba(255, 203, 5, 0.3);
-  color: #FFFFFF;
+  color: #ffffff;
   background: rgba(255, 203, 5, 0.05);
 }
 
@@ -246,7 +246,7 @@
   padding: 0.5rem 1rem;
   border-radius: 0.5rem;
   font-weight: 500;
-  color: #F87171;
+  color: #f87171;
   background: rgba(239, 68, 68, 0.05);
   border: 1px solid rgba(239, 68, 68, 0.1);
   cursor: pointer;
@@ -265,16 +265,16 @@
   .admin-settings-card-header {
     padding: 1rem 1rem 0.25rem 1rem;
   }
-  
+
   .admin-settings-card-content {
     padding: 0.25rem 1rem 1rem 1rem;
   }
-  
+
   .admin-settings-toggle {
     flex-wrap: wrap;
     gap: 0.5rem;
   }
-  
+
   .admin-settings-toggle-info {
     flex: 1;
     min-width: 100%;

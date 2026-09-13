@@ -9,14 +9,15 @@
   gap: 2rem;
 }
 
-.admin-dashboard-header {}
+.admin-dashboard-header {
+}
 .admin-dashboard-title {
   font-size: 1.875rem;
   font-weight: 700;
-  color: #FFFFFF;
+  color: #ffffff;
 }
 .admin-dashboard-subtitle {
-  color: #B0B0B0;
+  color: #b0b0b0;
 }
 
 /* ============================================
@@ -63,24 +64,24 @@
 .admin-stat-label {
   font-size: 0.875rem;
   font-weight: 500;
-  color: #B0B0B0;
+  color: #b0b0b0;
 }
 
 .admin-stat-icon {
   width: 1.25rem;
   height: 1.25rem;
-  color: #FFCB05;
+  color: #ffcb05;
 }
 
 .admin-stat-value {
   font-size: 1.75rem;
   font-weight: 700;
-  color: #FFFFFF;
+  color: #ffffff;
 }
 
 .admin-stat-description {
   font-size: 0.75rem;
-  color: #B0B0B0;
+  color: #b0b0b0;
   margin-top: 0.25rem;
 }
 
@@ -109,7 +110,7 @@
 .admin-activity-title {
   font-size: 1.125rem;
   font-weight: 600;
-  color: #FFFFFF;
+  color: #ffffff;
   margin-bottom: 0.75rem;
 }
 
@@ -127,12 +128,12 @@
 
 .admin-activity-item .info .name {
   font-weight: 500;
-  color: #FFFFFF;
+  color: #ffffff;
 }
 
 .admin-activity-item .info .detail {
   font-size: 0.75rem;
-  color: #B0B0B0;
+  color: #b0b0b0;
 }
 
 .admin-activity-item .value {
@@ -141,16 +142,16 @@
 
 .admin-activity-item .value .amount {
   font-weight: 500;
-  color: #FFFFFF;
+  color: #ffffff;
 }
 
 .admin-activity-item .value .status {
   font-size: 0.75rem;
-  color: #B0B0B0;
+  color: #b0b0b0;
 }
 
 .admin-activity-empty {
-  color: #B0B0B0;
+  color: #b0b0b0;
   text-align: center;
   padding: 1rem 0;
 }
@@ -159,7 +160,7 @@
    ADMIN - STOCK WARNING
    ============================================ */
 .admin-stock-warning {
-  color: #F87171;
+  color: #f87171;
   font-weight: 500;
   font-size: 0.875rem;
   padding: 0.25rem 0.75rem;

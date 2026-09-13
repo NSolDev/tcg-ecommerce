@@ -1,23 +1,22 @@
 // src/components/shared/ImageWithFallback.tsx
-'use client'
+'use client';
 
-import Image, { ImageProps } from 'next/image'
-import { useState } from 'react'
+import Image, { ImageProps } from 'next/image';
+import { useState } from 'react';
 
 interface ImageWithFallbackProps extends ImageProps {
-  fallback?: string
+  fallback?: string;
 }
 
-export function ImageWithFallback({ src, alt, fallback = '/placeholder.png', ...props }: ImageWithFallbackProps) {
-  const [imgSrc, setImgSrc] = useState(src)
+export function ImageWithFallback({
+  src,
+  alt,
+  fallback = '/placeholder.png',
+  ...props
+}: ImageWithFallbackProps) {
+  const [imgSrc, setImgSrc] = useState(src);
 
   return (
-    <Image
-      {...props}
-      src={imgSrc}
-      alt={alt}
-      onError={() => setImgSrc(fallback)}
-      loading="lazy"
-    />
-  )
+    <Image {...props} src={imgSrc} alt={alt} onError={() => setImgSrc(fallback)} loading="lazy" />
+  );
 }

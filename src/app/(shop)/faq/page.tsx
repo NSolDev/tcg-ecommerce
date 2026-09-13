@@ -1,48 +1,54 @@
 // src/app/(shop)/faq/page.tsx
-'use client'
+'use client';
 
-import { useState } from 'react'
-import { ChevronDown, ChevronUp } from 'lucide-react'
-import './faq.css'
+import { useState } from 'react';
+import { ChevronDown, ChevronUp } from 'lucide-react';
+import './faq.css';
 
 interface FAQItem {
-  question: string
-  answer: string
+  question: string;
+  answer: string;
 }
 
 const faqData: FAQItem[] = [
   {
     question: '¿Cómo sé que las cartas son auténticas?',
-    answer: 'Todas nuestras cartas son 100% originales y certificadas. Trabajamos directamente con distribuidores oficiales y cada producto pasa por un riguroso control de calidad antes de ser puesto a la venta.'
+    answer:
+      'Todas nuestras cartas son 100% originales y certificadas. Trabajamos directamente con distribuidores oficiales y cada producto pasa por un riguroso control de calidad antes de ser puesto a la venta.',
   },
   {
     question: '¿Cuánto tiempo tarda el envío?',
-    answer: 'Realizamos envíos en 24-48 horas laborables para toda España. Para pedidos internacionales, el plazo puede variar entre 3-7 días hábiles según el destino.'
+    answer:
+      'Realizamos envíos en 24-48 horas laborables para toda España. Para pedidos internacionales, el plazo puede variar entre 3-7 días hábiles según el destino.',
   },
   {
     question: '¿Puedo devolver un producto?',
-    answer: 'Sí, aceptamos devoluciones dentro de los 30 días posteriores a la compra. El producto debe estar en su estado original y sin usar. Los gastos de envío de la devolución corren a cargo del cliente.'
+    answer:
+      'Sí, aceptamos devoluciones dentro de los 30 días posteriores a la compra. El producto debe estar en su estado original y sin usar. Los gastos de envío de la devolución corren a cargo del cliente.',
   },
   {
     question: '¿Cómo puedo rastrear mi pedido?',
-    answer: 'Una vez realizado el envío, recibirás un email con el número de seguimiento. Podrás rastrear tu pedido directamente en la web de la empresa de mensajería.'
+    answer:
+      'Una vez realizado el envío, recibirás un email con el número de seguimiento. Podrás rastrear tu pedido directamente en la web de la empresa de mensajería.',
   },
   {
     question: '¿Qué métodos de pago aceptan?',
-    answer: 'Aceptamos tarjetas de crédito/débito, PayPal, Google Pay, Apple Pay y transferencia bancaria. Todos los pagos se procesan de forma segura a través de Stripe.'
+    answer:
+      'Aceptamos tarjetas de crédito/débito, PayPal, Google Pay, Apple Pay y transferencia bancaria. Todos los pagos se procesan de forma segura a través de Stripe.',
   },
   {
     question: '¿Tienen tienda física?',
-    answer: 'Actualmente operamos exclusivamente online. Esto nos permite ofrecer los mejores precios y una selección más amplia de productos.'
+    answer:
+      'Actualmente operamos exclusivamente online. Esto nos permite ofrecer los mejores precios y una selección más amplia de productos.',
   },
-]
+];
 
 export default function FAQPage() {
-  const [openIndex, setOpenIndex] = useState<number | null>(null)
+  const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   const toggleFAQ = (index: number) => {
-    setOpenIndex(openIndex === index ? null : index)
-  }
+    setOpenIndex(openIndex === index ? null : index);
+  };
 
   return (
     <div className="faq-container">
@@ -54,10 +60,7 @@ export default function FAQPage() {
       <div className="faq-list">
         {faqData.map((item, index) => (
           <div key={index} className="faq-item">
-            <button
-              className="faq-question"
-              onClick={() => toggleFAQ(index)}
-            >
+            <button className="faq-question" onClick={() => toggleFAQ(index)}>
               <span>{item.question}</span>
               {openIndex === index ? (
                 <ChevronUp className="faq-icon" />
@@ -84,5 +87,5 @@ export default function FAQPage() {
         </a>
       </div>
     </div>
-  )
+  );
 }

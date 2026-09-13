@@ -1,20 +1,27 @@
 // src/app/admin/users/page.tsx
-import { prisma } from '@/lib/db/prisma'
-import { auth } from '@/lib/auth'
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table'
-import { Badge } from '@/components/ui/badge'
-import { Button } from '@/components/ui/button'
-import { Eye, Shield, ShieldOff, UserX } from 'lucide-react'
-import Link from 'next/link'
-import { formatDate } from '@/lib/utils'
-import { UpdateUserRoleButton } from '@/components/admin/UpdateUserRoleButton'
-import { DeleteUserButton } from '@/components/admin/DeleteUserButton'
-import './admin-users.css'
+import { prisma } from '@/lib/db/prisma';
+import { auth } from '@/lib/auth';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from '@/components/ui/table';
+import { Badge } from '@/components/ui/badge';
+import { Button } from '@/components/ui/button';
+import { Eye } from 'lucide-react';
+import Link from 'next/link';
+import { formatDate } from '@/lib/utils';
+import { UpdateUserRoleButton } from '@/components/admin/UpdateUserRoleButton';
+import { DeleteUserButton } from '@/components/admin/DeleteUserButton';
+import './admin-users.css';
 
 export default async function AdminUsersPage() {
-  const session = await auth()
-  const currentUserId = session?.user?.id
+  const session = await auth();
+  const currentUserId = session?.user?.id;
 
   const users = await prisma.user.findMany({
     include: {
@@ -25,7 +32,7 @@ export default async function AdminUsersPage() {
       },
     },
     orderBy: { createdAt: 'desc' },
-  })
+  });
 
   return (
     <div className="admin-users-page">
@@ -56,43 +63,50 @@ export default async function AdminUsersPage() {
                 </TableHeader>
                 <TableBody>
                   {users.map((user) => {
-                    const isCurrentUser = user.id === currentUserId
-                    const isAdmin = user.role === 'ADMIN'
+                    const isCurrentUser = user.id === currentUserId;
+                    const isAdmin = user.role === 'ADMIN';
 
                     return (
                       <TableRow key={user.id} className="admin-users-table-row">
                         <TableCell data-label="Usuario" className="admin-users-table-cell-name">
                           {user.name || 'Sin nombre'}
-                          {isCurrentUser && (
-                            <span className="admin-users-badge-current">Tú</span>
-                          )}
+                          {isCurrentUser && <span className="admin-users-badge-current">Tú</span>}
                         </TableCell>
                         <TableCell data-label="Email" className="admin-users-table-cell-email">
                           {user.email}
                         </TableCell>
                         <TableCell data-label="Rol">
-                          <Badge className={isAdmin ? 'admin-users-badge-admin' : 'admin-users-badge-user'}>
+                          <Badge
+                            className={
+                              isAdmin ? 'admin-users-badge-admin' : 'admin-users-badge-user'
+                            }
+                          >
                             {isAdmin ? 'Administrador' : 'Usuario'}
                           </Badge>
                         </TableCell>
                         <TableCell data-label="Pedidos" className="admin-users-table-cell-orders">
                           {user._count.orders}
                         </TableCell>
-                        <TableCell data-label="Fecha de Registro" className="admin-users-table-cell-date">
+                        <TableCell
+                          data-label="Fecha de Registro"
+                          className="admin-users-table-cell-date"
+                        >
                           {formatDate(user.createdAt)}
                         </TableCell>
                         <TableCell data-label="Acciones" className="admin-users-table-cell-actions">
-                          <Button variant="outline" size="sm" asChild className="admin-users-btn-view">
+                          <Button
+                            variant="outline"
+                            size="sm"
+                            asChild
+                            className="admin-users-btn-view"
+                          >
                             <Link href={`/admin/users/${user.id}`}>
                               <Eye className="h-4 w-4" />
                             </Link>
                           </Button>
 
                           {!isCurrentUser && (
-                            <UpdateUserRoleButton 
-                              userId={user.id} 
-                              currentRole={user.role} 
-                            />
+                            <UpdateUserRoleButton userId={user.id} currentRole={user.role} />
                           )}
 
                           {!isCurrentUser && (
@@ -100,7 +114,7 @@ export default async function AdminUsersPage() {
                           )}
                         </TableCell>
                       </TableRow>
-                    )
+                    );
                   })}
                 </TableBody>
               </Table>
@@ -109,5 +123,5 @@ export default async function AdminUsersPage() {
         </CardContent>
       </Card>
     </div>
-  )
+  );
 }

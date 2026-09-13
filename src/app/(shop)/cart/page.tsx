@@ -1,40 +1,32 @@
 // src/app/(shop)/cart/page.tsx
-'use client'
+'use client';
 
-import { useCartStore } from '@/store/cartStore'
-import { Button } from '@/components/ui/button'
-import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/components/ui/card'
-import { Separator } from '@/components/ui/separator'
-import Image from 'next/image'
-import Link from 'next/link'
-import { Minus, Plus, Trash2, ShoppingBag, ArrowRight, Shield } from 'lucide-react'
-import { formatPrice } from '@/lib/utils'
-import { useRouter } from 'next/navigation'
-import { useSession } from 'next-auth/react'
-import './cart-page.css'
+import { useCartStore } from '@/store/cartStore';
+import { Separator } from '@/components/ui/separator';
+import Image from 'next/image';
+import Link from 'next/link';
+import { Minus, Plus, Trash2, ShoppingBag, ArrowRight, Shield } from 'lucide-react';
+import { formatPrice } from '@/lib/utils';
+import { useRouter } from 'next/navigation';
+import { useSession } from 'next-auth/react';
+import './cart-page.css';
 
 export default function CartPage() {
-  const router = useRouter()
-  const { data: session } = useSession()
-  const {
-    items,
-    removeItem,
-    updateQuantity,
-    getTotalItems,
-    getTotalPrice,
-    clearCart,
-  } = useCartStore()
+  const router = useRouter();
+  const { data: session } = useSession();
+  const { items, removeItem, updateQuantity, getTotalItems, getTotalPrice, clearCart } =
+    useCartStore();
 
-  const totalItems = getTotalItems()
-  const totalPrice = getTotalPrice()
+  const totalItems = getTotalItems();
+  const totalPrice = getTotalPrice();
 
   const handleCheckout = () => {
     if (!session) {
-      router.push('/login?callbackUrl=/checkout')
-      return
+      router.push('/login?callbackUrl=/checkout');
+      return;
     }
-    router.push('/checkout')
-  }
+    router.push('/checkout');
+  };
 
   if (items.length === 0) {
     return (
@@ -45,15 +37,16 @@ export default function CartPage() {
           </div>
           <h1 className="cart-empty-title">Tu carrito está vacío</h1>
           <p className="cart-empty-description">
-            Parece que aún no has agregado ningún producto. ¡Explora nuestro catálogo y encuentra tus cartas favoritas!
+            Parece que aún no has agregado ningún producto. ¡Explora nuestro catálogo y encuentra
+            tus cartas favoritas!
           </p>
           <Link href="/products" className="cart-empty-button">
             Explorar Catálogo
-            <ArrowRight className="w-4 h-4" />
+            <ArrowRight className="h-4 w-4" />
           </Link>
         </div>
       </div>
-    )
+    );
   }
 
   return (
@@ -69,7 +62,7 @@ export default function CartPage() {
           </p>
         </div>
         <button className="cart-header-clear" onClick={clearCart}>
-          <Trash2 className="w-4 h-4" />
+          <Trash2 className="h-4 w-4" />
           Vaciar Carrito
         </button>
       </div>
@@ -104,7 +97,7 @@ export default function CartPage() {
                       className="qty-btn"
                       onClick={() => updateQuantity(item.productId, item.quantity - 1)}
                     >
-                      <Minus className="w-3 h-3" />
+                      <Minus className="h-3 w-3" />
                     </button>
                     <span className="qty-value">{item.quantity}</span>
                     <button
@@ -112,7 +105,7 @@ export default function CartPage() {
                       onClick={() => updateQuantity(item.productId, item.quantity + 1)}
                       disabled={item.quantity >= item.stock}
                     >
-                      <Plus className="w-3 h-3" />
+                      <Plus className="h-3 w-3" />
                     </button>
                     <span className="stock-label">Stock: {item.stock}</span>
                   </div>
@@ -122,7 +115,7 @@ export default function CartPage() {
                 <div className="cart-item-subtotal">
                   <p className="amount">{formatPrice(item.price * item.quantity)}</p>
                   <button className="remove-btn" onClick={() => removeItem(item.productId)}>
-                    <Trash2 className="w-4 h-4" />
+                    <Trash2 className="h-4 w-4" />
                   </button>
                 </div>
               </div>
@@ -140,7 +133,7 @@ export default function CartPage() {
         <div className="cart-summary">
           <div className="cart-summary-card">
             <h2 className="cart-summary-title">Resumen del Pedido</h2>
-            
+
             <div className="cart-summary-row">
               <span className="label">Subtotal</span>
               <span className="value">{formatPrice(totalPrice)}</span>
@@ -153,9 +146,9 @@ export default function CartPage() {
               <span className="label">Impuestos</span>
               <span className="value">{formatPrice(0)}</span>
             </div>
-            
+
             <Separator className="cart-summary-separator" />
-            
+
             <div className="cart-summary-total">
               <span className="label">Total</span>
               <span className="value">{formatPrice(totalPrice)}</span>
@@ -186,5 +179,5 @@ export default function CartPage() {
         </div>
       </div>
     </div>
-  )
+  );
 }

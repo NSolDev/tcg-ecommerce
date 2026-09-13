@@ -1,11 +1,11 @@
 // src/app/admin/products/new/page.tsx
-import { prisma } from '@/lib/db/prisma'
-import { ProductForm } from '@/components/admin/ProductForm'
+import { prisma } from '@/lib/db/prisma';
+import { ProductForm } from '@/components/admin/ProductForm';
 
 export default async function NewProductPage() {
   const sets = await prisma.set.findMany({
     orderBy: { name: 'asc' },
-  })
+  });
 
   return (
     <div className="admin-page-section">
@@ -17,5 +17,5 @@ export default async function NewProductPage() {
         <ProductForm sets={sets} />
       </div>
     </div>
-  )
+  );
 }

@@ -1,10 +1,12 @@
 // src/components/admin/DeleteSetButton.tsx
-'use client'
+'use client';
 
-import { useState } from 'react'
-import { useRouter } from 'next/navigation'
-import { Button } from '@/components/ui/button'
-import { Trash2 } from 'lucide-react'
+import { useState } from 'react';
+import { useRouter } from 'next/navigation';
+import { Button } from '@/components/ui/button';
+import { Trash2 } from 'lucide-react';
+import { toast } from 'sonner';
+import { deleteSet } from '@/lib/actions/set.actions';
 import {
   AlertDialog,
   AlertDialogAction,
@@ -15,56 +17,52 @@ import {
   AlertDialogHeader,
   AlertDialogTitle,
   AlertDialogTrigger,
-} from '@/components/ui/alert-dialog'
+} from '@/components/ui/alert-dialog';
 
 interface DeleteSetButtonProps {
-  setId: string
+  setId: string;
 }
 
 export function DeleteSetButton({ setId }: DeleteSetButtonProps) {
-  const [loading, setLoading] = useState(false)
-  const [open, setOpen] = useState(false)
-  const router = useRouter()
+  const [loading, setLoading] = useState(false);
+  const [open, setOpen] = useState(false);
+  const router = useRouter();
 
   const handleDelete = async () => {
-    setLoading(true)
+    setLoading(true);
     try {
-      // Aquí iría la lógica de eliminación
-      // await deleteSet(setId)
-      setOpen(false)
-      router.refresh()
+      await deleteSet(setId);
+      toast.success('Colección eliminada');
+      setOpen(false);
+      router.refresh();
     } catch (error) {
-      console.error('Error eliminando colección:', error)
-      alert('Error al eliminar la colección')
+      toast.error(error instanceof Error ? error.message : 'Error al eliminar la colección');
     } finally {
-      setLoading(false)
+      setLoading(false);
     }
-  }
+  };
 
   return (
     <AlertDialog open={open} onOpenChange={setOpen}>
       <AlertDialogTrigger asChild>
-        <Button 
-          variant="destructive" 
-          size="sm" 
-          className="admin-sets-btn-delete"
-        >
+        <Button variant="destructive" size="sm" className="admin-sets-btn-delete">
           <Trash2 className="h-4 w-4" />
         </Button>
       </AlertDialogTrigger>
-      <AlertDialogContent className="bg-[#1E1E1E] border-white/10 text-white">
+      <AlertDialogContent className="border-white/10 bg-[#1E1E1E] text-white">
         <AlertDialogHeader>
           <AlertDialogTitle className="text-white">¿Eliminar colección?</AlertDialogTitle>
           <AlertDialogDescription className="text-B0B0B0">
-            Esta acción eliminará permanentemente la colección y todos sus productos asociados.
+            Esta acción eliminará permanentemente la colección. Solo es posible si no tiene
+            productos asociados.
           </AlertDialogDescription>
         </AlertDialogHeader>
         <AlertDialogFooter>
-          <AlertDialogCancel className="bg-white/5 border-white/10 text-white hover:bg-white/10">
+          <AlertDialogCancel className="border-white/10 bg-white/5 text-white hover:bg-white/10">
             Cancelar
           </AlertDialogCancel>
-          <AlertDialogAction 
-            onClick={handleDelete} 
+          <AlertDialogAction
+            onClick={handleDelete}
             disabled={loading}
             className="bg-red-500 hover:bg-red-600"
           >
@@ -73,5 +71,5 @@ export function DeleteSetButton({ setId }: DeleteSetButtonProps) {
         </AlertDialogFooter>
       </AlertDialogContent>
     </AlertDialog>
-  )
+  );
 }

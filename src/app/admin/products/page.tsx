@@ -1,21 +1,22 @@
 // src/app/admin/products/page.tsx
-import { prisma } from '@/lib/db/prisma'
-import { Button } from '@/components/ui/button'
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table'
-import { Badge } from '@/components/ui/badge'
-import { Plus, Pencil, Trash2, AlertCircle } from 'lucide-react'
-import Link from 'next/link'
-import { formatPrice } from '@/lib/utils'
-import { DeleteProductButton } from '@/components/admin/DeleteProductButton'
+import { prisma } from '@/lib/db/prisma';
+import { Button } from '@/components/ui/button';
+import { CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import {
-  Tooltip,
-  TooltipContent,
-  TooltipProvider,
-  TooltipTrigger,
-} from "@/components/ui/tooltip"
-import { PLACEHOLDER_IMAGE } from '@/lib/constants'
-import './admin-products.css'
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from '@/components/ui/table';
+import { Badge } from '@/components/ui/badge';
+import { Plus, Pencil, AlertCircle } from 'lucide-react';
+import Link from 'next/link';
+import { formatPrice } from '@/lib/utils';
+import { DeleteProductButton } from '@/components/admin/DeleteProductButton';
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
+import './admin-products.css';
 
 export default async function AdminProductsPage() {
   // Obtener productos con la nueva estructura
@@ -43,28 +44,28 @@ export default async function AdminProductsPage() {
       },
     },
     orderBy: { createdAt: 'desc' },
-  })
+  });
 
   // Transformar productos para incluir la información del set
   const productsWithSet = products.map((product) => {
-    let setInfo = null
-    let rarity = null
-    
+    let setInfo = null;
+    let rarity = null;
+
     if (product.card) {
-      setInfo = product.card.set
-      rarity = product.card.rarity
+      setInfo = product.card.set;
+      rarity = product.card.rarity;
     } else if (product.pack) {
-      setInfo = product.pack.set
+      setInfo = product.pack.set;
     } else if (product.box) {
-      setInfo = product.box.set
+      setInfo = product.box.set;
     }
 
     return {
       ...product,
       set: setInfo,
       rarity: rarity,
-    }
-  })
+    };
+  });
 
   const rarityLabels: Record<string, string> = {
     COMUN: 'Común',
@@ -72,7 +73,7 @@ export default async function AdminProductsPage() {
     RARA: 'Rara',
     SUPER_RARA: 'Súper Rara',
     SECRETA: 'Secreta',
-  }
+  };
 
   return (
     <div className="admin-products-page">
@@ -84,13 +85,13 @@ export default async function AdminProductsPage() {
         <div className="admin-products-actions">
           <Button asChild variant="outline" className="admin-products-btn-inactive">
             <Link href="/admin/products/inactive">
-              <AlertCircle className="h-4 w-4 mr-2" />
+              <AlertCircle className="mr-2 h-4 w-4" />
               Ver Inactivos
             </Link>
           </Button>
           <Button asChild className="admin-products-btn-new">
             <Link href="/admin/products/new">
-              <Plus className="h-4 w-4 mr-2" />
+              <Plus className="mr-2 h-4 w-4" />
               Nuevo Producto
             </Link>
           </Button>
@@ -121,21 +122,13 @@ export default async function AdminProductsPage() {
                 <TableBody>
                   {productsWithSet.map((product) => (
                     <TableRow key={product.id} className="admin-products-table-row">
-                      <TableCell 
-                        data-label="Nombre" 
-                        className="admin-products-table-cell-name"
-                      >
+                      <TableCell data-label="Nombre" className="admin-products-table-cell-name">
                         <TooltipProvider>
                           <Tooltip>
                             <TooltipTrigger asChild>
-                              <span className="admin-product-name-trigger">
-                                {product.name}
-                              </span>
+                              <span className="admin-product-name-trigger">{product.name}</span>
                             </TooltipTrigger>
-                            <TooltipContent 
-                              side="top" 
-                              className="admin-product-tooltip"
-                            >
+                            <TooltipContent side="top" className="admin-product-tooltip">
                               <p className="admin-product-tooltip-text">{product.name}</p>
                             </TooltipContent>
                           </Tooltip>
@@ -174,8 +167,16 @@ export default async function AdminProductsPage() {
                           {product.isActive ? 'Activo' : 'Inactivo'}
                         </Badge>
                       </TableCell>
-                      <TableCell data-label="Acciones" className="admin-products-table-cell-actions">
-                        <Button variant="outline" size="sm" asChild className="admin-products-btn-edit">
+                      <TableCell
+                        data-label="Acciones"
+                        className="admin-products-table-cell-actions"
+                      >
+                        <Button
+                          variant="outline"
+                          size="sm"
+                          asChild
+                          className="admin-products-btn-edit"
+                        >
                           <Link href={`/admin/products/${product.id}/edit`}>
                             <Pencil className="h-4 w-4" />
                           </Link>
@@ -191,5 +192,5 @@ export default async function AdminProductsPage() {
         </CardContent>
       </div>
     </div>
-  )
+  );
 }

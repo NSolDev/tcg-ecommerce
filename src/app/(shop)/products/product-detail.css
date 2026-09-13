@@ -16,14 +16,14 @@
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  color: #B0B0B0;
+  color: #b0b0b0;
   transition: all 0.3s ease;
   text-decoration: none;
   margin-bottom: 1.5rem;
 }
 
 .product-detail-back:hover {
-  color: #FFFFFF;
+  color: #ffffff;
 }
 
 .product-detail-back .icon {
@@ -44,7 +44,7 @@
   aspect-ratio: 1 / 1;
   border-radius: 1rem;
   overflow: hidden;
-  background: #1E1E1E;
+  background: #1e1e1e;
   border: 1px solid rgba(255, 255, 255, 0.06);
 }
 
@@ -109,50 +109,50 @@
 
 .product-detail-badge.rarity-comun {
   background: rgba(107, 114, 128, 0.2);
-  color: #9CA3AF;
+  color: #9ca3af;
   border: 1px solid rgba(107, 114, 128, 0.2);
 }
 
 .product-detail-badge.rarity-normal {
   background: rgba(59, 130, 246, 0.2);
-  color: #60A5FA;
+  color: #60a5fa;
   border: 1px solid rgba(59, 130, 246, 0.2);
 }
 
 .product-detail-badge.rarity-rara {
   background: rgba(168, 85, 247, 0.2);
-  color: #A855F7;
+  color: #a855f7;
   border: 1px solid rgba(168, 85, 247, 0.2);
 }
 
 .product-detail-badge.rarity-super_rara {
   background: rgba(251, 146, 60, 0.2);
-  color: #FB923C;
+  color: #fb923c;
   border: 1px solid rgba(251, 146, 60, 0.2);
 }
 
 .product-detail-badge.rarity-secreta {
   background: rgba(239, 68, 68, 0.2);
-  color: #F87171;
+  color: #f87171;
   border: 1px solid rgba(239, 68, 68, 0.2);
 }
 
 .product-detail-badge.set {
   background: rgba(255, 255, 255, 0.05);
-  color: #B0B0B0;
+  color: #b0b0b0;
   border: 1px solid rgba(255, 255, 255, 0.06);
 }
 
 .product-detail-badge.category {
   background: rgba(42, 117, 187, 0.15);
-  color: #2A75BB;
+  color: #2a75bb;
   border: 1px solid rgba(42, 117, 187, 0.2);
 }
 
 .product-detail-name {
   font-size: 2rem;
   font-weight: 700;
-  color: #FFFFFF;
+  color: #ffffff;
   margin-bottom: 0.25rem;
 }
 
@@ -165,7 +165,7 @@
 .product-detail-price {
   font-size: 1.75rem;
   font-weight: 700;
-  color: #FFCB05;
+  color: #ffcb05;
 }
 
 .product-detail-separator {
@@ -175,11 +175,11 @@
 
 .product-detail-description .label {
   font-weight: 600;
-  color: #FFFFFF;
+  color: #ffffff;
 }
 
 .product-detail-description .text {
-  color: #B0B0B0;
+  color: #b0b0b0;
   line-height: 1.7;
 }
 
@@ -187,7 +187,7 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 0.75rem;
-  background: #1E1E1E;
+  background: #1e1e1e;
   border: 1px solid rgba(255, 255, 255, 0.05);
   border-radius: 0.75rem;
   padding: 1rem;
@@ -198,25 +198,25 @@
   font-weight: 500;
   text-transform: uppercase;
   letter-spacing: 0.05em;
-  color: #B0B0B0;
+  color: #b0b0b0;
 }
 
 .product-detail-specs .spec .value {
   font-weight: 500;
-  color: #FFFFFF;
+  color: #ffffff;
   margin-top: 0.125rem;
 }
 
 .product-detail-specs .spec .value.in-stock {
-  color: #22C55E;
+  color: #22c55e;
 }
 
 .product-detail-specs .spec .value.low-stock {
-  color: #FFCB05;
+  color: #ffcb05;
 }
 
 .product-detail-specs .spec .value.out-of-stock {
-  color: #F87171;
+  color: #f87171;
 }
 
 .product-detail-actions {
@@ -244,12 +244,12 @@
   width: 1.25rem;
   height: 1.25rem;
   margin: 0 auto 0.25rem;
-  color: #FFCB05;
+  color: #ffcb05;
 }
 
 .product-detail-benefits .benefit .label {
   font-size: 0.625rem;
-  color: #B0B0B0;
+  color: #b0b0b0;
 }
 
 .product-detail-actions .btn-primary {
@@ -260,14 +260,14 @@
   border-radius: 0.5rem;
   font-weight: 600;
   color: #121212;
-  background: #FFCB05;
+  background: #ffcb05;
   transition: all 0.3s ease;
   border: none;
   cursor: pointer;
 }
 
 .product-detail-actions .btn-primary:hover {
-  background: #E6B800;
+  background: #e6b800;
   transform: translateY(-2px);
   box-shadow: 0 0 30px rgba(255, 203, 5, 0.3);
 }
@@ -285,7 +285,7 @@
   padding: 0.75rem 2rem;
   border-radius: 0.5rem;
   font-weight: 600;
-  color: #FFFFFF;
+  color: #ffffff;
   background: rgba(255, 255, 255, 0.05);
   border: 1px solid rgba(255, 255, 255, 0.1);
   transition: all 0.3s ease;
@@ -314,18 +314,18 @@
 .product-related-header .title {
   font-size: 1.5rem;
   font-weight: 700;
-  color: #FFFFFF;
+  color: #ffffff;
 }
 
 .product-related-header .link {
-  color: #2A75BB;
+  color: #2a75bb;
   font-size: 0.875rem;
   transition: color 0.3s ease;
   text-decoration: none;
 }
 
 .product-related-header .link:hover {
-  color: #1A5A9A;
+  color: #1a5a9a;
 }
 
 .product-related-grid {

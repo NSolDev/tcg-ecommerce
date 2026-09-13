@@ -18,11 +18,11 @@
 .admin-audit-title {
   font-size: 1.875rem;
   font-weight: 700;
-  color: #FFFFFF;
+  color: #ffffff;
 }
 
 .admin-audit-subtitle {
-  color: #B0B0B0;
+  color: #b0b0b0;
 }
 
 /* ============================================
@@ -44,7 +44,7 @@
 .admin-audit-card-title {
   font-size: 1.125rem;
   font-weight: 600;
-  color: #FFFFFF;
+  color: #ffffff;
 }
 
 .admin-audit-card-content {
@@ -52,7 +52,7 @@
 }
 
 .admin-audit-empty {
-  color: #B0B0B0;
+  color: #b0b0b0;
   text-align: center;
   padding: 2rem 0;
 }
@@ -76,7 +76,7 @@
   font-weight: 500;
   text-transform: uppercase;
   letter-spacing: 0.05em;
-  color: #B0B0B0;
+  color: #b0b0b0;
   white-space: nowrap;
 }
 
@@ -98,14 +98,14 @@
    ADMIN AUDIT - DATE
    ============================================ */
 .admin-audit-date {
-  color: #FFFFFF;
+  color: #ffffff;
   font-size: 0.875rem;
 }
 
 .admin-audit-time {
   display: block;
   font-size: 0.75rem;
-  color: #B0B0B0;
+  color: #b0b0b0;
 }
 
 /* ============================================
@@ -118,7 +118,7 @@
 }
 
 .admin-audit-user-name {
-  color: #FFFFFF;
+  color: #ffffff;
 }
 
 /* ============================================
@@ -136,49 +136,49 @@
 
 .admin-audit-badge-create {
   background: rgba(34, 197, 94, 0.15);
-  color: #34D399;
+  color: #34d399;
   border: 1px solid rgba(34, 197, 94, 0.15);
 }
 
 .admin-audit-badge-update {
   background: rgba(59, 130, 246, 0.15);
-  color: #60A5FA;
+  color: #60a5fa;
   border: 1px solid rgba(59, 130, 246, 0.15);
 }
 
 .admin-audit-badge-delete {
   background: rgba(239, 68, 68, 0.15);
-  color: #F87171;
+  color: #f87171;
   border: 1px solid rgba(239, 68, 68, 0.15);
 }
 
 .admin-audit-badge-restore {
   background: rgba(34, 197, 94, 0.15);
-  color: #34D399;
+  color: #34d399;
   border: 1px solid rgba(34, 197, 94, 0.15);
 }
 
 .admin-audit-badge-deactivate {
   background: rgba(255, 203, 5, 0.15);
-  color: #FFCB05;
+  color: #ffcb05;
   border: 1px solid rgba(255, 203, 5, 0.15);
 }
 
 .admin-audit-badge-view {
   background: rgba(107, 114, 128, 0.15);
-  color: #9CA3AF;
+  color: #9ca3af;
   border: 1px solid rgba(107, 114, 128, 0.15);
 }
 
 .admin-audit-badge-login {
   background: rgba(168, 85, 247, 0.15);
-  color: #A855F7;
+  color: #a855f7;
   border: 1px solid rgba(168, 85, 247, 0.15);
 }
 
 .admin-audit-badge-default {
   background: rgba(255, 255, 255, 0.05);
-  color: #B0B0B0;
+  color: #b0b0b0;
   border: 1px solid rgba(255, 255, 255, 0.06);
 }
 
@@ -191,13 +191,13 @@
    ADMIN AUDIT - ENTITY
    ============================================ */
 .admin-audit-entity {
-  color: #FFFFFF;
+  color: #ffffff;
 }
 
 .admin-audit-entity-id {
   display: block;
   font-size: 0.75rem;
-  color: #B0B0B0;
+  color: #b0b0b0;
 }
 
 /* ============================================
@@ -205,19 +205,19 @@
    ============================================ */
 .admin-audit-details {
   font-size: 0.875rem;
-  color: #B0B0B0;
+  color: #b0b0b0;
   max-width: 300px;
 }
 
 .admin-audit-details-summary {
   font-size: 0.75rem;
-  color: #FFCB05;
+  color: #ffcb05;
   cursor: pointer;
   transition: color 0.3s ease;
 }
 
 .admin-audit-details-summary:hover {
-  color: #E6B800;
+  color: #e6b800;
 }
 
 .admin-audit-details-changes {
@@ -240,11 +240,11 @@
   .admin-audit-card-header {
     padding: 1rem 1rem 0.25rem 1rem;
   }
-  
+
   .admin-audit-card-content {
     padding: 0 1rem 1rem 1rem;
   }
-  
+
   .admin-audit-details {
     max-width: 100%;
   }
@@ -254,7 +254,7 @@
   .admin-audit-table-wrap {
     overflow-x: auto;
   }
-  
+
   .admin-audit-table-wrap table {
     min-width: 600px;
   }

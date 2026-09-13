@@ -15,7 +15,7 @@
 .admin-products-title {
   font-size: 1.875rem;
   font-weight: 700;
-  color: #FFFFFF;
+  color: #ffffff;
 }
 
 .admin-products-subtitle {
@@ -36,7 +36,7 @@
   border-radius: 0.5rem;
   font-weight: 500;
   font-size: 0.875rem;
-  color: #FBBF24;
+  color: #fbbf24;
   background: rgba(251, 191, 36, 0.1);
   border: 1px solid rgba(251, 191, 36, 0.15);
   transition: all 0.3s ease;
@@ -56,14 +56,14 @@
   border-radius: 0.5rem;
   font-weight: 500;
   font-size: 0.875rem;
-  color: #FFFFFF;
-  background: linear-gradient(135deg, #A855F7, #8B5CF6);
+  color: #ffffff;
+  background: linear-gradient(135deg, #a855f7, #8b5cf6);
   transition: all 0.3s ease;
   text-decoration: none;
 }
 
 .admin-products-actions .btn-new:hover {
-  background: linear-gradient(135deg, #8B5CF6, #7C3AED);
+  background: linear-gradient(135deg, #8b5cf6, #7c3aed);
   transform: translateY(-1px);
   box-shadow: 0 0 30px rgba(168, 85, 247, 0.3);
 }

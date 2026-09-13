@@ -1,12 +1,10 @@
 // src/app/(auth)/register/page.tsx
-import { Button } from '@/components/ui/button'
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card'
-import { Input } from '@/components/ui/input'
-import { Label } from '@/components/ui/label'
-import Link from 'next/link'
-import { registerUser } from '@/lib/actions/auth.actions'
-import '../auth.css'
-import './register.css'
+import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
+import Link from 'next/link';
+import { registerUser } from '@/lib/actions/auth.actions';
+import '../auth.css';
+import './register.css';
 
 export default function RegisterPage() {
   return (
@@ -19,7 +17,9 @@ export default function RegisterPage() {
 
         <form action={registerUser} className="auth-form">
           <div className="auth-form-group">
-            <Label htmlFor="name" className="auth-form-label">Nombre</Label>
+            <Label htmlFor="name" className="auth-form-label">
+              Nombre
+            </Label>
             <Input
               id="name"
               name="name"
@@ -30,7 +30,9 @@ export default function RegisterPage() {
             />
           </div>
           <div className="auth-form-group">
-            <Label htmlFor="email" className="auth-form-label">Email</Label>
+            <Label htmlFor="email" className="auth-form-label">
+              Email
+            </Label>
             <Input
               id="email"
               name="email"
@@ -41,7 +43,9 @@ export default function RegisterPage() {
             />
           </div>
           <div className="auth-form-group">
-            <Label htmlFor="password" className="auth-form-label">Contraseña</Label>
+            <Label htmlFor="password" className="auth-form-label">
+              Contraseña
+            </Label>
             <Input
               id="password"
               name="password"
@@ -65,5 +69,5 @@ export default function RegisterPage() {
         </div>
       </div>
     </div>
-  )
+  );
 }

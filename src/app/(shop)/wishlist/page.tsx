@@ -1,20 +1,20 @@
 // src/app/(shop)/wishlist/page.tsx
-import { auth } from '@/lib/auth'
-import { redirect } from 'next/navigation'
-import { prisma } from '@/lib/db/prisma'
-import { InteractiveProductCard } from '@/components/ui/card-7'
-import { Button } from '@/components/ui/button'
-import { Card, CardContent } from '@/components/ui/card'
-import { Heart, ShoppingBag } from 'lucide-react'
-import Link from 'next/link'
-import { PLACEHOLDER_IMAGE } from '@/lib/constants'
-import './wishlist-page.css'
+import { auth } from '@/lib/auth';
+import { redirect } from 'next/navigation';
+import { prisma } from '@/lib/db/prisma';
+import { InteractiveProductCard } from '@/components/ui/card-7';
+import { Button } from '@/components/ui/button';
+import { Card, CardContent } from '@/components/ui/card';
+import { Heart, ShoppingBag } from 'lucide-react';
+import Link from 'next/link';
+import { PLACEHOLDER_IMAGE } from '@/lib/constants';
+import './wishlist-page.css';
 
 export default async function WishlistPage() {
-  const session = await auth()
+  const session = await auth();
 
   if (!session?.user) {
-    redirect('/login')
+    redirect('/login');
   }
 
   // Obtener wishlist del usuario con los productos
@@ -48,9 +48,9 @@ export default async function WishlistPage() {
         },
       },
     },
-  })
+  });
 
-  const products = wishlist?.items.map((item) => item.product) || []
+  const products = wishlist?.items.map((item) => item.product) || [];
 
   return (
     <div className="wishlist-container">
@@ -66,7 +66,7 @@ export default async function WishlistPage() {
         </div>
         <Button asChild variant="outline" className="wishlist-header-action">
           <Link href="/products">
-            <ShoppingBag className="w-4 h-4 mr-2" />
+            <ShoppingBag className="mr-2 h-4 w-4" />
             Seguir Comprando
           </Link>
         </Button>
@@ -76,7 +76,7 @@ export default async function WishlistPage() {
         <Card className="wishlist-empty">
           <CardContent className="wishlist-empty-content">
             <div className="wishlist-empty-icon">
-              <Heart className="w-12 h-12" />
+              <Heart className="h-12 w-12" />
             </div>
             <h3 className="wishlist-empty-title">No tienes favoritos</h3>
             <p className="wishlist-empty-description">
@@ -90,25 +90,26 @@ export default async function WishlistPage() {
       ) : (
         <div className="wishlist-grid">
           {products.map((product) => {
-            const primaryImage = product.images?.find(img => img.isPrimary) || product.images?.[0]
-            const imageUrl = primaryImage?.url || PLACEHOLDER_IMAGE
+            const primaryImage =
+              product.images?.find((img) => img.isPrimary) || product.images?.[0];
+            const imageUrl = primaryImage?.url || PLACEHOLDER_IMAGE;
 
             // Determinar tipo y set
-            let typeLabel = ''
-            let setInfo = ''
-            
+            let typeLabel = '';
+            let setInfo = '';
+
             if (product.card) {
-              typeLabel = 'Carta'
-              setInfo = product.card.set?.name || ''
+              typeLabel = 'Carta';
+              setInfo = product.card.set?.name || '';
             } else if (product.pack) {
-              typeLabel = 'Sobre'
-              setInfo = product.pack.set?.name || ''
+              typeLabel = 'Sobre';
+              setInfo = product.pack.set?.name || '';
             } else if (product.box) {
-              typeLabel = 'Caja'
-              setInfo = product.box.set?.name || ''
+              typeLabel = 'Caja';
+              setInfo = product.box.set?.name || '';
             }
 
-            const description = `${typeLabel}${setInfo ? ` · ${setInfo}` : ''}`
+            const description = `${typeLabel}${setInfo ? ` · ${setInfo}` : ''}`;
 
             return (
               <InteractiveProductCard
@@ -119,13 +120,13 @@ export default async function WishlistPage() {
                 price={`${product.price.toFixed(2)}€`}
                 imageUrl={imageUrl}
                 images={product.images}
-                rating={4.9}
-                reviews={128}
+                productId={product.id}
+                initialInWishlist={true}
               />
-            )
+            );
           })}
         </div>
       )}
     </div>
-  )
+  );
 }

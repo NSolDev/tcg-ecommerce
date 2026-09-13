@@ -23,11 +23,11 @@
 .inactive-products-title {
   font-size: 1.875rem;
   font-weight: 700;
-  color: #FFFFFF;
+  color: #ffffff;
 }
 
 .inactive-products-count {
-  color: #B0B0B0;
+  color: #b0b0b0;
 }
 
 .inactive-products-back {
@@ -38,7 +38,7 @@
   border-radius: 0.5rem;
   font-size: 0.875rem;
   font-weight: 500;
-  color: #B0B0B0;
+  color: #b0b0b0;
   background: rgba(255, 255, 255, 0.03);
   border: 1px solid rgba(255, 255, 255, 0.06);
   transition: all 0.3s ease;
@@ -47,7 +47,7 @@
 
 .inactive-products-back:hover {
   border-color: rgba(255, 203, 5, 0.3);
-  color: #FFFFFF;
+  color: #ffffff;
   background: rgba(255, 203, 5, 0.05);
 }
 
@@ -85,18 +85,18 @@
 .inactive-products-empty-icon svg {
   width: 3rem;
   height: 3rem;
-  color: #34D399;
+  color: #34d399;
 }
 
 .inactive-products-empty-title {
   font-size: 1.125rem;
   font-weight: 600;
-  color: #FFFFFF;
+  color: #ffffff;
   margin-bottom: 0.25rem;
 }
 
 .inactive-products-empty-text {
-  color: #B0B0B0;
+  color: #b0b0b0;
 }
 
 /* ============================================
@@ -117,7 +117,7 @@
 .inactive-products-card-title {
   font-size: 1.125rem;
   font-weight: 600;
-  color: #FFFFFF;
+  color: #ffffff;
 }
 
 .inactive-products-card-content {
@@ -143,7 +143,7 @@
   font-weight: 500;
   text-transform: uppercase;
   letter-spacing: 0.05em;
-  color: #B0B0B0;
+  color: #b0b0b0;
   white-space: nowrap;
 }
 
@@ -166,12 +166,12 @@
    ============================================ */
 .inactive-product-name {
   font-weight: 500;
-  color: #FFFFFF;
+  color: #ffffff;
 }
 
 .inactive-product-id {
   font-size: 0.75rem;
-  color: #B0B0B0;
+  color: #b0b0b0;
   display: block;
 }
 
@@ -180,7 +180,7 @@
    ============================================ */
 .inactive-product-badge {
   border-color: rgba(255, 255, 255, 0.06);
-  color: #B0B0B0;
+  color: #b0b0b0;
 }
 
 .inactive-product-category {
@@ -189,15 +189,15 @@
   border-radius: 9999px;
   font-size: 0.75rem;
   border: 1px solid rgba(255, 255, 255, 0.06);
-  color: #B0B0B0;
+  color: #b0b0b0;
 }
 
 .inactive-product-price {
-  color: #FFFFFF;
+  color: #ffffff;
 }
 
 .inactive-product-set {
-  color: #B0B0B0;
+  color: #b0b0b0;
 }
 
 /* ============================================
@@ -212,7 +212,7 @@
 .inactive-product-reason-icon {
   width: 1rem;
   height: 1rem;
-  color: #FFCB05;
+  color: #ffcb05;
   flex-shrink: 0;
 }
 
@@ -237,15 +237,15 @@
   .inactive-products-card-header {
     padding: 1rem 1rem 0.25rem 1rem;
   }
-  
+
   .inactive-products-card-content {
     padding: 0 1rem 1rem 1rem;
   }
-  
+
   .inactive-products-table-wrap {
     overflow-x: auto;
   }
-  
+
   .inactive-products-table-wrap table {
     min-width: 600px;
   }
@@ -256,7 +256,7 @@
     flex-direction: column;
     align-items: flex-start;
   }
-  
+
   .inactive-products-empty-content {
     padding: 2rem 1rem;
   }

@@ -1,6 +1,6 @@
 // src/app/(shop)/shipping/page.tsx
-import { Truck, Clock, Package, Globe } from 'lucide-react'
-import './shipping.css'
+import { Truck, Clock } from 'lucide-react';
+import './shipping.css';
 
 export default function ShippingPage() {
   return (
@@ -16,7 +16,7 @@ export default function ShippingPage() {
           <div className="shipping-methods">
             <div className="shipping-method">
               <div className="shipping-method-icon">
-                <Truck className="w-6 h-6" />
+                <Truck className="h-6 w-6" />
               </div>
               <div>
                 <h3 className="shipping-method-title">Envío Estándar</h3>
@@ -26,7 +26,7 @@ export default function ShippingPage() {
             </div>
             <div className="shipping-method">
               <div className="shipping-method-icon">
-                <Clock className="w-6 h-6" />
+                <Clock className="h-6 w-6" />
               </div>
               <div>
                 <h3 className="shipping-method-title">Envío Express</h3>
@@ -78,5 +78,5 @@ export default function ShippingPage() {
         </div>
       </div>
     </div>
-  )
+  );
 }

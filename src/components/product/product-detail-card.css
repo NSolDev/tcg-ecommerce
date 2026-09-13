@@ -64,7 +64,7 @@
   align-items: center;
   justify-content: center;
   height: 100%;
-  color: #B0B0B0;
+  color: #b0b0b0;
 }
 
 /* ============================================
@@ -99,50 +99,50 @@
 
 .product-detail-badge-rarity-comun {
   background: rgba(107, 114, 128, 0.2);
-  color: #9CA3AF;
+  color: #9ca3af;
   border: 1px solid rgba(107, 114, 128, 0.2);
 }
 
 .product-detail-badge-rarity-normal {
   background: rgba(59, 130, 246, 0.2);
-  color: #60A5FA;
+  color: #60a5fa;
   border: 1px solid rgba(59, 130, 246, 0.2);
 }
 
 .product-detail-badge-rarity-rara {
   background: rgba(168, 85, 247, 0.2);
-  color: #A855F7;
+  color: #a855f7;
   border: 1px solid rgba(168, 85, 247, 0.2);
 }
 
 .product-detail-badge-rarity-super_rara {
   background: rgba(251, 146, 60, 0.2);
-  color: #FB923C;
+  color: #fb923c;
   border: 1px solid rgba(251, 146, 60, 0.2);
 }
 
 .product-detail-badge-rarity-secreta {
   background: rgba(239, 68, 68, 0.2);
-  color: #F87171;
+  color: #f87171;
   border: 1px solid rgba(239, 68, 68, 0.2);
 }
 
 .product-detail-badge-set {
   background: rgba(255, 255, 255, 0.05);
-  color: #B0B0B0;
+  color: #b0b0b0;
   border: 1px solid rgba(255, 255, 255, 0.06);
 }
 
 .product-detail-badge-category {
   background: rgba(255, 203, 5, 0.1);
-  color: #FFCB05;
+  color: #ffcb05;
   border: 1px solid rgba(255, 203, 5, 0.15);
 }
 
 .product-detail-name {
   font-size: 2rem;
   font-weight: 700;
-  color: #FFFFFF;
+  color: #ffffff;
   margin-bottom: 0.25rem;
 }
 
@@ -155,7 +155,7 @@
 .product-detail-price {
   font-size: 1.75rem;
   font-weight: 700;
-  color: #FFCB05;
+  color: #ffcb05;
 }
 
 .product-detail-separator {
@@ -168,11 +168,11 @@
    ============================================ */
 .product-detail-description-label {
   font-weight: 600;
-  color: #FFFFFF;
+  color: #ffffff;
 }
 
 .product-detail-description-text {
-  color: #B0B0B0;
+  color: #b0b0b0;
   line-height: 1.7;
 }
 
@@ -194,25 +194,25 @@
   font-weight: 500;
   text-transform: uppercase;
   letter-spacing: 0.05em;
-  color: #B0B0B0;
+  color: #b0b0b0;
 }
 
 .product-detail-spec-value {
   font-weight: 500;
-  color: #FFFFFF;
+  color: #ffffff;
   margin-top: 0.125rem;
 }
 
 .product-detail-spec-value-in-stock {
-  color: #34D399;
+  color: #34d399;
 }
 
 .product-detail-spec-value-low-stock {
-  color: #FFCB05;
+  color: #ffcb05;
 }
 
 .product-detail-spec-value-out-of-stock {
-  color: #F87171;
+  color: #f87171;
 }
 
 /* ============================================
@@ -230,7 +230,7 @@
   border-radius: 0.5rem;
   font-weight: 600;
   color: #121212;
-  background: #FFCB05;
+  background: #ffcb05;
   transition: all 0.3s ease;
   border: none;
   cursor: pointer;
@@ -241,7 +241,7 @@
 }
 
 .product-detail-btn-primary:hover:not(:disabled) {
-  background: #E6B800;
+  background: #e6b800;
   transform: translateY(-1px);
   box-shadow: 0 0 30px rgba(255, 203, 5, 0.3);
 }
@@ -271,7 +271,7 @@
   padding: 0.75rem 1.5rem;
   border-radius: 0.5rem;
   font-weight: 600;
-  color: #FFFFFF;
+  color: #ffffff;
   background: rgba(255, 255, 255, 0.05);
   border: 1px solid rgba(255, 255, 255, 0.1);
   transition: all 0.3s ease;
@@ -308,10 +308,10 @@
   width: 1.25rem;
   height: 1.25rem;
   margin: 0 auto 0.25rem;
-  color: #FFCB05;
+  color: #ffcb05;
 }
 
 .product-detail-benefit .label {
   font-size: 0.625rem;
-  color: #B0B0B0;
+  color: #b0b0b0;
 }

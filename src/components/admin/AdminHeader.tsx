@@ -1,11 +1,11 @@
 // src/components/admin/AdminHeader.tsx
-'use client'
+'use client';
 
-import { signOut } from 'next-auth/react'
-import { Button } from '@/components/ui/button'
-import { LogOut, Home, Sparkles } from 'lucide-react'
-import Link from 'next/link'
-import './admin-header.css'
+import { signOut } from 'next-auth/react';
+import { Button } from '@/components/ui/button';
+import { LogOut, Home, Sparkles } from 'lucide-react';
+import Link from 'next/link';
+import './admin-header.css';
 
 export function AdminHeader() {
   return (
@@ -21,12 +21,8 @@ export function AdminHeader() {
               </div>
             </div>
             <div>
-              <span className="admin-header-logo-text">
-                Panel Admin
-              </span>
-              <span className="admin-header-logo-badge">
-                ⚡ Gestión de la tienda
-              </span>
+              <span className="admin-header-logo-text">Panel Admin</span>
+              <span className="admin-header-logo-badge">⚡ Gestión de la tienda</span>
             </div>
           </Link>
         </div>
@@ -56,5 +52,5 @@ export function AdminHeader() {
         </div>
       </div>
     </header>
-  )
+  );
 }

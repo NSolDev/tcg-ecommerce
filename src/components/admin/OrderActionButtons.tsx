@@ -1,10 +1,10 @@
 // src/components/admin/OrderActionButtons.tsx
-'use client'
+'use client';
 
-import { useState } from 'react'
-import { useRouter } from 'next/navigation'
-import { Button } from '@/components/ui/button'
-import { completeOrder, cancelOrder } from '@/lib/actions/order.actions'
+import { useState } from 'react';
+import { useRouter } from 'next/navigation';
+import { Button } from '@/components/ui/button';
+import { completeOrder, cancelOrder } from '@/lib/actions/order.actions';
 import {
   AlertDialog,
   AlertDialogAction,
@@ -15,31 +15,31 @@ import {
   AlertDialogHeader,
   AlertDialogTitle,
   AlertDialogTrigger,
-} from '@/components/ui/alert-dialog'
-import { CheckCircle, XCircle } from 'lucide-react'
+} from '@/components/ui/alert-dialog';
+import { CheckCircle, XCircle } from 'lucide-react';
 
 interface CompleteOrderButtonProps {
-  orderId: string
+  orderId: string;
 }
 
 export function CompleteOrderButton({ orderId }: CompleteOrderButtonProps) {
-  const [loading, setLoading] = useState(false)
-  const [open, setOpen] = useState(false)
-  const router = useRouter()
+  const [loading, setLoading] = useState(false);
+  const [open, setOpen] = useState(false);
+  const router = useRouter();
 
   const handleComplete = async () => {
-    setLoading(true)
+    setLoading(true);
     try {
-      await completeOrder(orderId)
-      setOpen(false)
-      router.refresh()
+      await completeOrder(orderId);
+      setOpen(false);
+      router.refresh();
     } catch (error) {
-      console.error('Error completando pedido:', error)
-      alert('Error al completar el pedido')
+      console.error('Error completando pedido:', error);
+      alert('Error al completar el pedido');
     } finally {
-      setLoading(false)
+      setLoading(false);
     }
-  }
+  };
 
   return (
     <AlertDialog open={open} onOpenChange={setOpen}>
@@ -49,7 +49,7 @@ export function CompleteOrderButton({ orderId }: CompleteOrderButtonProps) {
           Marcar como Completado
         </Button>
       </AlertDialogTrigger>
-      <AlertDialogContent className="bg-[#1a1a2e] border-white/10 text-white">
+      <AlertDialogContent className="border-white/10 bg-[#1a1a2e] text-white">
         <AlertDialogHeader>
           <AlertDialogTitle className="text-white">¿Confirmar pedido?</AlertDialogTitle>
           <AlertDialogDescription className="text-muted-foreground">
@@ -57,40 +57,44 @@ export function CompleteOrderButton({ orderId }: CompleteOrderButtonProps) {
           </AlertDialogDescription>
         </AlertDialogHeader>
         <AlertDialogFooter>
-          <AlertDialogCancel className="bg-white/5 border-white/10 text-white hover:bg-white/10">
+          <AlertDialogCancel className="border-white/10 bg-white/5 text-white hover:bg-white/10">
             Cancelar
           </AlertDialogCancel>
-          <AlertDialogAction onClick={handleComplete} disabled={loading} className="bg-primary hover:bg-primary/80 text-white">
+          <AlertDialogAction
+            onClick={handleComplete}
+            disabled={loading}
+            className="bg-primary text-white hover:bg-primary/80"
+          >
             {loading ? 'Completando...' : 'Completar Pedido'}
           </AlertDialogAction>
         </AlertDialogFooter>
       </AlertDialogContent>
     </AlertDialog>
-  )
+  );
 }
 
 interface CancelOrderButtonProps {
-  orderId: string
+  orderId: string;
 }
 
 export function CancelOrderButton({ orderId }: CancelOrderButtonProps) {
-  const [loading, setLoading] = useState(false)
-  const [open, setOpen] = useState(false)
-  const router = useRouter()
+  const [loading, setLoading] = useState(false);
+  const [open, setOpen] = useState(false);
+  const router = useRouter();
 
   const handleCancel = async () => {
-    setLoading(true)
+    setLoading(true);
     try {
-      await cancelOrder(orderId)
-      setOpen(false)
-      router.refresh()
+      await cancelOrder(orderId);
+      setOpen(false);
+      router.refresh();
     } catch (error) {
-      console.error('Error cancelando pedido:', error)
-      alert('Error al cancelar el pedido')
+      console.error('Error cancelando pedido:', error);
+      alert('Error al cancelar el pedido');
     } finally {
-      setLoading(false)
+      setLoading(false);
     }
-  }
+  };
 
   return (
     <AlertDialog open={open} onOpenChange={setOpen}>
@@ -100,7 +104,7 @@ export function CancelOrderButton({ orderId }: CancelOrderButtonProps) {
           Cancelar Pedido
         </Button>
       </AlertDialogTrigger>
-      <AlertDialogContent className="bg-[#1a1a2e] border-white/10 text-white">
+      <AlertDialogContent className="border-white/10 bg-[#1a1a2e] text-white">
         <AlertDialogHeader>
           <AlertDialogTitle className="text-white">¿Cancelar pedido?</AlertDialogTitle>
           <AlertDialogDescription className="text-muted-foreground">
@@ -108,14 +112,18 @@ export function CancelOrderButton({ orderId }: CancelOrderButtonProps) {
           </AlertDialogDescription>
         </AlertDialogHeader>
         <AlertDialogFooter>
-          <AlertDialogCancel className="bg-white/5 border-white/10 text-white hover:bg-white/10">
+          <AlertDialogCancel className="border-white/10 bg-white/5 text-white hover:bg-white/10">
             Volver
           </AlertDialogCancel>
-          <AlertDialogAction onClick={handleCancel} disabled={loading} className="bg-red-500 hover:bg-red-600 text-white">
+          <AlertDialogAction
+            onClick={handleCancel}
+            disabled={loading}
+            className="bg-red-500 text-white hover:bg-red-600"
+          >
             {loading ? 'Cancelando...' : 'Sí, Cancelar Pedido'}
           </AlertDialogAction>
         </AlertDialogFooter>
       </AlertDialogContent>
     </AlertDialog>
-  )
+  );
 }

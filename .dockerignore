@@ -1,0 +1,16 @@
+node_modules
+.next
+.git
+.husky
+e2e
+*.log
+npm-debug.log*
+.env
+.env.local
+.env.*.local
+.DS_Store
+coverage
+playwright-report
+test-results
+tsconfig.tsbuildinfo
+README.md

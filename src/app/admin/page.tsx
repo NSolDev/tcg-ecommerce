@@ -1,9 +1,8 @@
 // src/app/admin/page.tsx
-import { prisma } from '@/lib/db/prisma'
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
-import { Package, ShoppingCart, Users, DollarSign } from 'lucide-react'
-import { formatPrice } from '@/lib/utils'
-import './admin-dashboard.css'
+import { prisma } from '@/lib/db/prisma';
+import { Package, ShoppingCart, Users, DollarSign } from 'lucide-react';
+import { formatPrice } from '@/lib/utils';
+import './admin-dashboard.css';
 
 export default async function AdminDashboard() {
   const [productCount, orderCount, userCount, totalRevenue] = await Promise.all([
@@ -14,7 +13,7 @@ export default async function AdminDashboard() {
       where: { status: 'COMPLETED' },
       _sum: { total: true },
     }),
-  ])
+  ]);
 
   const stats = [
     {
@@ -41,7 +40,7 @@ export default async function AdminDashboard() {
       icon: DollarSign,
       description: 'Ingresos totales de pedidos completados',
     },
-  ]
+  ];
 
   const recentOrders = await prisma.order.findMany({
     take: 5,
@@ -50,7 +49,7 @@ export default async function AdminDashboard() {
       user: true,
       items: true,
     },
-  })
+  });
 
   const lowStockProducts = await prisma.product.findMany({
     where: {
@@ -58,7 +57,7 @@ export default async function AdminDashboard() {
     },
     take: 5,
     orderBy: { stock: 'asc' },
-  })
+  });
 
   return (
     <div className="admin-dashboard">
@@ -69,7 +68,7 @@ export default async function AdminDashboard() {
 
       <div className="admin-stats-grid">
         {stats.map((stat) => {
-          const Icon = stat.icon
+          const Icon = stat.icon;
           return (
             <div key={stat.title} className="admin-stat-card">
               <div className="admin-stat-header">
@@ -79,7 +78,7 @@ export default async function AdminDashboard() {
               <div className="admin-stat-value">{stat.value}</div>
               <p className="admin-stat-description">{stat.description}</p>
             </div>
-          )
+          );
         })}
       </div>
 
@@ -124,5 +123,5 @@ export default async function AdminDashboard() {
         </div>
       </div>
     </div>
-  )
+  );
 }

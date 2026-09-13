@@ -28,17 +28,17 @@
   font-weight: 500;
   transition: all 0.3s ease;
   text-decoration: none;
-  color: #B0B0B0;
+  color: #b0b0b0;
 }
 
 .admin-nav-item:hover {
   background: rgba(255, 255, 255, 0.03);
-  color: #FFFFFF;
+  color: #ffffff;
 }
 
 .admin-nav-item.active {
   background: rgba(255, 203, 5, 0.1);
-  color: #FFCB05;
+  color: #ffcb05;
   border: 1px solid rgba(255, 203, 5, 0.15);
   box-shadow: 0 0 30px rgba(255, 203, 5, 0.05);
 }
@@ -55,7 +55,7 @@
   width: 0.375rem;
   height: 0.375rem;
   border-radius: 9999px;
-  background: #FFCB05;
+  background: #ffcb05;
   animation: pulse 2s infinite;
 }
 
@@ -63,7 +63,8 @@
    ADMIN NAV - ANIMATIONS
    ============================================ */
 @keyframes pulse {
-  0%, 100% {
+  0%,
+  100% {
     opacity: 1;
     transform: scale(1);
   }
@@ -81,7 +82,7 @@
     border-radius: 0.5rem;
     padding: 0.5rem;
   }
-  
+
   .admin-nav-item {
     padding: 0.5rem 0.625rem;
     font-size: 0.8125rem;

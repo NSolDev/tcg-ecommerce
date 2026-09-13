@@ -1,15 +1,21 @@
 // src/app/admin/products/inactive/page.tsx
-import { prisma } from '@/lib/db/prisma'
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table'
-import { Button } from '@/components/ui/button'
-import { Badge } from '@/components/ui/badge'
-import { formatPrice } from '@/lib/utils'
-import { RestoreProductButton } from '@/components/admin/RestoreProductButton'
-import { AlertCircle, PackageX, ArrowLeft } from 'lucide-react'
-import Link from 'next/link'
-import { PLACEHOLDER_IMAGE } from '@/lib/constants'
-import './inactive-products.css'
+import { prisma } from '@/lib/db/prisma';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from '@/components/ui/table';
+import { Button } from '@/components/ui/button';
+import { Badge } from '@/components/ui/badge';
+import { formatPrice } from '@/lib/utils';
+import { RestoreProductButton } from '@/components/admin/RestoreProductButton';
+import { AlertCircle, PackageX, ArrowLeft } from 'lucide-react';
+import Link from 'next/link';
+import './inactive-products.css';
 
 export default async function InactiveProductsPage() {
   const products = await prisma.product.findMany({
@@ -36,33 +42,31 @@ export default async function InactiveProductsPage() {
       },
     },
     orderBy: { updatedAt: 'desc' },
-  })
+  });
 
   const productsWithSet = products.map((product) => {
-    let setInfo = null
-    
+    let setInfo = null;
+
     if (product.card) {
-      setInfo = product.card.set
+      setInfo = product.card.set;
     } else if (product.pack) {
-      setInfo = product.pack.set
+      setInfo = product.pack.set;
     } else if (product.box) {
-      setInfo = product.box.set
+      setInfo = product.box.set;
     }
 
     return {
       ...product,
       set: setInfo,
-    }
-  })
+    };
+  });
 
   return (
     <div className="inactive-products-page">
       <div className="inactive-products-header">
         <div>
           <h1 className="inactive-products-title">Productos Inactivos</h1>
-          <p className="inactive-products-count">
-            {productsWithSet.length} productos desactivados
-          </p>
+          <p className="inactive-products-count">{productsWithSet.length} productos desactivados</p>
         </div>
         <Button asChild variant="outline" className="inactive-products-back">
           <Link href="/admin/products">
@@ -87,7 +91,9 @@ export default async function InactiveProductsPage() {
       ) : (
         <Card className="inactive-products-card">
           <CardHeader className="inactive-products-card-header">
-            <CardTitle className="inactive-products-card-title">Lista de Productos Inactivos</CardTitle>
+            <CardTitle className="inactive-products-card-title">
+              Lista de Productos Inactivos
+            </CardTitle>
           </CardHeader>
           <CardContent className="inactive-products-card-content">
             <div className="inactive-products-table-wrap">
@@ -99,22 +105,26 @@ export default async function InactiveProductsPage() {
                     <TableHead className="inactive-products-table-th">Precio</TableHead>
                     <TableHead className="inactive-products-table-th">Colección</TableHead>
                     <TableHead className="inactive-products-table-th">Razón</TableHead>
-                    <TableHead className="inactive-products-table-th text-right">Acciones</TableHead>
+                    <TableHead className="inactive-products-table-th text-right">
+                      Acciones
+                    </TableHead>
                   </TableRow>
                 </TableHeader>
                 <TableBody>
                   {productsWithSet.map((product) => {
-                    let categoryLabel = 'Producto'
-                    if (product.card) categoryLabel = '🃏 Carta'
-                    else if (product.pack) categoryLabel = '📦 Sobre'
-                    else if (product.box) categoryLabel = '📦 Caja'
+                    let categoryLabel = 'Producto';
+                    if (product.card) categoryLabel = '🃏 Carta';
+                    else if (product.pack) categoryLabel = '📦 Sobre';
+                    else if (product.box) categoryLabel = '📦 Caja';
 
                     return (
                       <TableRow key={product.id} className="inactive-products-table-row">
                         <TableCell className="inactive-products-table-cell">
                           <div>
                             <p className="inactive-product-name">{product.name}</p>
-                            <span className="inactive-product-id">ID: {product.id.slice(0, 8)}</span>
+                            <span className="inactive-product-id">
+                              ID: {product.id.slice(0, 8)}
+                            </span>
                           </div>
                         </TableCell>
                         <TableCell className="inactive-products-table-cell">
@@ -140,7 +150,7 @@ export default async function InactiveProductsPage() {
                           <RestoreProductButton productId={product.id} />
                         </TableCell>
                       </TableRow>
-                    )
+                    );
                   })}
                 </TableBody>
               </Table>
@@ -149,5 +159,5 @@ export default async function InactiveProductsPage() {
         </Card>
       )}
     </div>
-  )
+  );
 }

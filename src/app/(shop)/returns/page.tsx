@@ -1,6 +1,6 @@
 // src/app/(shop)/returns/page.tsx
-import { RefreshCw, Clock, Shield, Package } from 'lucide-react'
-import './returns.css'
+import { RefreshCw, Clock, Shield, Package } from 'lucide-react';
+import './returns.css';
 
 export default function ReturnsPage() {
   return (
@@ -16,7 +16,7 @@ export default function ReturnsPage() {
           <div className="returns-info-grid">
             <div className="returns-info-card">
               <div className="returns-info-icon">
-                <Clock className="w-6 h-6" />
+                <Clock className="h-6 w-6" />
               </div>
               <h3 className="returns-info-title">30 Días</h3>
               <p className="returns-info-description">
@@ -25,7 +25,7 @@ export default function ReturnsPage() {
             </div>
             <div className="returns-info-card">
               <div className="returns-info-icon">
-                <Shield className="w-6 h-6" />
+                <Shield className="h-6 w-6" />
               </div>
               <h3 className="returns-info-title">Producto Original</h3>
               <p className="returns-info-description">
@@ -34,7 +34,7 @@ export default function ReturnsPage() {
             </div>
             <div className="returns-info-card">
               <div className="returns-info-icon">
-                <RefreshCw className="w-6 h-6" />
+                <RefreshCw className="h-6 w-6" />
               </div>
               <h3 className="returns-info-title">Reembolso</h3>
               <p className="returns-info-description">
@@ -51,28 +51,36 @@ export default function ReturnsPage() {
               <span className="returns-step-number">1</span>
               <div>
                 <h4 className="returns-step-title">Solicita la devolución</h4>
-                <p className="returns-step-description">Contáctanos a través de info@tcgstore.com con tu número de pedido</p>
+                <p className="returns-step-description">
+                  Contáctanos a través de info@tcgstore.com con tu número de pedido
+                </p>
               </div>
             </div>
             <div className="returns-step">
               <span className="returns-step-number">2</span>
               <div>
                 <h4 className="returns-step-title">Prepara el paquete</h4>
-                <p className="returns-step-description">Empaca el producto en su estado original con todo el embalaje</p>
+                <p className="returns-step-description">
+                  Empaca el producto en su estado original con todo el embalaje
+                </p>
               </div>
             </div>
             <div className="returns-step">
               <span className="returns-step-number">3</span>
               <div>
                 <h4 className="returns-step-title">Envía el paquete</h4>
-                <p className="returns-step-description">Los gastos de envío de la devolución corren a cargo del cliente</p>
+                <p className="returns-step-description">
+                  Los gastos de envío de la devolución corren a cargo del cliente
+                </p>
               </div>
             </div>
             <div className="returns-step">
               <span className="returns-step-number">4</span>
               <div>
                 <h4 className="returns-step-title">Recepción y reembolso</h4>
-                <p className="returns-step-description">Una vez recibido y verificado, procesaremos el reembolso</p>
+                <p className="returns-step-description">
+                  Una vez recibido y verificado, procesaremos el reembolso
+                </p>
               </div>
             </div>
           </div>
@@ -86,7 +94,8 @@ export default function ReturnsPage() {
               <div>
                 <h4 className="returns-exception-title">Productos Personalizados</h4>
                 <p className="returns-exception-description">
-                  Los productos personalizados no pueden ser devueltos a menos que presenten un defecto de fabricación.
+                  Los productos personalizados no pueden ser devueltos a menos que presenten un
+                  defecto de fabricación.
                 </p>
               </div>
             </div>
@@ -94,5 +103,5 @@ export default function ReturnsPage() {
         </div>
       </div>
     </div>
-  )
+  );
 }

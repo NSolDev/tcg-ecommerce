@@ -24,7 +24,7 @@
 .shipping-hero-title {
   font-size: 2.5rem;
   font-weight: 700;
-  color: #FFFFFF;
+  color: #ffffff;
   margin-bottom: 0.5rem;
 }
 
@@ -36,7 +36,7 @@
 
 .shipping-hero-subtitle {
   font-size: 1.125rem;
-  color: #B0B0B0;
+  color: #b0b0b0;
 }
 
 /* ============================================
@@ -51,7 +51,7 @@
 .shipping-section-title {
   font-size: 1.5rem;
   font-weight: 700;
-  color: #FFFFFF;
+  color: #ffffff;
   margin-bottom: 1.5rem;
 }
 
@@ -75,7 +75,7 @@
   align-items: flex-start;
   gap: 1rem;
   padding: 1.5rem;
-  background: #1E1E1E;
+  background: #1e1e1e;
   border: 1px solid rgba(255, 255, 255, 0.06);
   border-radius: 0.75rem;
 }
@@ -88,25 +88,25 @@
   height: 3rem;
   border-radius: 0.5rem;
   background: rgba(255, 203, 5, 0.1);
-  color: #FFCB05;
+  color: #ffcb05;
   flex-shrink: 0;
 }
 
 .shipping-method-title {
   font-size: 1.125rem;
   font-weight: 600;
-  color: #FFFFFF;
+  color: #ffffff;
   margin-bottom: 0.25rem;
 }
 
 .shipping-method-description {
   font-size: 0.875rem;
-  color: #B0B0B0;
+  color: #b0b0b0;
 }
 
 .shipping-method-price {
   font-size: 0.875rem;
-  color: #FFCB05;
+  color: #ffcb05;
   font-weight: 500;
   margin-top: 0.25rem;
 }
@@ -128,10 +128,10 @@
   align-items: center;
   gap: 0.75rem;
   padding: 0.75rem 1rem;
-  background: #1E1E1E;
+  background: #1e1e1e;
   border: 1px solid rgba(255, 255, 255, 0.06);
   border-radius: 0.5rem;
-  color: #B0B0B0;
+  color: #b0b0b0;
 }
 
 .shipping-list-icon {

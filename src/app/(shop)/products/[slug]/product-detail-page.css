@@ -20,7 +20,7 @@
 }
 
 .product-detail-back:hover {
-  color: #FFFFFF;
+  color: #ffffff;
 }
 
 .product-detail-back .icon {
@@ -50,18 +50,18 @@
 .product-related-header .title {
   font-size: 1.5rem;
   font-weight: 700;
-  color: #FFFFFF;
+  color: #ffffff;
 }
 
 .product-related-header .link {
-  color: #FFCB05;
+  color: #ffcb05;
   font-size: 0.875rem;
   transition: color 0.3s ease;
   text-decoration: none;
 }
 
 .product-related-header .link:hover {
-  color: #E6B800;
+  color: #e6b800;
 }
 
 .product-related-grid {

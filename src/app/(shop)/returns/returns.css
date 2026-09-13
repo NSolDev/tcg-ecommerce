@@ -24,7 +24,7 @@
 .returns-hero-title {
   font-size: 2.5rem;
   font-weight: 700;
-  color: #FFFFFF;
+  color: #ffffff;
   margin-bottom: 0.5rem;
 }
 
@@ -36,7 +36,7 @@
 
 .returns-hero-subtitle {
   font-size: 1.125rem;
-  color: #B0B0B0;
+  color: #b0b0b0;
 }
 
 /* ============================================
@@ -51,7 +51,7 @@
 .returns-section-title {
   font-size: 1.5rem;
   font-weight: 700;
-  color: #FFFFFF;
+  color: #ffffff;
   margin-bottom: 1.5rem;
 }
 
@@ -72,7 +72,7 @@
 
 .returns-info-card {
   padding: 1.5rem;
-  background: #1E1E1E;
+  background: #1e1e1e;
   border: 1px solid rgba(255, 255, 255, 0.06);
   border-radius: 0.75rem;
   text-align: center;
@@ -86,20 +86,20 @@
   height: 3rem;
   border-radius: 0.5rem;
   background: rgba(255, 203, 5, 0.1);
-  color: #FFCB05;
+  color: #ffcb05;
   margin-bottom: 0.75rem;
 }
 
 .returns-info-title {
   font-size: 1.125rem;
   font-weight: 600;
-  color: #FFFFFF;
+  color: #ffffff;
   margin-bottom: 0.25rem;
 }
 
 .returns-info-description {
   font-size: 0.875rem;
-  color: #B0B0B0;
+  color: #b0b0b0;
 }
 
 /* ============================================
@@ -116,7 +116,7 @@
   align-items: flex-start;
   gap: 1rem;
   padding: 1rem;
-  background: #1E1E1E;
+  background: #1e1e1e;
   border: 1px solid rgba(255, 255, 255, 0.06);
   border-radius: 0.5rem;
 }
@@ -128,7 +128,7 @@
   min-width: 2rem;
   height: 2rem;
   border-radius: 9999px;
-  background: #FFCB05;
+  background: #ffcb05;
   color: #121212;
   font-weight: 700;
   font-size: 0.875rem;
@@ -137,13 +137,13 @@
 .returns-step-title {
   font-size: 1rem;
   font-weight: 600;
-  color: #FFFFFF;
+  color: #ffffff;
   margin-bottom: 0.25rem;
 }
 
 .returns-step-description {
   font-size: 0.875rem;
-  color: #B0B0B0;
+  color: #b0b0b0;
 }
 
 /* ============================================
@@ -154,7 +154,7 @@
   align-items: flex-start;
   gap: 1rem;
   padding: 1rem;
-  background: #1E1E1E;
+  background: #1e1e1e;
   border: 1px solid rgba(255, 203, 5, 0.1);
   border-radius: 0.5rem;
 }
@@ -162,7 +162,7 @@
 .returns-exception-icon {
   width: 1.5rem;
   height: 1.5rem;
-  color: #FFCB05;
+  color: #ffcb05;
   flex-shrink: 0;
   margin-top: 0.125rem;
 }
@@ -170,11 +170,11 @@
 .returns-exception-title {
   font-size: 1rem;
   font-weight: 600;
-  color: #FFFFFF;
+  color: #ffffff;
   margin-bottom: 0.25rem;
 }
 
 .returns-exception-description {
   font-size: 0.875rem;
-  color: #B0B0B0;
+  color: #b0b0b0;
 }

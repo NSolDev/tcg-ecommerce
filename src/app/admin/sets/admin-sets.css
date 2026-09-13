@@ -23,11 +23,11 @@
 .admin-sets-title {
   font-size: 1.875rem;
   font-weight: 700;
-  color: #FFFFFF;
+  color: #ffffff;
 }
 
 .admin-sets-subtitle {
-  color: #B0B0B0;
+  color: #b0b0b0;
 }
 
 .admin-sets-btn-new {
@@ -39,7 +39,7 @@
   font-weight: 500;
   font-size: 0.875rem;
   color: #121212;
-  background: #FFCB05;
+  background: #ffcb05;
   transition: all 0.3s ease;
   text-decoration: none;
   border: none;
@@ -47,7 +47,7 @@
 }
 
 .admin-sets-btn-new:hover {
-  background: #E6B800;
+  background: #e6b800;
   transform: translateY(-1px);
   box-shadow: 0 0 30px rgba(255, 203, 5, 0.3);
 }
@@ -71,7 +71,7 @@
 .admin-sets-card-title {
   font-size: 1.125rem;
   font-weight: 600;
-  color: #FFFFFF;
+  color: #ffffff;
 }
 
 .admin-sets-card-content {
@@ -79,7 +79,7 @@
 }
 
 .admin-sets-empty {
-  color: #B0B0B0;
+  color: #b0b0b0;
   text-align: center;
   padding: 2rem 0;
 }
@@ -103,7 +103,7 @@
   font-weight: 500;
   text-transform: uppercase;
   letter-spacing: 0.05em;
-  color: #B0B0B0;
+  color: #b0b0b0;
 }
 
 .admin-sets-table-row {
@@ -118,14 +118,14 @@
 .admin-sets-table-cell {
   padding: 0.75rem 1rem;
   vertical-align: middle;
-  color: #FFFFFF;
+  color: #ffffff;
 }
 
 .admin-sets-table-cell-name {
   padding: 0.75rem 1rem;
   vertical-align: middle;
   font-weight: 500;
-  color: #FFFFFF;
+  color: #ffffff;
 }
 
 .admin-sets-table-cell-actions {
@@ -141,12 +141,12 @@
    ============================================ */
 .admin-sets-product-count {
   font-weight: 600;
-  color: #FFCB05;
+  color: #ffcb05;
 }
 
 .admin-sets-product-detail {
   font-size: 0.75rem;
-  color: #B0B0B0;
+  color: #b0b0b0;
   margin-left: 0.5rem;
 }
 
@@ -156,19 +156,19 @@
 .admin-sets-btn-edit {
   border-color: rgba(255, 255, 255, 0.06);
   background: rgba(255, 255, 255, 0.03);
-  color: #B0B0B0;
+  color: #b0b0b0;
   transition: all 0.3s ease;
 }
 
 .admin-sets-btn-edit:hover {
   border-color: rgba(255, 203, 5, 0.3);
-  color: #FFFFFF;
+  color: #ffffff;
   background: rgba(255, 203, 5, 0.05);
 }
 
 .admin-sets-btn-delete {
   background: rgba(239, 68, 68, 0.05);
-  color: #F87171;
+  color: #f87171;
   border: 1px solid rgba(239, 68, 68, 0.1);
   transition: all 0.3s ease;
 }
@@ -191,17 +191,17 @@
   .admin-sets-card {
     padding: 0.75rem;
   }
-  
+
   .admin-sets-header {
     flex-direction: column;
     align-items: flex-start;
   }
-  
+
   .admin-sets-btn-new {
     width: 100%;
     justify-content: center;
   }
-  
+
   .admin-sets-product-detail {
     display: block;
     margin-left: 0;

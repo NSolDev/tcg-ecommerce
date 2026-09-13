@@ -7,5 +7,5 @@ export default function robots() {
       disallow: ['/admin/', '/api/', '/checkout/'],
     },
     sitemap: `${process.env.NEXTAUTH_URL}/sitemap.xml`,
-  }
+  };
 }

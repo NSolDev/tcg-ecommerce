@@ -16,11 +16,11 @@
 .settings-title {
   font-size: 2rem;
   font-weight: 700;
-  color: #FFFFFF;
+  color: #ffffff;
 }
 
 .settings-subtitle {
-  color: #B0B0B0;
+  color: #b0b0b0;
   margin-top: 0.25rem;
 }
 
@@ -43,7 +43,7 @@
    SETTINGS - CARD
    ============================================ */
 .settings-card {
-  background: #1E1E1E;
+  background: #1e1e1e;
   border: 1px solid rgba(255, 255, 255, 0.06);
   border-radius: 0.75rem;
   overflow: hidden;
@@ -74,18 +74,18 @@
 .settings-card-icon .icon {
   width: 1.25rem;
   height: 1.25rem;
-  color: #FFCB05;
+  color: #ffcb05;
 }
 
 .settings-card-title {
   font-size: 1.125rem;
   font-weight: 600;
-  color: #FFFFFF;
+  color: #ffffff;
 }
 
 .settings-card-description {
   font-size: 0.875rem;
-  color: #B0B0B0;
+  color: #b0b0b0;
 }
 
 .settings-card-content {
@@ -107,7 +107,7 @@
 .settings-field-label {
   font-size: 0.875rem;
   font-weight: 500;
-  color: #B0B0B0;
+  color: #b0b0b0;
 }
 
 .settings-field-input {
@@ -115,7 +115,7 @@
   border-radius: 0.5rem;
   background: rgba(255, 255, 255, 0.03);
   border: 1px solid rgba(255, 255, 255, 0.06);
-  color: #FFFFFF;
+  color: #ffffff;
   transition: all 0.3s ease;
   width: 100%;
 }
@@ -133,7 +133,7 @@
 
 .settings-field-hint {
   font-size: 0.75rem;
-  color: #B0B0B0;
+  color: #b0b0b0;
 }
 
 .settings-field-select {
@@ -141,7 +141,7 @@
   border-radius: 0.5rem;
   background: rgba(255, 255, 255, 0.03);
   border: 1px solid rgba(255, 255, 255, 0.06);
-  color: #FFFFFF;
+  color: #ffffff;
   transition: all 0.3s ease;
   width: 100%;
   appearance: none;
@@ -154,8 +154,8 @@
 }
 
 .settings-field-select option {
-  background: #1E1E1E;
-  color: #FFFFFF;
+  background: #1e1e1e;
+  color: #ffffff;
 }
 
 /* ============================================
@@ -177,12 +177,12 @@
 .settings-toggle-label {
   font-size: 0.875rem;
   font-weight: 500;
-  color: #FFFFFF;
+  color: #ffffff;
 }
 
 .settings-toggle-description {
   font-size: 0.75rem;
-  color: #B0B0B0;
+  color: #b0b0b0;
 }
 
 /* ============================================
@@ -206,19 +206,19 @@
 .settings-danger-zone-icon {
   width: 1.25rem;
   height: 1.25rem;
-  color: #F87171;
+  color: #f87171;
   flex-shrink: 0;
   margin-top: 0.125rem;
 }
 
 .settings-danger-zone-title {
   font-weight: 600;
-  color: #F87171;
+  color: #f87171;
 }
 
 .settings-danger-zone-description {
   font-size: 0.875rem;
-  color: #B0B0B0;
+  color: #b0b0b0;
 }
 
 .settings-danger-zone-item {
@@ -231,12 +231,12 @@
 
 .settings-danger-zone-item-title {
   font-weight: 500;
-  color: #FFFFFF;
+  color: #ffffff;
 }
 
 .settings-danger-zone-item-description {
   font-size: 0.75rem;
-  color: #B0B0B0;
+  color: #b0b0b0;
 }
 
 /* ============================================
@@ -251,7 +251,7 @@
   border-radius: 0.5rem;
   font-weight: 600;
   color: #121212;
-  background: #FFCB05;
+  background: #ffcb05;
   border: none;
   transition: all 0.3s ease;
   cursor: pointer;
@@ -259,7 +259,7 @@
 }
 
 .settings-btn-primary:hover {
-  background: #E6B800;
+  background: #e6b800;
   transform: translateY(-1px);
   box-shadow: 0 0 30px rgba(255, 203, 5, 0.3);
 }
@@ -272,7 +272,7 @@
   padding: 0.5rem 1rem;
   border-radius: 0.5rem;
   font-weight: 500;
-  color: #B0B0B0;
+  color: #b0b0b0;
   background: rgba(255, 255, 255, 0.03);
   border: 1px solid rgba(255, 255, 255, 0.06);
   transition: all 0.3s ease;
@@ -282,7 +282,7 @@
 
 .settings-btn-outline:hover {
   border-color: rgba(42, 117, 187, 0.3);
-  color: #FFFFFF;
+  color: #ffffff;
 }
 
 .settings-btn-danger {
@@ -293,7 +293,7 @@
   padding: 0.5rem 1rem;
   border-radius: 0.5rem;
   font-weight: 500;
-  color: #F87171;
+  color: #f87171;
   background: rgba(239, 68, 68, 0.05);
   border: 1px solid rgba(239, 68, 68, 0.1);
   transition: all 0.3s ease;

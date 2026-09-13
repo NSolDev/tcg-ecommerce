@@ -4,61 +4,149 @@
 .pnp.js
 .yarn/install-state.gz
 
-# Next.js
-/.next/
-/out/
-/build
-/dist
-/.vercel
-
-# Producción
-/build
-/dist
-
 # Archivos de entorno
 .env
 .env.local
 .env.development.local
 .env.test.local
 .env.production.local
-.env*.local
 
-# Logs
-logs
-*.log
+# Next.js
+/.next/
+/out/
+/build
+/dist
+
+# Archivos de construcción de TypeScript
+*.tsbuildinfo
+next-env.d.ts
+
+# Archivos de logs
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
-pnpm-debug.log*
-lerna-debug.log*
+.pnpm-debug.log*
 
-# Editor
-.vscode/
-.idea/
+# Archivos de cobertura de pruebas
+/coverage
+*.lcov
+
+# Archivos de cache
+/.cache
+/.parcel-cache
+
+# Archivos de editor
+.idea
+.vscode/*
+!.vscode/extensions.json
 *.swp
 *.swo
 *~
 .DS_Store
 Thumbs.db
 
-# Testing
-/coverage
-.nyc_output
-playwright-report/
-test-results/
+# Husky
+.husky/_
 
-# Base de datos
+# Prisma (local DBs only — migration SQL IS committed and required for deploys)
+/prisma/*.db
+/prisma/*.db-journal
+
+# Archivos de base de datos
 *.db
 *.sqlite
 *.sqlite3
-prisma/*.db
-prisma/*.sqlite
 
-# Archivos de sistema
+# Archivos de construcción de TypeScript específicos
+tsconfig.tsbuildinfo
+
+# Archivos de prueba
+/e2e/*.js
+/e2e/*.map
+/src/**/*.test.js
+/src/**/*.spec.js
+
+# Archivos de cobertura
+.nyc_output
+
+# Nota: el lockfile (package-lock.json) SÍ se versiona para builds reproducibles.
+
+# Archivos de configuración de entorno de desarrollo
+.env.*
+!.env.example
+
+# Archivos de construcción de Next.js específicos
+.next/trace
+.next/cache/
+.next/static/
+.next/server/
+.next/types/
+.next/build-manifest.json
+.next/fallback-build-manifest.json
+.next/react-loadable-manifest.json
+.next/app-build-manifest.json
+.next/package.json
+
+# Archivos de caché de webpack
+.next/cache/webpack/
+.next/cache/fetch-cache/
+.next/cache/images/
+.next/cache/swc/
+
+# Archivos de desarrollo de Next.js
+.next/static/development/
+.next/static/webpack/
+.next/static/chunks/
+
+# Archivos de middleware
+/src/middleware.js
+/src/middleware.js.map
+
+# Archivos de configuración específicos
+*.config.js
+*.config.ts
+!next.config.js
+!tailwind.config.js
+!postcss.config.js
+!vitest.config.ts
+!prisma.config.ts
+
+# Archivos de tipos generados
+/src/types/generated/
+/prisma/generated/
+
+# Archivos de logs de pruebas
+/test-results/
+/playwright-report/
+/playwright/.cache/
+
+# Archivos de cobertura de pruebas
+/coverage/
+/.nyc_output/
+
+# Archivos de configuración de IDE
+.vscode/
+.idea/
+*.iml
+.project
+.classpath
+.settings/
+
+# Archivos de sistema operativo
 .DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
 Thumbs.db
 
-# Archivos de caché
-.eslintcache
-*.tsbuildinfo
-.next/cache/
+# Archivos temporales
+*.tmp
+*.temp
+*.log
+*.pid
+*.seed
+*.pid.lock
+# Claude Code local settings
+.claude/settings.local.json

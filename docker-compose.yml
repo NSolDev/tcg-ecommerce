@@ -1,0 +1,43 @@
+services:
+  db:
+    image: postgres:16-alpine
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-postgres}
+      # Required — no default. Compose fails fast if it is not set.
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?POSTGRES_PASSWORD is required (set it in .env)}
+      POSTGRES_DB: ${POSTGRES_DB:-tcg_ecommerce}
+    volumes:
+      - db_data:/var/lib/postgresql/data
+    healthcheck:
+      test:
+        ['CMD-SHELL', 'pg_isready -U ${POSTGRES_USER:-postgres} -d ${POSTGRES_DB:-tcg_ecommerce}']
+      interval: 5s
+      timeout: 5s
+      retries: 10
+    # No host port published: PostgreSQL is reachable only from the internal
+    # Docker network (the `web` service). For local DB admin, opt in with the
+    # documented dev override: `docker compose -f docker-compose.yml -f docker-compose.dev.yml up`.
+
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      # App talks to PostgreSQL over the internal network via the `db` service name.
+      DATABASE_URL: postgresql://${POSTGRES_USER:-postgres}:${POSTGRES_PASSWORD}@db:5432/${POSTGRES_DB:-tcg_ecommerce}
+      NEXTAUTH_URL: ${NEXTAUTH_URL:-http://localhost:3000}
+      NEXT_PUBLIC_APP_URL: ${NEXT_PUBLIC_APP_URL:-http://localhost:3000}
+      # Required — no fallback. The app must not run with a predictable secret.
+      NEXTAUTH_SECRET: ${NEXTAUTH_SECRET:?NEXTAUTH_SECRET is required (generate one, e.g. openssl rand -base64 32)}
+      # Optional: set to a Stripe TEST secret key to enable real test-mode payments.
+      STRIPE_SECRET_KEY: ${STRIPE_SECRET_KEY:-}
+    ports:
+      - '3000:3000'
+
+volumes:
+  db_data:

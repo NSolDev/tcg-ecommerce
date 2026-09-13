@@ -1,13 +1,13 @@
 // src/components/seo/CollectionSchema.tsx
-'use client'
+'use client';
 
-import Script from 'next/script'
-import { Product } from '@prisma/client'
+import Script from 'next/script';
+import { Product } from '@prisma/client';
 
 interface CollectionSchemaProps {
-  products: Product[]
-  name: string
-  description: string
+  products: (Product & { images?: { url: string; isPrimary: boolean }[] })[];
+  name: string;
+  description: string;
 }
 
 export function CollectionSchema({ products, name, description }: CollectionSchemaProps) {
@@ -29,20 +29,22 @@ export function CollectionSchema({ products, name, description }: CollectionSche
           '@type': 'Product',
           name: product.name,
           url: `https://tcgstore.com/products/${product.slug}`,
-          image: product.imageUrl,
+          image: product.images?.find((i) => i.isPrimary)?.url ?? product.images?.[0]?.url,
           price: product.price,
           priceCurrency: 'EUR',
         },
       })),
     },
-  }
+  };
 
   return (
     <Script
       id="collection-schema"
       type="application/ld+json"
-      dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+      dangerouslySetInnerHTML={{
+        __html: JSON.stringify(schema).replace(/</g, String.fromCharCode(92) + 'u003c'),
+      }}
       strategy="afterInteractive"
     />
-  )
+  );
 }

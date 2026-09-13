@@ -24,7 +24,7 @@
 .wishlist-header-title {
   font-size: 2rem;
   font-weight: 700;
-  color: #FFFFFF;
+  color: #ffffff;
   display: flex;
   align-items: center;
   gap: 0.75rem;
@@ -33,11 +33,11 @@
 .wishlist-header-title .icon {
   width: 2rem;
   height: 2rem;
-  color: #FFCB05;
+  color: #ffcb05;
 }
 
 .wishlist-header-subtitle {
-  color: #B0B0B0;
+  color: #b0b0b0;
   margin-top: 0.25rem;
 }
 
@@ -47,7 +47,7 @@
   padding: 0.5rem 1rem;
   border-radius: 0.5rem;
   font-weight: 500;
-  color: #FFFFFF;
+  color: #ffffff;
   background: rgba(255, 255, 255, 0.05);
   border: 1px solid rgba(255, 255, 255, 0.06);
   transition: all 0.3s ease;
@@ -56,7 +56,7 @@
 
 .wishlist-header-action:hover {
   border-color: rgba(255, 203, 5, 0.3);
-  color: #FFFFFF;
+  color: #ffffff;
   background: rgba(255, 203, 5, 0.05);
 }
 
@@ -64,7 +64,7 @@
    WISHLIST - EMPTY
    ============================================ */
 .wishlist-empty {
-  background: #1E1E1E;
+  background: #1e1e1e;
   border: 1px solid rgba(255, 255, 255, 0.06);
   border-radius: 1rem;
 }
@@ -92,18 +92,18 @@
 .wishlist-empty-icon svg {
   width: 2.5rem;
   height: 2.5rem;
-  color: #FFCB05;
+  color: #ffcb05;
 }
 
 .wishlist-empty-title {
   font-size: 1.25rem;
   font-weight: 600;
-  color: #FFFFFF;
+  color: #ffffff;
   margin-bottom: 0.5rem;
 }
 
 .wishlist-empty-description {
-  color: #B0B0B0;
+  color: #b0b0b0;
   margin-bottom: 1.5rem;
   max-width: 28rem;
 }
@@ -115,7 +115,7 @@
   border-radius: 0.5rem;
   font-weight: 600;
   color: #121212;
-  background: #FFCB05;
+  background: #ffcb05;
   transition: all 0.3s ease;
   text-decoration: none;
   border: none;
@@ -123,7 +123,7 @@
 }
 
 .wishlist-empty-button:hover {
-  background: #E6B800;
+  background: #e6b800;
   transform: translateY(-1px);
   box-shadow: 0 0 30px rgba(255, 203, 5, 0.3);
 }

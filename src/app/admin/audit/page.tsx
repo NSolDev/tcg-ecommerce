@@ -1,19 +1,18 @@
 // src/app/admin/audit/page.tsx
-import { prisma } from '@/lib/db/prisma'
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table'
-import { Badge } from '@/components/ui/badge'
-import { formatDate } from '@/lib/utils'
-import { 
-  Eye, 
-  Pencil, 
-  Trash2, 
-  RefreshCw, 
-  Package, 
-  User,
-  AlertCircle
-} from 'lucide-react'
-import './admin-audit.css'
+import { prisma } from '@/lib/db/prisma';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from '@/components/ui/table';
+import { Badge } from '@/components/ui/badge';
+import { formatDate } from '@/lib/utils';
+import { Eye, Pencil, Trash2, RefreshCw, Package, User, AlertCircle } from 'lucide-react';
+import './admin-audit.css';
 
 const actionIcons: Record<string, any> = {
   CREATE: Package,
@@ -23,7 +22,7 @@ const actionIcons: Record<string, any> = {
   DEACTIVATE: AlertCircle,
   VIEW: Eye,
   LOGIN: User,
-}
+};
 
 const actionBadgeClasses: Record<string, string> = {
   CREATE: 'admin-audit-badge-create',
@@ -33,7 +32,7 @@ const actionBadgeClasses: Record<string, string> = {
   DEACTIVATE: 'admin-audit-badge-deactivate',
   VIEW: 'admin-audit-badge-view',
   LOGIN: 'admin-audit-badge-login',
-}
+};
 
 const actionLabels: Record<string, string> = {
   CREATE: 'Creación',
@@ -43,7 +42,7 @@ const actionLabels: Record<string, string> = {
   DEACTIVATE: 'Desactivación',
   VIEW: 'Visualización',
   LOGIN: 'Inicio de sesión',
-}
+};
 
 export default async function AuditPage() {
   const logs = await prisma.auditLog.findMany({
@@ -52,15 +51,13 @@ export default async function AuditPage() {
     },
     orderBy: { createdAt: 'desc' },
     take: 100,
-  })
+  });
 
   return (
     <div className="admin-audit-page">
       <div className="admin-audit-header">
         <h1 className="admin-audit-title">Auditoría</h1>
-        <p className="admin-audit-subtitle">
-          Historial de acciones de administradores
-        </p>
+        <p className="admin-audit-subtitle">Historial de acciones de administradores</p>
       </div>
 
       <Card className="admin-audit-card">
@@ -84,16 +81,15 @@ export default async function AuditPage() {
                 </TableHeader>
                 <TableBody>
                   {logs.map((log) => {
-                    const Icon = actionIcons[log.action] || Package
-                    const badgeClass = actionBadgeClasses[log.action] || 'admin-audit-badge-default'
-                    const label = actionLabels[log.action] || log.action
+                    const Icon = actionIcons[log.action] || Package;
+                    const badgeClass =
+                      actionBadgeClasses[log.action] || 'admin-audit-badge-default';
+                    const label = actionLabels[log.action] || log.action;
 
                     return (
                       <TableRow key={log.id} className="admin-audit-table-row">
                         <TableCell className="admin-audit-table-cell">
-                          <span className="admin-audit-date">
-                            {formatDate(log.createdAt)}
-                          </span>
+                          <span className="admin-audit-date">{formatDate(log.createdAt)}</span>
                           <span className="admin-audit-time">
                             {new Date(log.createdAt).toLocaleTimeString()}
                           </span>
@@ -135,7 +131,7 @@ export default async function AuditPage() {
                           </div>
                         </TableCell>
                       </TableRow>
-                    )
+                    );
                   })}
                 </TableBody>
               </Table>
@@ -144,5 +140,5 @@ export default async function AuditPage() {
         </CardContent>
       </Card>
     </div>
-  )
+  );
 }

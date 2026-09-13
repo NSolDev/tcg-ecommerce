@@ -43,7 +43,7 @@
   overflow: hidden;
   border: 2px solid rgba(255, 203, 5, 0.2);
   box-shadow: 0 0 20px rgba(255, 203, 5, 0.1);
-  background: #1E1E1E;
+  background: #1e1e1e;
   pointer-events: none;
   /* Reducir opacidad para que no tape el texto */
   opacity: 0.85;
@@ -61,7 +61,7 @@
    TAMAÑOS DE PRODUCTOS EN ÓRBITA
    ============================================ */
 .scroll-morph-hero .orbit-item.size-sm {
-  width: 6rem;   /* 96px */
+  width: 6rem; /* 96px */
   height: 6rem;
 }
 
@@ -71,7 +71,7 @@
 }
 
 .scroll-morph-hero .orbit-item.size-lg {
-  width: 9rem;   /* 144px */
+  width: 9rem; /* 144px */
   height: 9rem;
 }
 
@@ -110,8 +110,8 @@
 .scroll-morph-hero .hero-title {
   font-size: 4rem;
   font-weight: 700;
-  color: #FFCB05;
-  text-shadow: 
+  color: #ffcb05;
+  text-shadow:
     0 0 20px rgba(255, 203, 5, 0.3),
     0 0 60px rgba(255, 203, 5, 0.1),
     0 0 100px rgba(255, 203, 5, 0.05);
@@ -128,7 +128,7 @@
 
 .scroll-morph-hero .hero-subtitle {
   font-size: 1.25rem;
-  color: #B0B0B0;
+  color: #b0b0b0;
   margin-top: 0.5rem;
   position: relative;
   z-index: 11;
@@ -145,7 +145,7 @@
   border-radius: 0.75rem;
   font-weight: 600;
   color: #121212;
-  background: #FFCB05;
+  background: #ffcb05;
   transition: all 0.3s ease;
   text-decoration: none;
   pointer-events: auto;
@@ -154,7 +154,7 @@
 }
 
 .scroll-morph-hero .btn-primary:hover {
-  background: #E6B800;
+  background: #e6b800;
   transform: scale(1.05);
   box-shadow: 0 0 40px rgba(255, 203, 5, 0.4);
 }
@@ -164,29 +164,29 @@
    ============================================ */
 @media (max-width: 768px) {
   .scroll-morph-hero .orbit-item.size-sm {
-    width: 4rem;   /* 64px */
+    width: 4rem; /* 64px */
     height: 4rem;
   }
-  
+
   .scroll-morph-hero .orbit-item.size-md {
-    width: 5rem;   /* 80px */
+    width: 5rem; /* 80px */
     height: 5rem;
   }
-  
+
   .scroll-morph-hero .orbit-item.size-lg {
-    width: 6rem;   /* 96px */
+    width: 6rem; /* 96px */
     height: 6rem;
   }
-  
+
   .scroll-morph-hero .orbit-item.size-xl {
-    width: 7rem;   /* 112px */
+    width: 7rem; /* 112px */
     height: 7rem;
   }
-  
+
   .scroll-morph-hero .hero-title {
     font-size: 2.5rem;
   }
-  
+
   .scroll-morph-hero .hero-subtitle {
     font-size: 1rem;
   }

@@ -1,27 +1,27 @@
 // src/app/sitemap.ts
-import { prisma } from '@/lib/db/prisma'
+import { prisma } from '@/lib/db/prisma';
+
+// Generated at request time; tolerate the DB being unavailable at build.
+export const dynamic = 'force-dynamic';
 
 export default async function sitemap() {
-  const baseUrl = process.env.NEXTAUTH_URL || 'https://tcgstore.com'
+  const baseUrl = process.env.NEXTAUTH_URL || 'https://tcgstore.com';
 
-  // Obtener todos los productos activos
-  const products = await prisma.product.findMany({
-    where: { isActive: true },
-    select: {
-      slug: true,
-      updatedAt: true,
-      category: true,
-    },
-  })
-
-  // Obtener todas las colecciones
-  const sets = await prisma.set.findMany({
-    select: {
-      id: true,
-      name: true,
-      updatedAt: true,
-    },
-  })
+  let products: { slug: string; updatedAt: Date; type: string }[] = [];
+  let sets: { id: string; name: string; updatedAt: Date }[] = [];
+  try {
+    [products, sets] = await Promise.all([
+      prisma.product.findMany({
+        where: { isActive: true },
+        select: { slug: true, updatedAt: true, type: true },
+      }),
+      prisma.set.findMany({
+        select: { id: true, name: true, updatedAt: true },
+      }),
+    ]);
+  } catch {
+    // DB not reachable (e.g. during image build) — emit static URLs only.
+  }
 
   // URLs estáticas
   const staticUrls = [
@@ -43,15 +43,15 @@ export default async function sitemap() {
       changeFrequency: 'weekly' as const,
       priority: 0.5,
     },
-  ]
+  ];
 
   // URLs de productos
   const productUrls = products.map((product) => ({
     url: `${baseUrl}/products/${product.slug}`,
     lastModified: product.updatedAt,
     changeFrequency: 'weekly' as const,
-    priority: product.category === 'CARD' ? 0.8 : 0.7,
-  }))
+    priority: product.type === 'CARD' ? 0.8 : 0.7,
+  }));
 
   // URLs de colecciones
   const setUrls = sets.map((set) => ({
@@ -59,7 +59,7 @@ export default async function sitemap() {
     lastModified: set.updatedAt,
     changeFrequency: 'weekly' as const,
     priority: 0.6,
-  }))
+  }));
 
   // URLs de categorías
   const categoryUrls = ['CARD', 'PACK', 'BOX'].map((category) => ({
@@ -67,7 +67,7 @@ export default async function sitemap() {
     lastModified: new Date(),
     changeFrequency: 'weekly' as const,
     priority: 0.6,
-  }))
+  }));
 
-  return [...staticUrls, ...productUrls, ...setUrls, ...categoryUrls]
+  return [...staticUrls, ...productUrls, ...setUrls, ...categoryUrls];
 }

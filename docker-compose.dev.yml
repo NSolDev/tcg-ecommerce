@@ -1,0 +1,8 @@
+# Development-only override. Opt in explicitly:
+#   docker compose -f docker-compose.yml -f docker-compose.dev.yml up
+# Publishes PostgreSQL on localhost for local DB tools (psql, Prisma Studio, GUIs).
+# Never use this override in a public/production deployment.
+services:
+  db:
+    ports:
+      - '127.0.0.1:5432:5432'

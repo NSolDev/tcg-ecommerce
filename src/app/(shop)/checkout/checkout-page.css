@@ -12,7 +12,7 @@
 .checkout-title {
   font-size: 2rem;
   font-weight: 700;
-  color: #FFFFFF;
+  color: #ffffff;
   margin-bottom: 2rem;
 }
 
@@ -31,7 +31,7 @@
 .checkout-loading {
   text-align: center;
   padding: 3rem 0;
-  color: #B0B0B0;
+  color: #b0b0b0;
 }
 
 /* ============================================
@@ -51,7 +51,7 @@
 .checkout-summary-title {
   font-size: 1.125rem;
   font-weight: 600;
-  color: #FFFFFF;
+  color: #ffffff;
 }
 
 .checkout-summary-content {
@@ -63,7 +63,7 @@
   justify-content: space-between;
   font-size: 0.875rem;
   padding: 0.5rem 0;
-  color: #B0B0B0;
+  color: #b0b0b0;
   border-bottom: 1px solid rgba(255, 255, 255, 0.03);
 }
 
@@ -72,7 +72,7 @@
 }
 
 .checkout-summary-item .price {
-  color: #FFFFFF;
+  color: #ffffff;
   font-weight: 500;
 }
 
@@ -87,11 +87,11 @@
 }
 
 .checkout-summary-total .label {
-  color: #FFFFFF;
+  color: #ffffff;
 }
 
 .checkout-summary-total .value {
-  color: #FFCB05;
+  color: #ffcb05;
 }
 
 /* ============================================
@@ -101,16 +101,16 @@
   .checkout-page {
     padding: 1rem;
   }
-  
+
   .checkout-title {
     font-size: 1.5rem;
     margin-bottom: 1.5rem;
   }
-  
+
   .checkout-summary-header {
     padding: 1rem 1rem 0.5rem 1rem;
   }
-  
+
   .checkout-summary-content {
     padding: 0.5rem 1rem 1rem 1rem;
   }

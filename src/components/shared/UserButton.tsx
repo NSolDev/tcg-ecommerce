@@ -1,8 +1,7 @@
 // src/components/shared/UserButton.tsx
-'use client'
+'use client';
 
-import { signOut, useSession } from 'next-auth/react'
-import { Button } from '@/components/ui/button'
+import { signOut, useSession } from 'next-auth/react';
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -10,20 +9,20 @@ import {
   DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from '@/components/ui/dropdown-menu'
-import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
-import Link from 'next/link'
-import { User, Heart, Package, Settings, LogOut, Shield } from 'lucide-react'
-import { useState, useEffect } from 'react'
-import './user-button.css'
+} from '@/components/ui/dropdown-menu';
+import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
+import Link from 'next/link';
+import { User, Heart, Package, Settings, LogOut, Shield } from 'lucide-react';
+import { useState, useEffect } from 'react';
+import './user-button.css';
 
 export function UserButton() {
-  const { data: session } = useSession()
-  const [isMounted, setIsMounted] = useState(false)
+  const { data: session } = useSession();
+  const [isMounted, setIsMounted] = useState(false);
 
   useEffect(() => {
-    setIsMounted(true)
-  }, [])
+    setIsMounted(true);
+  }, []);
 
   if (!session?.user) {
     return (
@@ -35,7 +34,7 @@ export function UserButton() {
           Registrarse
         </Link>
       </div>
-    )
+    );
   }
 
   const initials = session.user.name
@@ -45,7 +44,7 @@ export function UserButton() {
         .join('')
         .toUpperCase()
         .slice(0, 2)
-    : session.user.email?.[0].toUpperCase() || 'U'
+    : session.user.email?.[0].toUpperCase() || 'U';
 
   // Solo renderizar el avatar después del montaje para evitar hidratación
   if (!isMounted) {
@@ -53,7 +52,7 @@ export function UserButton() {
       <div className="user-button-placeholder">
         <div className="avatar-placeholder" />
       </div>
-    )
+    );
   }
 
   return (
@@ -62,9 +61,7 @@ export function UserButton() {
         <button className="user-button-avatar">
           <Avatar className="avatar">
             <AvatarImage src={session.user.image || undefined} />
-            <AvatarFallback className="avatar-fallback">
-              {initials}
-            </AvatarFallback>
+            <AvatarFallback className="avatar-fallback">{initials}</AvatarFallback>
           </Avatar>
         </button>
       </DropdownMenuTrigger>
@@ -74,28 +71,28 @@ export function UserButton() {
           <p className="email">{session.user.email}</p>
         </DropdownMenuLabel>
         <DropdownMenuSeparator className="separator" />
-        
+
         <DropdownMenuItem asChild className="item">
           <Link href="/account">
             <User className="icon" />
             Mi Cuenta
           </Link>
         </DropdownMenuItem>
-        
+
         <DropdownMenuItem asChild className="item">
           <Link href="/wishlist">
             <Heart className="icon wishlist" />
             Favoritos
           </Link>
         </DropdownMenuItem>
-        
+
         <DropdownMenuItem asChild className="item">
           <Link href="/orders">
             <Package className="icon" />
             Mis Pedidos
           </Link>
         </DropdownMenuItem>
-        
+
         <DropdownMenuItem asChild className="item">
           <Link href="/account/settings">
             <Settings className="icon" />
@@ -115,16 +112,13 @@ export function UserButton() {
             </DropdownMenuItem>
           </>
         )}
-        
+
         <DropdownMenuSeparator className="separator" />
-        <DropdownMenuItem
-          className="item danger"
-          onClick={() => signOut({ redirectTo: '/' })}
-        >
+        <DropdownMenuItem className="item danger" onClick={() => signOut({ redirectTo: '/' })}>
           <LogOut className="icon" />
           Cerrar Sesión
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>
-  )
+  );
 }
