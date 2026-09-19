@@ -24,6 +24,39 @@ pretende ser una plataforma de comercio de nivel bancario ni procesar dinero rea
 - **Autenticación** con email/contraseña y OAuth **opcional** (Google/GitHub).
 - Diseño responsive y animaciones (framer-motion / GSAP / Embla).
 
+## Capturas de pantalla
+
+Estas capturas muestran las principales interfaces de la aplicación, tanto de cara al
+usuario como del panel de administración.
+
+### Portal
+
+![Portal](public/preview/Portal.png)
+
+### Catálogo
+
+![Catálogo](public/preview/Catalogo.png)
+
+### Detalle de carta
+
+![Detalle de carta](public/preview/Carta.png)
+
+### Carrusel de cartas
+
+![Carrusel de cartas](public/preview/Carrusel%20de%20cartas.png)
+
+### Panel de administración — vista 1
+
+![Panel de administración — vista 1](public/preview/Panel%20de%20admin%201.png)
+
+### Panel de administración — vista 2
+
+![Panel de administración — vista 2](public/preview/Panel%20de%20admin%202.png)
+
+### Panel de administración — vista 3
+
+![Panel de administración — vista 3](public/preview/Panel%20de%20admin%203.png)
+
 ## Stack tecnológico
 
 | Área             | Tecnología                                                 |
